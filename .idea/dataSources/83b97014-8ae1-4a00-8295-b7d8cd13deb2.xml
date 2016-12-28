@@ -1,0 +1,523 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="dip@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.0">
+    <root id="1"/>
+    <schema id="2" parent="1" name="dip">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="dogs_in_pocket"/>
+    <schema id="4" parent="1" name="information_schema"/>
+    <schema id="5" parent="1" name="mysql"/>
+    <schema id="6" parent="1" name="performance_schema"/>
+    <schema id="7" parent="1" name="phpmyadmin"/>
+    <schema id="8" parent="1" name="test"/>
+    <schema id="9" parent="1" name="webapp"/>
+    <schema id="10" parent="1" name="webstore"/>
+    <table id="11" parent="2" name="breed"/>
+    <table id="12" parent="2" name="color"/>
+    <table id="13" parent="2" name="contest"/>
+    <table id="14" parent="2" name="contest_type"/>
+    <table id="15" parent="2" name="dog"/>
+    <table id="16" parent="2" name="dog_contest"/>
+    <table id="17" parent="2" name="dog_dogshow"/>
+    <table id="18" parent="2" name="dogshow"/>
+    <table id="19" parent="2" name="fcigroup"/>
+    <table id="20" parent="2" name="human"/>
+    <table id="21" parent="2" name="role_type"/>
+    <column id="22" parent="11" name="breed_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="23" parent="11" name="Title">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <index id="24" parent="11" name="XPKbreed">
+      <ColNames>breed_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="25" parent="11" name="PRIMARY">
+      <ColNames>breed_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="26" parent="11" name="XPKbreed">
+      <ColNames>breed_id</ColNames>
+      <UnderlyingIndexName>XPKbreed</UnderlyingIndexName>
+    </key>
+    <column id="27" parent="12" name="color_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="28" parent="12" name="Title">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <index id="29" parent="12" name="XPKColor">
+      <ColNames>color_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="30" parent="12" name="PRIMARY">
+      <ColNames>color_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="31" parent="12" name="XPKColor">
+      <ColNames>color_id</ColNames>
+      <UnderlyingIndexName>XPKColor</UnderlyingIndexName>
+    </key>
+    <column id="32" parent="13" name="contest_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="33" parent="13" name="contest_type_id">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="34" parent="13" name="Title">
+      <Position>3</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="35" parent="13" name="Description">
+      <Position>4</Position>
+      <DataType>char(100)|0</DataType>
+    </column>
+    <index id="36" parent="13" name="XIF1Contest">
+      <ColNames>contest_type_id</ColNames>
+    </index>
+    <index id="37" parent="13" name="XPKContest">
+      <ColNames>contest_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="38" parent="13" name="PRIMARY">
+      <ColNames>contest_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="39" parent="13" name="XPKContest">
+      <ColNames>contest_id</ColNames>
+      <UnderlyingIndexName>XPKContest</UnderlyingIndexName>
+    </key>
+    <foreign-key id="40" parent="13" name="R_3">
+      <ColNames>contest_type_id</ColNames>
+      <RefSchemaName>dip</RefSchemaName>
+      <RefTableName>contest_type</RefTableName>
+      <RefColNames>contest_type_id</RefColNames>
+    </foreign-key>
+    <column id="41" parent="14" name="contest_type_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="42" parent="14" name="Forwhom">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="43" parent="14" name="XPKContest_type">
+      <ColNames>contest_type_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="44" parent="14" name="PRIMARY">
+      <ColNames>contest_type_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="45" parent="14" name="XPKContest_type">
+      <ColNames>contest_type_id</ColNames>
+      <UnderlyingIndexName>XPKContest_type</UnderlyingIndexName>
+    </key>
+    <column id="46" parent="15" name="dog_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="47" parent="15" name="human_id">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="48" parent="15" name="Gender">
+      <Position>3</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="49" parent="15" name="Name">
+      <Position>4</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="50" parent="15" name="Dob">
+      <Position>5</Position>
+      <DataType>date|0</DataType>
+    </column>
+    <column id="51" parent="15" name="Chip">
+      <Position>6</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <column id="52" parent="15" name="Brand">
+      <Position>7</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <column id="53" parent="15" name="Pedigree">
+      <Position>8</Position>
+      <DataType>varchar(30)|0</DataType>
+    </column>
+    <column id="54" parent="15" name="Sire">
+      <Position>9</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="55" parent="15" name="Dam">
+      <Position>10</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="56" parent="15" name="color_id">
+      <Position>11</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="57" parent="15" name="breed_id">
+      <Position>12</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="58" parent="15" name="fcigroup_id">
+      <Position>13</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="59" parent="15" name="XIF1Dog">
+      <ColNames>human_id</ColNames>
+    </index>
+    <index id="60" parent="15" name="XIF3Dog">
+      <ColNames>color_id</ColNames>
+    </index>
+    <index id="61" parent="15" name="XIF4Dog">
+      <ColNames>breed_id</ColNames>
+    </index>
+    <index id="62" parent="15" name="XIF5Dog">
+      <ColNames>fcigroup_id</ColNames>
+    </index>
+    <index id="63" parent="15" name="XPKDog">
+      <ColNames>dog_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="64" parent="15" name="PRIMARY">
+      <ColNames>dog_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="65" parent="15" name="XPKDog">
+      <ColNames>dog_id</ColNames>
+      <UnderlyingIndexName>XPKDog</UnderlyingIndexName>
+    </key>
+    <foreign-key id="66" parent="15" name="R_8">
+      <ColNames>human_id</ColNames>
+      <RefSchemaName>dip</RefSchemaName>
+      <RefTableName>human</RefTableName>
+      <RefColNames>human_id</RefColNames>
+    </foreign-key>
+    <foreign-key id="67" parent="15" name="R_16">
+      <ColNames>color_id</ColNames>
+      <RefSchemaName>dip</RefSchemaName>
+      <RefTableName>color</RefTableName>
+      <RefColNames>color_id</RefColNames>
+    </foreign-key>
+    <foreign-key id="68" parent="15" name="R_17">
+      <ColNames>breed_id</ColNames>
+      <RefSchemaName>dip</RefSchemaName>
+      <RefTableName>breed</RefTableName>
+      <RefColNames>breed_id</RefColNames>
+    </foreign-key>
+    <foreign-key id="69" parent="15" name="R_18">
+      <ColNames>fcigroup_id</ColNames>
+      <RefSchemaName>dip</RefSchemaName>
+      <RefTableName>fcigroup</RefTableName>
+      <RefColNames>fcigroup_id</RefColNames>
+    </foreign-key>
+    <column id="70" parent="16" name="contest_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="71" parent="16" name="mark">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="72" parent="16" name="human_id">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="73" parent="16" name="dog_id">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="74" parent="16" name="XIF2Dog_Contest_id">
+      <ColNames>contest_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="75" parent="16" name="XIF3Dog_Contest_id">
+      <ColNames>human_id</ColNames>
+    </index>
+    <index id="76" parent="16" name="XIF4Dog_Contest_id">
+      <ColNames>dog_id</ColNames>
+    </index>
+    <index id="77" parent="16" name="XPKDog_Contest_id">
+      <ColNames>contest_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="78" parent="16" name="PRIMARY">
+      <ColNames>contest_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="79" parent="16" name="XIF2Dog_Contest_id">
+      <ColNames>contest_id</ColNames>
+      <UnderlyingIndexName>XIF2Dog_Contest_id</UnderlyingIndexName>
+    </key>
+    <key id="80" parent="16" name="XPKDog_Contest_id">
+      <ColNames>contest_id</ColNames>
+      <UnderlyingIndexName>XPKDog_Contest_id</UnderlyingIndexName>
+    </key>
+    <foreign-key id="81" parent="16" name="R_7">
+      <ColNames>contest_id</ColNames>
+      <RefSchemaName>dip</RefSchemaName>
+      <RefTableName>contest</RefTableName>
+      <RefColNames>contest_id</RefColNames>
+    </foreign-key>
+    <foreign-key id="82" parent="16" name="R_11">
+      <ColNames>human_id</ColNames>
+      <RefSchemaName>dip</RefSchemaName>
+      <RefTableName>human</RefTableName>
+      <RefColNames>human_id</RefColNames>
+    </foreign-key>
+    <foreign-key id="83" parent="16" name="R_22">
+      <ColNames>dog_id</ColNames>
+      <RefSchemaName>dip</RefSchemaName>
+      <RefTableName>dog</RefTableName>
+      <RefColNames>dog_id</RefColNames>
+    </foreign-key>
+    <column id="84" parent="17" name="dog_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="85" parent="17" name="dogshow_id">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="86" parent="17" name="human_id">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="87" parent="17" name="XIF1Dog_DogShow">
+      <ColNames>dog_id</ColNames>
+    </index>
+    <index id="88" parent="17" name="XIF2Dog_DogShow">
+      <ColNames>dogshow_id
+human_id</ColNames>
+    </index>
+    <index id="89" parent="17" name="XPKDog_DogShow">
+      <ColNames>dog_id
+dogshow_id
+human_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="90" parent="17" name="PRIMARY">
+      <ColNames>dog_id
+dogshow_id
+human_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="91" parent="17" name="XPKDog_DogShow">
+      <ColNames>dog_id
+dogshow_id
+human_id</ColNames>
+      <UnderlyingIndexName>XPKDog_DogShow</UnderlyingIndexName>
+    </key>
+    <foreign-key id="92" parent="17" name="R_12">
+      <ColNames>dog_id</ColNames>
+      <RefSchemaName>dip</RefSchemaName>
+      <RefTableName>dog</RefTableName>
+      <RefColNames>dog_id</RefColNames>
+    </foreign-key>
+    <foreign-key id="93" parent="17" name="R_14">
+      <ColNames>dogshow_id
+human_id</ColNames>
+      <RefSchemaName>dip</RefSchemaName>
+      <RefTableName>dogshow</RefTableName>
+      <RefColNames>dogshow_id
+human_id</RefColNames>
+    </foreign-key>
+    <column id="94" parent="18" name="dogshow_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="95" parent="18" name="Title">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="96" parent="18" name="Date">
+      <Position>3</Position>
+      <DataType>date|0</DataType>
+    </column>
+    <column id="97" parent="18" name="Sponsor">
+      <Position>4</Position>
+      <DataType>varchar(50)|0</DataType>
+    </column>
+    <column id="98" parent="18" name="Description">
+      <Position>5</Position>
+      <DataType>varchar(200)|0</DataType>
+    </column>
+    <column id="99" parent="18" name="Address">
+      <Position>6</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="100" parent="18" name="Organizer">
+      <Position>7</Position>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="101" parent="18" name="contest_id">
+      <Position>8</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="102" parent="18" name="human_id">
+      <Position>9</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="103" parent="18" name="XIF1DogShow">
+      <ColNames>contest_id</ColNames>
+    </index>
+    <index id="104" parent="18" name="XIF2DogShow">
+      <ColNames>human_id</ColNames>
+    </index>
+    <index id="105" parent="18" name="XPKDogShow">
+      <ColNames>dogshow_id
+human_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="106" parent="18" name="PRIMARY">
+      <ColNames>dogshow_id
+human_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="107" parent="18" name="XPKDogShow">
+      <ColNames>dogshow_id
+human_id</ColNames>
+      <UnderlyingIndexName>XPKDogShow</UnderlyingIndexName>
+    </key>
+    <foreign-key id="108" parent="18" name="R_21">
+      <ColNames>contest_id</ColNames>
+      <RefSchemaName>dip</RefSchemaName>
+      <RefTableName>contest</RefTableName>
+      <RefColNames>contest_id</RefColNames>
+    </foreign-key>
+    <foreign-key id="109" parent="18" name="R_23">
+      <ColNames>human_id</ColNames>
+      <RefSchemaName>dip</RefSchemaName>
+      <RefTableName>human</RefTableName>
+      <RefColNames>human_id</RefColNames>
+    </foreign-key>
+    <column id="110" parent="19" name="fcigroup_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="111" parent="19" name="Number">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="112" parent="19" name="XPKFciGroup">
+      <ColNames>fcigroup_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="113" parent="19" name="PRIMARY">
+      <ColNames>fcigroup_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="114" parent="19" name="XPKFciGroup">
+      <ColNames>fcigroup_id</ColNames>
+      <UnderlyingIndexName>XPKFciGroup</UnderlyingIndexName>
+    </key>
+    <column id="115" parent="20" name="human_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="116" parent="20" name="role_id">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="117" parent="20" name="Fname">
+      <Position>3</Position>
+      <DataType>varchar(40)|0</DataType>
+    </column>
+    <column id="118" parent="20" name="Sname">
+      <Position>4</Position>
+      <DataType>varchar(40)|0</DataType>
+    </column>
+    <column id="119" parent="20" name="Lname">
+      <Position>5</Position>
+      <DataType>varchar(40)|0</DataType>
+    </column>
+    <column id="120" parent="20" name="Country">
+      <Position>6</Position>
+      <DataType>varchar(40)|0</DataType>
+    </column>
+    <column id="121" parent="20" name="UserName">
+      <Position>7</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <column id="122" parent="20" name="Password">
+      <Position>8</Position>
+      <DataType>varchar(20)|0</DataType>
+    </column>
+    <index id="123" parent="20" name="XIF1Human">
+      <ColNames>role_id</ColNames>
+    </index>
+    <index id="124" parent="20" name="XPKHuman">
+      <ColNames>human_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="125" parent="20" name="PRIMARY">
+      <ColNames>human_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="126" parent="20" name="XPKHuman">
+      <ColNames>human_id</ColNames>
+      <UnderlyingIndexName>XPKHuman</UnderlyingIndexName>
+    </key>
+    <foreign-key id="127" parent="20" name="R_9">
+      <ColNames>role_id</ColNames>
+      <RefSchemaName>dip</RefSchemaName>
+      <RefTableName>role_type</RefTableName>
+      <RefColNames>role_id</RefColNames>
+    </foreign-key>
+    <column id="128" parent="21" name="role_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="129" parent="21" name="Type">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="130" parent="21" name="XPKRole_type">
+      <ColNames>role_id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="131" parent="21" name="PRIMARY">
+      <ColNames>role_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <key id="132" parent="21" name="XPKRole_type">
+      <ColNames>role_id</ColNames>
+      <UnderlyingIndexName>XPKRole_type</UnderlyingIndexName>
+    </key>
+  </database-model>
+</dataSource>
