@@ -9,7 +9,7 @@ import java.util.List;
  */
 public interface DogShowService {
     DogShow addDogShow(DogShow dogShow);
-    void delete(long id);
+    void delete(int id);
     DogShow editDogShow(DogShow dogShow);
     List<DogShow> getAll();
 }

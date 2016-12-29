@@ -10,8 +10,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form"   uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="th" uri="http://www.springframework.org/tags/form" %>
-
-<c:set var="ctx" value="${pageContext['request'].contextPath}"/>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -109,70 +107,7 @@
 
 
     <div class="row">
-
-
-        <div class="span9">
-            <!--Blog Post-->
-            <c:forEach var="dsh" items="${dogshows}">
-                <div class="blog-post">
-                    <h2>${dsh.title}</h2>
-
-                    <div class="postmetadata">
-                        <ul>
-                            <li>
-                                <i class="icon-user"></i> <a href="#">${dsh.sponsor}</a>
-                            </li>
-
-                            <li>
-                                <i class="icon-calendar"></i>${dsh.date}
-                            </li>
-
-                        </ul>
-                    </div>
-
-
-
-                    <img src="ADD PICTURE">
-                    <p>${dsh.description}</p>
-                    <form method="POST" action="AddDogShowController" name="frmAddDogShow">
-                        <input name="dogshow_id" id="dogshow_id" th:field="*{dogshow_id}">
-                        <a class="btn btn-primary" type="Submit">Read More</a>
-                    </form>
-                </div>
-            </c:forEach>
-
-            <!--===============-->
-
-
-            <!--/.Blog Post-->
-
-            <!--Pagination-->
-            <div class="pagination">
-                <ul>
-                    <li>
-                        <a href="#">Prev</a>
-                    </li>
-                    <li>
-                        <a href="#">1</a>
-                    </li>
-                    <li>
-                        <a href="#">2</a>
-                    </li>
-                    <li>
-                        <a href="#">3</a>
-                    </li>
-                    <li>
-                        <a href="#">4</a>
-                    </li>
-                    <li>
-                        <a href="#">5</a>
-                    </li>
-                    <li>
-                        <a href="#">Next</a>
-                    </li>
-                </ul>
-            </div>
-
+<p>FINISHED</p>
             <!--/.Pagination-->
         </div>
 

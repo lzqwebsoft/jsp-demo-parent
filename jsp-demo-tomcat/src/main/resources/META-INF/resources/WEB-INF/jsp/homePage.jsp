@@ -88,7 +88,7 @@ response.setHeader("Expires","0");
 								<li><a href="${pageContext.request.contextPath}/about">About</a></li>
 								<li><a href="${pageContext.request.contextPath}/reg">Registration test</a></li>
 								<li><a href="${pageContext.request.contextPath}/breeder">Dogs test</a></li>
-								<li><a href="${pageContext.request.contextPath}/add_dogshows">Add dog show test</a></li>
+								<li><a href="${pageContext.request.contextPath}/add_dog_show">Add dog show test</a></li>
 
 							</ul>
 						</div>

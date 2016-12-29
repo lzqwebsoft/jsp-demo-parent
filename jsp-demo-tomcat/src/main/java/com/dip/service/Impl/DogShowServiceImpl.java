@@ -22,8 +22,9 @@ public class DogShowServiceImpl implements DogShowService {
         return saveDogShow;
     }
 
+
     @Override
-    public void delete(long id) {
+    public void delete(int id) {
         dogShowRepository.delete(id);
     }
 

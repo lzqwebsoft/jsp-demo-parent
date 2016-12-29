@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 /**
  * Created by moneg on 28.12.2016.
  */
-public interface DogShowRepository extends JpaRepository<DogShow, Long> {
+public interface DogShowRepository extends JpaRepository<DogShow, Integer> {
 
 }
 

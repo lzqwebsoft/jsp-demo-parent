@@ -12,7 +12,7 @@ import java.util.Set;
 public class DogShow {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private long dogshow_id;
+    private int dogshow_id;
 
     @Column(name = "Title")
     private String title;
@@ -32,18 +32,26 @@ public class DogShow {
     @Column(name = "Organizer")
     private String organizer;
 
-    @ManyToMany
-    @JoinTable(name="Dog_DogShow",
-            joinColumns = @JoinColumn(name="dogshow_id", referencedColumnName="id"),
-            inverseJoinColumns = @JoinColumn(name="dog_id", referencedColumnName="id")
-    )
+    @Column(name="contest_id")
+    private int contest_id;
 
-    public long getDogshow_id() {
-        return dogshow_id;
+    @OneToMany(fetch=FetchType.LAZY, mappedBy = "dogShow")
+    private Set<Contest> contests;
+
+    public int getContest_id() {
+        return contest_id;
     }
 
-    public void setDogshow_id(long dogshow_id) {
-        this.dogshow_id = dogshow_id;
+    public void setContest_id(int contest_id) {
+        this.contest_id = contest_id;
+    }
+
+    public Set<Contest> getContests() {
+        return contests;
+    }
+
+    public void setContests(Set<Contest> contests) {
+        this.contests = contests;
     }
 
     public String getTitle() {
@@ -92,5 +100,13 @@ public class DogShow {
 
     public void setOrganizer(String organizer) {
         this.organizer = organizer;
+    }
+
+    public int getDogshow_id() {
+        return dogshow_id;
+    }
+
+    public void setDogshow_id(int dogshow_id) {
+        this.dogshow_id = dogshow_id;
     }
 }

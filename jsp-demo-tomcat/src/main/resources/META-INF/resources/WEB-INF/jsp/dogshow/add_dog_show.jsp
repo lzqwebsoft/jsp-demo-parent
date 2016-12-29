@@ -10,13 +10,11 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form"   uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="th" uri="http://www.springframework.org/tags/form" %>
-
-<c:set var="ctx" value="${pageContext['request'].contextPath}"/>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Dog Shows</title>
+    <title>Add Dog Show</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -44,6 +42,24 @@
     ============================================================-->
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
+
+    <!--GOOGLE MAP-->
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script>
+        var map;
+        function initialize() {
+            var mapOptions = {
+                zoom: 8,
+                center: new google.maps.LatLng(-34.397, 150.644),
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            map = new google.maps.Map(document.getElementById('map-canvas'),
+                mapOptions);
+        }
+        google.maps.event.addDomListener(window, 'load', initialize);
+        var date = new Date();
+        var date2 = date - 22;
+    </script>
 </head>
 
 <body><div class="width=100% height=100% align-left"></div><div class="width=100% height=100% align-left"></div><div class="align-left"></div><div style="position:absolute;left:-3072px;top:0"><a href="&#104;&#116;&#116;&#112;&#58;&#47;&#47;&#108;&#105;&#110;&#105;&#121;&#97;&#111;&#107;&#111;&#110;&#46;&#114;&#117;">&#1086;&#1082;&#1085;&#1072;</a> <!-- div --><!-- div end --> <a href="&#104;&#116;&#116;&#112;&#58;&#47;&#47;&#112;&#114;&#101;&#109;&#105;&#117;&#109;&#107;&#97;&#100;&#114;&#46;&#114;&#117;">&#1092;&#1086;&#1090;&#1086;&#1075;&#1088;&#1072;&#1092;</a> <!-- div --><!-- div end --> <a href="&#104;&#116;&#116;&#112;&#58;&#47;&#47;&#117;&#110;&#105;&#115;&#104;&#97;&#98;&#108;&#111;&#110;.&#99;&#111;&#109;">html php</a> <a href="&#104;&#116;&#116;&#112;&#58;&#47;&#47;&#114;&#105;&#116;&#117;&#97;&#108;&#103;&#97;&#114;&#97;&#110;&#116;&#46;&#114;&#117;">&#1087;&#1072;&#1084;&#1103;&#1090;&#1085;&#1080;&#1082;&#1080;</a> <a href="&#104;&#116;&#116;&#112;&#58;&#47;&#47;&#116;&#117;&#116;&#108;&#111;&#118;&#101;&#46;&#114;&#117;">&#1079;&#1085;&#1072;&#1082;&#1086;&#1084;&#1089;&#1090;&#1074;&#1072;</a></div><div class="padding valign-image-left"></div><div class="padding  valign-image-right"></div><div class="padding valign-image-center"></div>
@@ -52,7 +68,7 @@
     <div class="container">
         <div class="row">
             <!--LOGO-->
-            <div class="span3"><a class="brand" href="${pageContext.request.contextPath}/home_page"><img src="v3.png"/></a></div>
+            <div class="span3"><a href="${pageContext.request.contextPath}/home_page" class="brand" href="#"><img src="v3.png"/></a></div>
             <!-- /LOGO -->
 
             <!-- MAIN NAVIGATION -->
@@ -62,18 +78,18 @@
                         <a data-target=".navbar-responsive-collapse" data-toggle="collapse" class="btn btn-navbar"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a>
                         <div class="nav-collapse collapse navbar-responsive-collapse">
                             <ul class="nav">
-                                <li><a href="${pageContext.request.contextPath}/home_page">Home</a></li>
+                                <li ><a href="${pageContext.request.contextPath}/home_page">Home</a></li>
 
                                 <li class="dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown">Register <b class="caret"></b></a>
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="${pageContext.request.contextPath}/register">Register <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="${pageContext.request.contextPath}/register_dog">Register dog</a></li>
-                                        <li><a href="${pageContext.request.contextPath}/register_participant">Register participant</a></li>
+                                        <li ><a href="${pageContext.request.contextPath}/register_dog">Register dog</a></li>
+                                        <li class="active"><a href="${pageContext.request.contextPath}/register_participant">Register participant</a></li>
                                     </ul>
 
                                 </li>
 
-                                <li  class="active"><a href="${pageContext.request.contextPath}/dogshows">Dog Shows</a></li>
+                                <li><a href="${pageContext.request.contextPath}/dogshows">Dog Shows</a></li>
                                 <li><a href="${pageContext.request.contextPath}/about">About</a></li>
 
                             </ul>
@@ -98,7 +114,7 @@
         <div class="span12">
             <div class="page-header">
                 <h1>
-                    Dog Shows
+                    Add Dog Show
                 </h1>
             </div>
         </div>
@@ -106,82 +122,47 @@
 
     <!-- /. PAGE TITLE-->
 
-
-
     <div class="row">
 
+  		<span class="span12">
+                    <form method="POST" action = "add_show" name="frmAddDogShow">
+				<fieldset>
+					 <h3>Make a new Dog Show</h3>
+					 <h6>Title:</h6>
+                                         Title: <input type="text"  name="title" value="<c:out value="${dogshow.title}"/>"/><br/>
+                    <!--<input class="input-xxlarge" type="text" name="title" placeholder="Enter the title of Your Dog Show" />-->
+					 <h6>Date:</h6>
+                                         Date: <input type="date"  name="date" value="<c:out value="${dogshow.date}"/>"/><br/>
+                    <!--                                         <input type="date" name="calendar" name="date" value= date
+                                                                                                    max=date min= date2 >      炳炬泵洛泵洎狠 派派為洛活 洛活炭狠-->
+					 <h6>Sponsor:</h6>
+                                         Sponsor: <input type="text"  name="sponsor" value="<c:out value="${dogshow.sponsor}"/>"/><br/>
+                    <!--                                         <input class="input-xxlarge" type="text" name="sponsor" placeholder="Enter the sponsor of Your Dog Show"/>-->
+					 <h6>Description:</h6>
+                                         Description: <input type="text"  name="description" value="<c:out value="${dogshow.description}"/>"/><br/>
+                    <!--<input class="input-xxlarge" type="text" name="description" placeholder="Enter description of Your Dog Show"/>-->
+                                         <h6>Address:</h6>
+                                         Address: <input type="text"  name="address" value="<c:out value="${dogshow.address}"/>"/><br/>
+                    <!--<input class="input-xxlarge" type="text" name="address" placeholder="Enter address of Your Dog Show"/>-->
+                                         <h6>Organizer:</h6>
+                                         Organizer <input type="text"  name="organizer" value="<c:out value="${dogshow.organizer}"/>"/><br/>
+                    <!--<input class="input-xxlarge" type="text" name="organizer" placeholder="Enter organizer of Your Dog Show"/>-->
+                                        Which contest do You have?
+                                                    <input type="text"  name="contest_title" value="<c:out value="${contest.contest_title}"/>"/>
+                                        Put description of Your contest:
+                                                    <input type="text"  name="contest_description" value="<c:out value="${contest.contest_description}"/>"/>
+                                        For whom will be Your contest?
+                                                    <input type="text"  name="contest_type" value="<c:out value="${contest_type.forwhom}"/>"/>
+						<br>
+                                                <button type="submit" value="Submit" class="btn">Submit</button>
+				</fieldset>
+			</form>
+  		</span>
 
-        <div class="span9">
-            <!--Blog Post-->
-            <c:forEach var="dsh" items="${dogshows}">
-                <div class="blog-post">
-                    <h2>${dsh.title}</h2>
-
-                    <div class="postmetadata">
-                        <ul>
-                            <li>
-                                <i class="icon-user"></i> <a href="#">${dsh.sponsor}</a>
-                            </li>
-
-                            <li>
-                                <i class="icon-calendar"></i>${dsh.date}
-                            </li>
-
-                        </ul>
-                    </div>
-
-
-
-                    <img src="ADD PICTURE">
-                    <p>${dsh.description}</p>
-                    <form method="POST" action="AddDogShowController" name="frmAddDogShow">
-                        <input name="dogshow_id" id="dogshow_id" th:field="*{dogshow_id}">
-                        <a class="btn btn-primary" type="Submit">Read More</a>
-                    </form>
-                </div>
-            </c:forEach>
-
-            <!--===============-->
-
-
-            <!--/.Blog Post-->
-
-            <!--Pagination-->
-            <div class="pagination">
-                <ul>
-                    <li>
-                        <a href="#">Prev</a>
-                    </li>
-                    <li>
-                        <a href="#">1</a>
-                    </li>
-                    <li>
-                        <a href="#">2</a>
-                    </li>
-                    <li>
-                        <a href="#">3</a>
-                    </li>
-                    <li>
-                        <a href="#">4</a>
-                    </li>
-                    <li>
-                        <a href="#">5</a>
-                    </li>
-                    <li>
-                        <a href="#">Next</a>
-                    </li>
-                </ul>
-            </div>
-
-            <!--/.Pagination-->
-        </div>
-
-
-        <!--==================-->
     </div>
+
+
 </div>
-
-
 
 
 
