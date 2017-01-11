@@ -35,9 +35,10 @@ public class MainApplication extends SpringBootServletInitializer {
 		SpringApplication.run(MainApplication.class, args);
 	}
 
-	@Bean
-	public MultipartResolver multipartResolver() {
+	@Bean(name = "multipartResolver")
+	public CommonsMultipartResolver multipartResolver() {
 		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
-		return multipartResolver;
+		multipartResolver.setMaxUploadSize(100000);
+		return new CommonsMultipartResolver();
 	}
 }
