@@ -174,7 +174,8 @@
                 <%--<form:form action="savefiles" name="savefiles" method="POST"--%>
                            <%--modelAttribute="uploadForm" enctype="multipart/form-data">--%>
 
-                Upload File: <input type="file" name="file">
+                <label for="upload-file-input">Upload your file:</label>
+                <input id="upload-file-input" type="file" name="uploadfile" accept="*" />
                     <br />
                     <%--<input type="submit" value="submit photo" />--%>
                     <%--<input id="addFile" type="button" value="Add File" />--%>

@@ -103,7 +103,7 @@ public class AddDogShowController {
                    fileName = dogshow.getDogshow_id()+".jpg";
                    byte[] bytes = file.getBytes();
                    BufferedOutputStream buffStream =
-                           new BufferedOutputStream(new FileOutputStream(new File("F:/cp/" + fileName)));
+                           new BufferedOutputStream(new FileOutputStream(new File("C:/Users/moneg/Desktop/spring-boot-jsp-demo-master/jsp-demo-tomcat/src/main/resources/static/pics/" + fileName)));
                    buffStream.write(bytes);
                    buffStream.close();
                    System.out.println("You have successfully uploaded " + fileName);
