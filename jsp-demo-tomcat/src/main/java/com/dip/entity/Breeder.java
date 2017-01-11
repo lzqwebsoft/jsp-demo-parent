@@ -25,6 +25,10 @@ public class Breeder {
         return breeder_id;
     }
 
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn(name = "breeder_id", nullable = false, insertable = false, updatable = false)
+    private Dog dog;
+
     public void setBreeder_id(int breeder_id) {
         this.breeder_id = breeder_id;
     }

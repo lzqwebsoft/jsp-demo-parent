@@ -1,0 +1,76 @@
+body {
+    margin:0;
+    padding:20px;
+    font:13px "Arial", "Helvetica", sans-serif;
+}
+
+/* ---- Some Resets ---- */
+
+p,
+table, caption, td, tr, th {
+    margin:0;
+    padding:0;
+    font-weight:normal;
+}
+
+/* ---- Paragraphs ---- */
+
+p {
+    margin-bottom:15px;
+}
+
+/* ---- Table ---- */
+
+table {
+    border-collapse:collapse;
+    margin-bottom:15px;
+    width:90%;
+}
+
+caption {
+    text-align:left;
+    font-size:15px;
+    padding-bottom:10px;
+}
+
+table td,
+table th {
+    padding:5px;
+    border:1px solid #fff;
+    border-width:0 1px 1px 0;
+}
+
+thead th {
+    background:rgba(84, 61, 31, 0.8);
+
+}
+
+thead th[colspan],
+thead th[rowspan] {
+    background:#00ff15;
+}
+
+tbody th,
+tfoot th {
+    text-align:left;
+    background:#fdefc3;
+}
+
+tbody td,
+tfoot td {
+    text-align:center;
+    background:#f5ebdf;
+}
+
+tfoot th {
+    background:#e500ff;
+}
+
+tfoot td {
+    background:#ffffff;
+    font-weight:bold;
+}
+
+tbody tr.odd td {
+    background:#e1d3c1;
+}

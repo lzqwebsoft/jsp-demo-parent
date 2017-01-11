@@ -1,0 +1,39 @@
+table {
+    border-collapse: collapse;
+    width: auto;
+    background: #FFF;
+    margin: 1em 0;
+    border: none;
+    box-shadow: none;
+    /*border-radius: .28571429rem;*/
+    text-align: left;
+    color: rgba(0,0,0,.87);
+    border-collapse: inherit;
+    border-spacing: 0;
+}
+thead th {
+    cursor: auto;
+    background: #F9FAFB;
+    text-align: inherit;
+    color: rgba(0,0,0,.87);
+    padding: .92857143em .78571429em;
+    vertical-align: inherit;
+    font-style: inherit;
+    font-weight: 700;
+    text-transform: none;
+    border: none;
+}
+td {
+    padding: .78571429em;
+    text-align: inherit;
+    border: none;
+}
+tr:first-child td {
+    padding: .78571429em;
+    text-align: inherit;
+    border: none;
+}
+tr:hover {
+    background-color: gray;
+    cursor: pointer;
+}

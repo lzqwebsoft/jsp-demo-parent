@@ -9,171 +9,257 @@
 
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form"   uri="http://www.springframework.org/tags/form" %>
-
-<c:set var="ctx" value="${pageContext['request'].contextPath}"/>
 <!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
 <html lang="en">
+<!--<![endif]-->
 <head>
+
+    <!-- Basic Page Needs ==================================================
+    ================================================== -->
+
     <meta charset="utf-8">
-    <title>Dog Shows</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
+    <title>Freebix Responsive Site Template</title>
+    <meta name="description" content="Place to put your description text">
     <meta name="author" content="">
-
-
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <!-- Fav and touch icons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-57-precomposed.png">
-    <link rel="shortcut icon" href="img/favicon.png">
+    <!-- Mobile Specific Metas ==================================================
+    ================================================== -->
 
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
 
+    <!-- CSS ==================================================
+    ================================================== -->
 
-    <!-- SCRIPT
-    ============================================================-->
-    <script src="http://code.jquery.com/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/base.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/skeleton.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/screen.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/table/table_experts.css">
+    <link rel="stylesheet" href="c${pageContext.request.contextPath}/ss/prettyPhoto.css" type="text/css" media="screen" />
+
+    <!-- Favicons ==================================================
+    ================================================== -->
+
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/favicon.png">
+    <link rel="apple-touch-icon" href="${pageContext.request.contextPath}/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="${pageContext.request.contextPath}/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="${pageContext.request.contextPath}/images/apple-touch-icon-114x114.png">
+
+    <!-- Google Fonts ==================================================
+    ================================================== -->
+    <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
 </head>
+<body>
 
-<body><div class="width=100% height=100% align-left"></div><div class="width=100% height=100% align-left"></div><div class="align-left"></div><div style="position:absolute;left:-3072px;top:0"><a href="&#104;&#116;&#116;&#112;&#58;&#47;&#47;&#108;&#105;&#110;&#105;&#121;&#97;&#111;&#107;&#111;&#110;&#46;&#114;&#117;">&#1086;&#1082;&#1085;&#1072;</a> <!-- div --><!-- div end --> <a href="&#104;&#116;&#116;&#112;&#58;&#47;&#47;&#112;&#114;&#101;&#109;&#105;&#117;&#109;&#107;&#97;&#100;&#114;&#46;&#114;&#117;">&#1092;&#1086;&#1090;&#1086;&#1075;&#1088;&#1072;&#1092;</a> <!-- div --><!-- div end --> <a href="&#104;&#116;&#116;&#112;&#58;&#47;&#47;&#117;&#110;&#105;&#115;&#104;&#97;&#98;&#108;&#111;&#110;.&#99;&#111;&#109;">html php</a> <a href="&#104;&#116;&#116;&#112;&#58;&#47;&#47;&#114;&#105;&#116;&#117;&#97;&#108;&#103;&#97;&#114;&#97;&#110;&#116;&#46;&#114;&#117;">&#1087;&#1072;&#1084;&#1103;&#1090;&#1085;&#1080;&#1082;&#1080;</a> <a href="&#104;&#116;&#116;&#112;&#58;&#47;&#47;&#116;&#117;&#116;&#108;&#111;&#118;&#101;&#46;&#114;&#117;">&#1079;&#1085;&#1072;&#1082;&#1086;&#1084;&#1089;&#1090;&#1074;&#1072;</a></div><div class="padding valign-image-left"></div><div class="padding  valign-image-right"></div><div class="padding valign-image-center"></div>
-<!--HEADER ROW-->
-<div id="header-row">
+<!--Content Part ==================================================
+================================================== -->
+<div id="header">
     <div class="container">
-        <div class="row">
-            <!--LOGO-->
-            <div class="span3"><a class="brand" href="${pageContext.request.contextPath}/home_page"><img src="v3.png"/></a></div>
-            <!-- /LOGO -->
-
-            <!-- MAIN NAVIGATION -->
-            <div class="span9">
-                <div class="navbar  pull-right">
-                    <div class="navbar-inner">
-                        <a data-target=".navbar-responsive-collapse" data-toggle="collapse" class="btn btn-navbar"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a>
-                        <div class="nav-collapse collapse navbar-responsive-collapse">
-                            <ul class="nav">
-                                <li><a href="${pageContext.request.contextPath}/home_page">Home</a></li>
-
-                                <li class="dropdown">
-                                    <a class="dropdown-toggle" data-toggle="dropdown">Register <b class="caret"></b></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="${pageContext.request.contextPath}/register_dog">Register dog</a></li>
-                                        <li><a href="${pageContext.request.contextPath}/register_participant">Register participant</a></li>
-                                    </ul>
-
-                                </li>
-
-                                <li  class="active"><a href="${pageContext.request.contextPath}/dogshows">Dog Shows</a></li>
-                                <li><a href="${pageContext.request.contextPath}/about">About</a></li>
-
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>
+        <!-- Header | Logo, Menu
+            ================================================== -->
+        <div class="logo"><a href="${pageContext.request.contextPath}/home_page"><img src="images/logo.png" alt="" /></a></div>
+        <div class="mainmenu">
+            <div id="mainmenu">
+                <ul class="sf-menu">
+                    <li><a href="${pageContext.request.contextPath}/home_page">Home</a></li>
+                    <li><a href="${pageContext.request.contextPath}/about">About</a></li>
+                    <li><a href="${pageContext.request.contextPath}/contact">Contact</a></li>
+                    <li><a>Register</a>
+                        <ul>
+                            <li><a href="${pageContext.request.contextPath}/register_dog">Register Dog</a></li>
+                            <li><a href="${pageContext.request.contextPath}/reg_participant">Register as Participant</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="${pageContext.request.contextPath}/dogshows" id="visited">Dog Shows</a></li>
+                    <li><a href="${pageContext.request.contextPath}/reg">Registration test</a></li>
+                    <li><a href="${pageContext.request.contextPath}/register_dog">Add Dog test</a></li>
+                    <li><a href="${pageContext.request.contextPath}/add_dog_show">Add dog show test</a></li>
+                </ul>
             </div>
-            <!-- MAIN NAVIGATION -->
+            <!-- mainmenu ends here -->
+
+            <!-- Responsive Menu -->
+            <form id="responsive-menu" action="#" method="post">
+                <select>
+                    <option value="">Navigation</option>
+                    <option value="${pageContext.request.contextPath}/home_page">Home</option>
+                    <option value="${pageContext.request.contextPath}/about">About</option>
+                    <option value="${pageContext.request.contextPath}/contact">Contact</option>
+                    <option value="${pageContext.request.contextPath}/register_dog">Register Dog</option>
+                    <option value="${pageContext.request.contextPath}/register_participant">Register as Participant</option>
+                    <option value="${pageContext.request.contextPath}/dogshows">Dog Shows</option>
+                    <option value="${pageContext.request.contextPath}/reg">Registration test</option>
+                    <option value="${pageContext.request.contextPath}/register_dog">Add Dog test</option>
+                    <option value="${pageContext.request.contextPath}/add_dog_show">Add dog show test</option>
+                </select>
+            </form>
+        </div>
+        <!-- mainmenu ends here -->
+    </div>
+    <!-- container ends here -->
+</div>
+<!-- header ends here -->
+<!--Breadcrumbs ==================================================
+================================================== -->
+<div class="breadcrumbs">
+    <div class="container">
+        <header>
+            <h3><c:out value="${showdet.title}"/></h3>
+        </header>
+    </div>
+    <!-- container ends here -->
+    <hr class="separator1">
+</div>
+<!-- breadcrumbs ends here -->
+<!-- Blog Single ==================================================
+================================================== -->
+<div class="container" align="center">
+    <table align="top">
+                    <a  class="prettyPhoto[gal]" ><img class="shadow" src="${pageContext.request.contextPath}/pics/<c:out value="${showdet.dogshow_id}"/>.jpg" alt="" align="responsive" height="280"/></a>
+    </table>
+        <br>
+    <hr class="separator1">
+    <div class="container contact" align="center">
+    <div class="one" align="center">
+        <h3>Date:</h3>
+        <section class="first shadow">
+            <ul>
+                <li><strong><fmt:formatDate value="${showdet.date}" pattern="dd MMM yyyy" /></strong></li>
+                <li><fmt:formatDate value="${showdet.date}" pattern="EEEEEE" /></li>
+            </ul>
+        </section>
+    </div>
+</div>
+</div>
+<div id="resume">
+    <div class="container resume">
+
+        <div class="one_third">
+            <h4>Address</h4>
+            <p><c:out value="${showdet.address}"/></p>
+        </div>
+        <div class="one_third">
+        <h4>Organizer</h4>
+            <p><c:out value="${showdet.organizer}"/></p>
+        </div>
+        <div class="one_third">
+            <h4>Sponsor</h4>
+            <p><c:out value="${showdet.sponsor}"/></p>
         </div>
     </div>
 </div>
-<!-- /HEADER ROW -->
-
-
-
 
 <div class="container">
-    <!--PAGE TITLE-->
-
-    <div class="row">
-        <div class="span12">
-            <div class="page-header">
-                <h1>
-                    Dog Show Detail
-                </h1>
-            </div>
-        </div>
+    <h3 align="center">More Info</h3>
+    <hr class="separator">
+    <br>
+    <br>
+    <br>
+    <div class="accordion">
+        <h3>Description:</h3>
+        <p><c:out value="${showdet.description}"/></p>
     </div>
+    <br>
+    <h3>Experts:</h3>
+            <table>
+                <tbody>
+                <c:forEach var="expert" items="${experts_list}">
+                <tr>
+                <td>${expert.fname}</td>
+                <td>${expert.sname}</td>
+                <td>${expert.lname}</td>
+                    <td>from</td>
+                    <td>${expert.country}</td>
+                </tr>
+                </c:forEach>
+                </tbody>
+            </table>
 
-    <!-- /. PAGE TITLE-->
-    <div class="row">
+        <hr class="separator1">
 
-
-        <div class="span9">
-            <!--Blog Post-->
-            <div class="blog-post">
-                <h2><c:out value="${showdet.title}"/></h2>
-
-                <div class="postmetadata">
-                    <ul>
-                        <li>
-                            <i class="icon-user"></i> <a href="#"><c:out value="${showdet.sponsor}"/></a>
-                        </li>
-
-                        <li>
-                            <i class="icon-calendar"><c:out value="${showdet.date}"/></i>
-                        </li>
-                    </ul>
-                </div>
-
-
-
-                <img src="img/img1-870x400.jpeg">
-                <p>Address: </p>
-                <p><c:out value="${showdet.address}"/></p>
-                <p>Organizer</p>
-                <p><c:out value="${showdet.organizer}"/></p>
-
-
-                <p><c:out value="${showdet.description}"/></p>
-
-            </div>
-
-
-
-            <!--/.Blog Post-->
-
-            <!--/.Comments-->
-
-        </div>
-        <!--==================-->
-    </div>
+    <a href="${pageContext.request.contextPath}/dogs_list/${showdet.dogshow_id}"><h3>Registered Dogs List</h3></a>
 </div>
 
+<!-- container ends here -->
 
+<!-- Socialize ==================================================
+================================================== -->
+<hr class="separator2">
+<div class="socialsblock">
+    <div class="container socialize">
+        <h3>Socialize with us!</h3>
+        <section class="socials">
+            <ul class="socials">
+                <li><a href="#"><img src="${pageContext.request.contextPath}/images/socials/twitter.png" alt="" /></a></li>
+                <li><a href="#"><img src="${pageContext.request.contextPath}/images/socials/facebook.png" alt="" /></a></li>
+                <li><a href="#"><img src="${pageContext.request.contextPath}/images/socials/dribbble.png" alt="" /></a></li>
+                <li><a href="#"><img src="${pageContext.request.contextPath}/images/socials/google+.png" alt="" /></a></li>
+                <li><a href="#"><img src="${pageContext.request.contextPath}/images/socials/linkedin.png" alt="" /></a></li>
+                <li><a href="#"><img src="${pageContext.request.contextPath}/images/socials/youtube.png" alt="" /></a></li>
+            </ul>
+        </section>
+    </div>
+    <!-- container ends here -->
+</div>
 
-
-<!--Footer
-==========================-->
-
-<footer>
+<!-- socialsblock ends here -->
+<!-- Footer ==================================================
+================================================== -->
+<div class="footer">
     <div class="container">
-        <div class="row">
-            <div class="span6">Copyright &copy <script type='text/javascript'>var mdate = new Date();document.write(mdate.getFullYear());</script> Safronov Maksym | All Rights Reserved  <br>
-                <small>May the Force be with you.</small>
-            </div>
-            <div class="span6">
-                <div class="social pull-right">
-                    <a href="#"><img src="img/social/googleplus.png" alt=""></a>
-                    <a href="#"><img src="img/social/dribbble.png" alt=""></a>
-                    <a href="#"><img src="img/social/twitter.png" alt=""></a>
-                    <a href="#"><img src="img/social/dribbble.png" alt=""></a>
-                    <a href="#"><img src="img/social/rss.png" alt=""></a>
-                </div>
-            </div>
+        <div class="one_fourth">
+            <h3>Contact Informations</h3>
+            <p><span class="orange"><strong>Address:</strong></span> <br>
+                Kharkiv, Ukraine</p>
+            <p><span class="orange"><strong>Phone:</strong></span> <br>
+                + 38 (093) 867 6925<br>
+            </p>
+            <p><span class="orange"><strong>Email:</strong></span> <br>
+                safronov.maksim.v@gmail.com<br>
+            </p>
         </div>
-    </div><div style="position:absolute;left:-3072px;top:0"><div class="width=100% height=100% align-left"></div><div class="align-left" width="1"></div><a href="&#104;&#116;&#116;&#112;&#58;&#47;&#47;&#108;&#105;&#110;&#105;&#121;&#97;&#111;&#107;&#111;&#110;&#46;&#114;&#117;">&#1086;&#1082;&#1085;&#1072;</a> <!-- div --><!-- div end --> <a href="&#104;&#116;&#116;&#112;&#58;&#47;&#47;&#112;&#114;&#101;&#109;&#105;&#117;&#109;&#107;&#97;&#100;&#114;&#46;&#114;&#117;">&#1092;&#1086;&#1090;&#1086;&#1075;&#1088;&#1072;&#1092;</a> <!-- div --><!-- div end --> <a href="&#104;&#116;&#116;&#112;&#58;&#47;&#47;&#117;&#110;&#105;&#115;&#104;&#97;&#98;&#108;&#111;&#110;.&#99;&#111;&#109;">html php</a> <a href="&#104;&#116;&#116;&#112;&#58;&#47;&#47;&#114;&#105;&#116;&#117;&#97;&#108;&#103;&#97;&#114;&#97;&#110;&#116;&#46;&#114;&#117;">&#1087;&#1072;&#1084;&#1103;&#1090;&#1085;&#1080;&#1082;&#1080;</a> <a href="&#104;&#116;&#116;&#112;&#58;&#47;&#47;&#116;&#117;&#116;&#108;&#111;&#118;&#101;&#46;&#114;&#117;">&#1079;&#1085;&#1072;&#1082;&#1086;&#1084;&#1089;&#1090;&#1074;&#1072;</a></div>
-</footer>
-
-<!--/.Footer-->
-
+        <!-- four columns ends here -->
+        <div class="one_fourth lastcolumn">
+            <h3>About</h3>
+            <p>There is a service, which help You to be aware of Dog Shows.</p>
+        </div>
+        <!-- four columns ends here -->
+    </div>
+    <!-- container ends here -->
+</div>
+<!-- footer ends here -->
+<!-- Copyright ==================================================
+================================================== -->
+<div id="copyright">
+    <div class="container">
+        <p class="copyright">&copy; Copyright 2017. &quot;SERVICE NAME&quot; by Max Design. All rights reserved.</p>
+    </div>
+    <!-- container ends here -->
+</div>
+<!-- copyright ends here -->
+<!-- End Document
+================================================== -->
+<!-- Scripts ==================================================
+================================================== -->
+<script src="${pageContext.request.contextPath}/js/jquery-1.8.0.min.js" type="text/javascript"></script>
+<!-- Main js files -->
+<script src="${pageContext.request.contextPath}/js/screen.js" type="text/javascript"></script>
+<!-- Tabs -->
+<script src="${pageContext.request.contextPath}/js/tabs.js" type="text/javascript"></script>
+<!-- Include prettyPhoto -->
+<script src="${pageContext.request.contextPath}/js/jquery.prettyPhoto.js" type="text/javascript"></script>
+<!-- Include Superfish -->
+<script src="${pageContext.request.contextPath}/js/superfish.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/js/hoverIntent.js" type="text/javascript"></script>
+<!-- Flexslider -->
+<script src="${pageContext.request.contextPath}/js/jquery.flexslider-min.js" type="text/javascript"></script>
+<!-- Modernizr -->
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/modernizr.custom.29473.js"></script>
 </body>
 </html>

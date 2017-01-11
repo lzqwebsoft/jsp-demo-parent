@@ -35,7 +35,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-57-precomposed.png">
-    <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="shortcut icon" href="favicon.png">
 
 
 
@@ -67,7 +67,7 @@
                                     <a class="dropdown-toggle" data-toggle="dropdown" href="${pageContext.request.contextPath}/register">Register <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="${pageContext.request.contextPath}/register_dog">Register dog</a></li>
-                                        <li><a href="${pageContext.request.contextPath}/register_participant">Register participant</a></li>
+                                        <li><a href="${pageContext.request.contextPath}/reg_participant">Register participant</a></li>
                                     </ul>
 
                                 </li>
@@ -99,9 +99,7 @@
     <div class="row">
         <div class="span12">
             <div class="page-header">
-                <h1>
-                    About us
-                </h1>
+                <h2>Welcome to Dogs In Pocket</h2>
             </div>
 
         </div>
@@ -109,22 +107,20 @@
 
     <!-- /. PAGE TITLE-->
     <div class="row">
-        <div class="span12">
-            <h2>Welcome to Fornax</h2>
+        <div class="span11">
 
 
-            <img class="pull-left" alt="" src="img/img2.png" />
 
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+            <img class="pull-left" alt="" src="img/about.png" />
+            <div class="text-center">
+            <p> Our love for dogs drives who we are and what we do. Every day.
             </p>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+            <p>This service bring more possibility to be aware of everything what happens in every Dog Show in every city in Ukraine.
             </p>
-
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+            <p>
+                Use our service to register You dog at Dog Show, use to register Yourself for contests at Dog Show.
             </p>
-
-
-
+            </div>
         </div>
     </div>
 
@@ -160,7 +156,6 @@
                                 Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
                             </p>
                             <p>
-
                             </p>
                         </div>
                     </div>

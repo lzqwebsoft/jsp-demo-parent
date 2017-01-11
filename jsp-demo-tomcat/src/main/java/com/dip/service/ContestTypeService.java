@@ -9,7 +9,8 @@ import java.util.List;
  */
 public interface ContestTypeService {
     Contest_type addContest(Contest_type contest);
-    void delete(Long id);
+    Contest_type getById(int contest_type_id);
+    void delete(int id);
     Contest_type editContest(Contest_type contest);
     List<Contest_type> getAll();
 }

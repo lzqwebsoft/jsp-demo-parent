@@ -7,7 +7,6 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="jsp-demo-tomcat" />
-        <module name="jsp-demo-undertow" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

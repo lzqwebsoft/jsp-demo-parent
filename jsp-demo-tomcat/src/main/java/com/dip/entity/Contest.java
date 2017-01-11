@@ -13,32 +13,36 @@ public class Contest {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private int contest_id;
 
+    @Column(name = "contest_type_id")
+    private int contest_type_id;
+
     @Column(name = "Title")
     private String title;
 
     @Column(name = "Description")
-    private String Description;
+    private String description;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "contest")
+    private Set<Contest_type> contest_types;
 
-    @ManyToOne(fetch=FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinColumn(name = "contest_type_id", nullable = false, insertable = false, updatable = false)
-    private Contest_type contest_type;
-
-    @ManyToOne(fetch=FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "contest_id", nullable = false, insertable = false, updatable = false)
     private DogShow dogShow;
 
-
-    public DogShow getDogShow() {
-        return dogShow;
-    }
-
-    public void setDogShow(DogShow dogShow) {
-        this.dogShow = dogShow;
-    }
-
-    public long getContest_id() {
+    public int getContest_id() {
         return contest_id;
+    }
+
+    public void setContest_id(int contest_id) {
+        this.contest_id = contest_id;
+    }
+
+    public int getContest_type_id() {
+        return contest_type_id;
+    }
+
+    public void setContest_type_id(int contest_type_id) {
+        this.contest_type_id = contest_type_id;
     }
 
     public String getTitle() {
@@ -50,31 +54,18 @@ public class Contest {
     }
 
     public String getDescription() {
-        return Description;
+        return description;
     }
 
     public void setDescription(String description) {
-        Description = description;
+        this.description = description;
     }
 
-//    public int getContest_type_id() {
-//        return contest_type_id;
-//    }
-//
-//    public void setContest_type_id(int contest_type_id) {
-//        this.contest_type_id = contest_type_id;
-//    }
-
-    public void setContest_id(int contest_id) {
-        this.contest_id = contest_id;
+    public Set<Contest_type> getContest_types() {
+        return contest_types;
     }
 
-    public Contest_type getContest_type() {
-        return contest_type;
+    public void setContest_types(Set<Contest_type> contest_types) {
+        this.contest_types = contest_types;
     }
-
-    public void setContest_type(Contest_type contest_type) {
-        this.contest_type = contest_type;
-    }
-
 }

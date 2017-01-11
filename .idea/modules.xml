@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/jsp-demo-parent.iml" filepath="$PROJECT_DIR$/jsp-demo-parent.iml" />
       <module fileurl="file://$PROJECT_DIR$/jsp-demo-tomcat/jsp-demo-tomcat.iml" filepath="$PROJECT_DIR$/jsp-demo-tomcat/jsp-demo-tomcat.iml" />
-      <module fileurl="file://$PROJECT_DIR$/jsp-demo-undertow/jsp-demo-undertow.iml" filepath="$PROJECT_DIR$/jsp-demo-undertow/jsp-demo-undertow.iml" />
     </modules>
   </component>
 </project>

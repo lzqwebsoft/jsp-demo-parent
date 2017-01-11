@@ -1,6 +1,7 @@
 package com.dip.entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Created by moneg on 29.12.2016.
@@ -27,6 +28,7 @@ public class Owner {
     public int getOwner_id() {
         return owner_id;
     }
+
 
     public void setOwner_id(int owner_id) {
         this.owner_id = owner_id;

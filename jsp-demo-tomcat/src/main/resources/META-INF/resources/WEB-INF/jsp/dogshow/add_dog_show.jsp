@@ -20,23 +20,6 @@
 <!--<![endif]-->
 <head>
     <script>
-        $(document)
-            .ready(
-                function() {
-                    //add more file components if Add is clicked
-                    $('#addFile')
-                        .click(
-                            function() {
-                                var fileIndex = $('#fileTable tr')
-                                        .children().length - 1;
-                                $('#fileTable')
-                                    .append(
-                                        '<tr><td>'
-                                        + '   <input type="file" name="files['+ fileIndex +']" />'
-                                        + '</td></tr>');
-                            });
-
-                });
     </script>
     <!-- Basic Page Needs ==================================================
     ================================================== -->
@@ -152,7 +135,7 @@
                 </div>
                 <div class="name">
                     <label for="date">Dog Show's Date:</label>
-                    <input type="date" id="date" name="date" value="<c:out value="${dogshow.date}"/>" required/>
+                    <input type="date" id="date" name="date" min=<fmt:formatDate value="${date}" pattern="yyyy-MM-dd" />  value="<c:out value="${dogshow.date}"/>" required/>
                 </div>
                 <div class="name">
                     <label for="sponsor">Dog Show's Sponsor:</label>
@@ -188,18 +171,19 @@
                     <form:options items="${contest_type_list}" itemLabel="forwhom" itemValue="contest_type_id"></form:options>
                     </form:select>
                 </div>
-                <table>
-                    <tr>
-                        <td><form:label path="file">Select photo to upload</form:label></td>
-                        <td><input type="file" name="file"></td>
-                    </tr>
-                </table>
+                <%--<form:form action="savefiles" name="savefiles" method="POST"--%>
+                           <%--modelAttribute="uploadForm" enctype="multipart/form-data">--%>
+
+                Upload File: <input type="file" name="file">
+                    <br />
+                    <%--<input type="submit" value="submit photo" />--%>
+                    <%--<input id="addFile" type="button" value="Add File" />--%>
+                <%--</form:form>--%>
 
                     <div id="loader">
-                    <input type="submit" value="Submit">Submit form</input>
+                    <input type="submit" value="Submit" id="submit" name="submit"/>
                     </div>
             </form>
-
             <%--<form:form method="post" enctype="multipart/form-data"--%>
                        <%--modelAttribute="uploadedFile" action="add_show">--%>
 
@@ -300,3 +284,4 @@
 <script type="text/javascript" src="js/modernizr.custom.29473.js"></script>
 </body>
 </html>
+

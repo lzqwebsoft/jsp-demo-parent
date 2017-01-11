@@ -1,6 +1,8 @@
 package com.dip.service.Impl;
 
 import com.dip.entity.Contest;
+import com.dip.entity.Contest_type;
+import com.dip.entity.DogShow;
 import com.dip.repository.ContestRepository;
 import com.dip.service.ContestService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,11 @@ public class ContestServiceImpl implements ContestService {
     public Contest addContest(Contest contest) {
         Contest saveContest = contestRepository.save(contest);
         return saveContest;
+    }
+
+    @Override
+    public Contest getById(int id) {
+        return contestRepository.getOne(id);
     }
 
     @Override

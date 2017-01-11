@@ -19,8 +19,9 @@ public class Breed {
     private int fcigroup_id;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinColumn(name = "fcigroup_id", nullable = false)
+    @JoinColumn(name = "fcigroup_id", nullable = false, insertable = false, updatable = false)
     private FciGroup fciGroup;
+
 
     public int getBreed_id() {
         return breed_id;

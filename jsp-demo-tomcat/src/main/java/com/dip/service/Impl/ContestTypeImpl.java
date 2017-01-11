@@ -1,6 +1,5 @@
 package com.dip.service.Impl;
 
-import com.dip.entity.Contest;
 import com.dip.entity.Contest_type;
 import com.dip.repository.ContestTypeRepository;
 import com.dip.service.ContestTypeService;
@@ -19,22 +18,27 @@ public class ContestTypeImpl  implements ContestTypeService{
 
     @Override
     public Contest_type addContest(Contest_type contest) {
-        Contest_type saveContestType = contestTypeRepository.save(contest);
+        Contest_type saveContestType = contestTypeRepository.saveAndFlush(contest);
         return saveContestType;
     }
 
     @Override
-    public void delete(Long id) {
+    public Contest_type getById(int contest_type_id) {
+        return contestTypeRepository.getOne(contest_type_id);
+    }
+
+    @Override
+    public void delete(int id) {
     contestTypeRepository.delete(id);
     }
 
     @Override
     public Contest_type editContest(Contest_type contest) {
-        return null;
+        return contestTypeRepository.saveAndFlush(contest);
     }
 
     @Override
     public List<Contest_type> getAll() {
-        return null;
+        return contestTypeRepository.findAll();
     }
 }
