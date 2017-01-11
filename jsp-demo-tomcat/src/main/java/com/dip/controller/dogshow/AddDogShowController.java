@@ -7,21 +7,22 @@ import com.dip.service.DogShowService;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.*;
+import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -57,6 +58,9 @@ public class AddDogShowController {
     @RequestMapping(value = {"/add_dog_show"}, method = {RequestMethod.GET})
     public ModelAndView AddDogShowPage() {
         ModelAndView modelAndView = new ModelAndView("dogshow/add_dog_show");
+        Date date = new Date();
+        System.out.println(date);
+        modelAndView.addObject("date",date);
         return modelAndView;
     }
 
@@ -68,11 +72,11 @@ public class AddDogShowController {
 //    }
 
        @RequestMapping(value = {"/add_show"}, method = {RequestMethod.POST})
+       @ResponseBody
  public ModelAndView addShow(@RequestParam("title") String title, @RequestParam("date") @DateTimeFormat(pattern="yyyy-MM-dd") Date date, @RequestParam("sponsor") String sponsor, @RequestParam("description") String description, @RequestParam("address") String address,
                              @RequestParam("organizer") String organizer, @RequestParam("contest_title") String contest_title,
                              @RequestParam("contest_description") String contest_description, @RequestParam("contest_type_id") int contest_type_id,
-                             @RequestParam("name") String name,
-                             @RequestParam("image") MultipartFile image, BindingResult bindingResult){
+                             @RequestParam("file") MultipartFile file){
            System.out.println("FORM ADD");
         ModelAndView mv = new ModelAndView();
         Contest_type contest_type = new Contest_type();
@@ -93,24 +97,21 @@ public class AddDogShowController {
         dogShowService.addDogShow(dogshow);
 
 
-
-
-           if (bindingResult.hasErrors()) {
-               System.out.println("error");
-           }
-           if (!image.isEmpty()) {
+           String fileName = null;
+           if (!file.isEmpty()) {
                try {
-                   validateImage(image);
-               } catch (RuntimeException re) {
-                   bindingResult.addError(new ObjectError("image", "Only jpg images"));
-                   System.out.println("only jpg images");;
+                   fileName = dogshow.getDogshow_id()+".jpg";
+                   byte[] bytes = file.getBytes();
+                   BufferedOutputStream buffStream =
+                           new BufferedOutputStream(new FileOutputStream(new File("F:/cp/" + fileName)));
+                   buffStream.write(bytes);
+                   buffStream.close();
+                   System.out.println("You have successfully uploaded " + fileName);
+               } catch (Exception e) {
+                   System.out.println("You failed to upload " + fileName + ": " + e.getMessage());
                }
-               try {
-                   saveImage(dogshow.getDogshow_id() + "", image);
-               } catch (IOException e) {
-                   bindingResult.reject(e.getMessage());
-                   System.out.println("ERROR");
-               }
+           } else {
+               System.out.println("Unable to upload. File is empty.");
            }
 
 
@@ -118,22 +119,6 @@ public class AddDogShowController {
            return new ModelAndView("dogshow/finished");
         }
 
-    private void validateImage(MultipartFile image) {
-        if (!image.getContentType().equals("image/jpeg")) {
-            throw new RuntimeException("Only JPG images are accepted");
-        }
-    }
-
-    private void saveImage(String filename, MultipartFile image)
-            throws RuntimeException, IOException {
-        try {
-            File file = new File("src/main/resources/static/pics/"
-                    + filename + ".jpg");
-            FileUtils.writeByteArrayToFile(file, image.getBytes());
-        } catch (IOException e) {
-            throw e;
-        }
-    }
 
 
 
