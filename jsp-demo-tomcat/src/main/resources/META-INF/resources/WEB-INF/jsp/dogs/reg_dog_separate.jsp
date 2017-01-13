@@ -9,6 +9,8 @@
 
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form"   uri="http://www.springframework.org/tags/form" %>
+
+<c:set var="ctx" value="${pageContext['request'].contextPath}"/>
 <!DOCTYPE html>
 <!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
 <!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
@@ -22,7 +24,7 @@
     ================================================== -->
 
     <meta charset="utf-8">
-    <title>Freebix Responsive Site Template</title>
+    <title>Register Dog</title>
     <meta name="description" content="Place to put your description text">
     <meta name="author" content="">
     <!--[if lt IE 9]>
@@ -70,13 +72,13 @@
                     <li><a href="${pageContext.request.contextPath}/home_page">Home</a></li>
                     <li><a href="${pageContext.request.contextPath}/about">About</a></li>
                     <li><a href="${pageContext.request.contextPath}/contact">Contact</a></li>
-                    <li><a>Register</a>
+                    <li><a id="visited">Register</a>
                         <ul>
                             <li><a href="${pageContext.request.contextPath}/register_dog">Register Dog</a></li>
-                            <li><a href="${pageContext.request.contextPath}/reg_participant">Register as Participant</a></li>
+                            <li><a href="${pageContext.request.contextPath}/register_participant">Register as Participant</a></li>
                         </ul>
                     </li>
-                    <li><a href="${pageContext.request.contextPath}/dogshows" id="visited">Dog Shows</a></li>
+                    <li><a href="${pageContext.request.contextPath}/dogshows">Dog Shows</a></li>
                     <li><a href="${pageContext.request.contextPath}/reg">Registration test</a></li>
                     <li><a href="${pageContext.request.contextPath}/register_dog">Add Dog test</a></li>
                     <li><a href="${pageContext.request.contextPath}/add_dog_show">Add dog show test</a></li>
@@ -110,84 +112,121 @@
 <div class="breadcrumbs">
     <div class="container">
         <header>
-            <h3><c:out value="${showdet.title}"/></h3>
+            <h3>Register Dog Page</h3>
         </header>
     </div>
     <!-- container ends here -->
     <hr class="separator1">
 </div>
 <!-- breadcrumbs ends here -->
-<!-- Blog Single ==================================================
+<!-- Contact Content Part - Contact Form ==================================================
 ================================================== -->
-<div class="container" align="center">
-    <table align="top">
-                    <a  class="prettyPhoto[gal]" ><img class="shadow" src="${pageContext.request.contextPath}/pics/<c:out value="${showdet.dogshow_id}"/>.jpg" alt="" align="responsive" height="280"/></a>
-    </table>
-        <br>
-    <hr class="separator1">
-    <div class="container contact" align="center">
-    <div class="one" align="center">
-        <h3>Date:</h3>
-        <section class="first shadow">
-            <ul>
-                <li><strong><fmt:formatDate value="${showdet.date}" pattern="dd MMM yyyy" /></strong></li>
-                <li><fmt:formatDate value="${showdet.date}" pattern="EEEEEE" /></li>
-            </ul>
-        </section>
-    </div>
-</div>
-</div>
-<div class="container">
-    <h3 align="center">More Info</h3>
-    <hr class="separator">
-    <div id="resume">
-        <div class="container resume">
+<div class="container contact">
+    <!-- Contact Sidebar ==================================================
+  ================================================== -->
+    <div class="two_third lastcolumn contact1">
+        <div id="contactForm">
+            <h1>Fill in all the fields!</h1>
+            <div class="sepContainer"></div>
+            <form action="add_dog" method="POST" id="contact_form">
+                <div class="name">
+                    <label for="name">Dog's Name:</label>
+                    <input type=text id=name name="name" value="<c:out value="${dog.name}"/>" required/>
+                </div>
+                <div class="name">
+                    <label for="dob">Dog's date of birth :</label>
+                    <input type="date" id="dob" name="dob" max=<fmt:formatDate value="${date}" pattern="yyyy-MM-dd" /> value="<c:out value="${dog.dob}"/>" required/>
+                </div>
+                <div class="name">
+                    <label for="gender">Dog's Gender:</label>
+                    <select name="gender" id="gender">
+                        <option disabled> Choose Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                    <%--<input type="text" id="gender" name="gender" value="<c:out value="${dog.gender}"/>" required/>--%>
+                </div>
+                <div class="name">
+                    <label for="color">Dog's Color:</label>
+                    <input type="text" id="color" name="color" value="<c:out value="${dog.color}"/>" required/>
+                </div>
+                <div class="name">
+                    <label for="chip">Dog's Chip:</label>
+                    <input type="text" id="chip" name="chip" value="<c:out value="${dog.chip}"/>" required/>
+                </div>
+                <div class="name">
+                    <label for="brand">Dog's Brand:</label>
+                    <input type="text" id="brand" name="brand" value="<c:out value="${dog.brand}"/>" required/>
+                </div>
+                <div class="name">
+                    <label for="pedigree">Dog's Pedigree:</label>
+                    <input type="text" id="pedigree" name="pedigree" value="<c:out value="${dog.pedigree}"/>" required/>
+                </div>
+                <div class="name">
+                    <label for="sire">Dog's Sire:</label>
+                    <input type="text" id="sire" name="sire" value="<c:out value="${dog.sire}"/>" required/>
+                </div>
+                <div class="name">
+                    <label for="dam">Dog's Dam:</label>
+                    <input type="text" id="dam" name="dam" value="<c:out value="${dog.dam}"/>" required/>
+                </div>
+                <div class="name">
+                    <label for="fcigroup">Dog's Fci Group:</label>
+                    <input type="number" size="1" min="1" max="11" id="fcigroup" name="fcigroup" value="<c:out value="${dog.fcigroup}"/>" required/>
+                </div>
+                <div class="name">
+                    <label for="breed">Dog's Breed:</label>
+                    <input type="text" id="breed" name="breed" value="<c:out value="${dog.breed}"/>" required/>
+                </div>
+                <div class="name">
+                    <label for="breeder_fname">Input breeder's first name:</label>
+                    <input type="text" id="breeder_fname" name="breeder_fname" value="<c:out value="${breeder.fname}"/>" required/>
+                </div>
+                <div class="name">
+                    <label for="breeder_sname">Input breeder's second name:</label>
+                    <input type="text" id="breeder_sname" name="breeder_sname" value="<c:out value="${breeder.sname}"/>" required/>
+                </div>
+                <div class="name">
+                    <label for="breeder_lname">Input breeder's last name:</label>
+                    <input type="text" id="breeder_lname" name="breeder_lname" value="<c:out value="${breeder.lname}"/>" required/>
+                </div>
+                <div class="name">
+                    <label for="owner_fname">Input owner's first name:</label>
+                    <input type="text" id="owner_fname" name="owner_fname" value="<c:out value="${owner.fname}"/>" required/>
+                </div>
+                <div class="name">
+                    <label for="owner_sname">Input owner's second name:</label>
+                    <input type="text" id="owner_sname" name="owner_sname" value="<c:out value="${owner.sname}"/>" required/>
+                </div>
+                <div class="name">
+                    <label for="owner_lname">Input owner's last name:</label>
+                    <input type="text" id="owner_lname" name="owner_lname" value="<c:out value="${owner.lname}"/>" required/>
+                </div>
+                <div class="name">
+                    <label for="owner_location">Input owner's location:</label>
+                    <input type="text" id="owner_location" name="owner_location" value="<c:out value="${owner.location}"/>" required/>
+                </div>
+                <div class="name">
+                    <label>Choose Dog Show:</label>
+                    <select>
+                    <option selected value="${dogShow.dogshow_id}">${dogshow.title}</option>
+                </select>
+                </div>
 
-            <div class="one_third">
-                <h4>Address</h4>
-                <p><c:out value="${showdet.address}"/></p>
-            </div>
-            <div class="one_third">
-                <h4>Organizer</h4>
-                <p><c:out value="${showdet.organizer}"/></p>
-            </div>
-            <div class="one_third">
-                <h4>Sponsor</h4>
-                <p><c:out value="${showdet.sponsor}"/></p>
-            </div>
+
+                <%--<form:select path="dogshow_list" id="dogshow_id" name="dogshow_id">--%>
+                    <%--<form:option  value="" label="Select Dog Show"></form:option>--%>
+                    <%--<form:options items="${dogshow_list}" itemLabel="title" itemValue="dogshow_id"></form:options>--%>
+                <%--</form:select>--%>
+                <div id="loader">
+                    <input type="submit" value="Submit" />
+                </div>
+            </form>
         </div>
+        <!-- end contactForm -->
     </div>
-    <br>
-    <br>
-    <br>
-    <div class="accordion">
-        <h3>Description:</h3>
-        <p><c:out value="${showdet.description}"/></p>
-    </div>
-    <br>
-    <h3>Experts:</h3>
-            <table>
-                <tbody>
-                <c:forEach var="expert" items="${experts_list}">
-                <tr>
-                <td>${expert.fname}</td>
-                <td>${expert.sname}</td>
-                <td>${expert.lname}</td>
-                    <td>from</td>
-                    <td>${expert.country}</td>
-                </tr>
-                </c:forEach>
-                </tbody>
-            </table>
-
-        <hr class="separator1">
-
-    <a href="${pageContext.request.contextPath}/dogs_list/${showdet.dogshow_id}"><h3>Registered Dogs List</h3></a>
-    <hr class="separator1">
-    If You want to register on this show <a href="${pageContext.request.contextPath}/reg_dog_separate/${showdet.dogshow_id}">Press Here</a>
 </div>
-
-<!-- container ends here -->
+<div class="blankSeparator"></div>
 
 <!-- Socialize ==================================================
 ================================================== -->
@@ -208,7 +247,6 @@
     </div>
     <!-- container ends here -->
 </div>
-
 <!-- socialsblock ends here -->
 <!-- Footer ==================================================
 ================================================== -->

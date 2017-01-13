@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.*;
@@ -58,7 +55,7 @@ public class RegisterDogController {
     }
 
     @RequestMapping(value = {"/add_dog"}, method = {RequestMethod.POST})
-    public ModelAndView addShow(@RequestParam("breed") String breed, @RequestParam("gender") String gender, @RequestParam("name") String name,
+    public ModelAndView registerDog(@RequestParam("breed") String breed, @RequestParam("gender") String gender, @RequestParam("name") String name,
                                 @RequestParam("dob") @DateTimeFormat(pattern="yyyy-MM-dd") Date dob, @RequestParam("color") String color,
                                 @RequestParam("chip") String chip, @RequestParam("brand") String brand, @RequestParam("pedigree") String pedigree,
                                 @RequestParam("sire") String sire, @RequestParam("dam") String dam, @RequestParam("fcigroup") int fcigroup,
@@ -115,5 +112,18 @@ public class RegisterDogController {
         mv.addObject("human", human);
         return mv;
     }
+
+    @RequestMapping(value = {"/reg_dog_separate/{dogshow_id}"}, method = {RequestMethod.GET})
+    public ModelAndView registerDogSeparate(@PathVariable("dogshow_id") int dogshow_id){
+
+    ModelAndView modelAndView = new ModelAndView("dogs/reg_dog_separate");
+    DogShow dogShow = dogShowService.getById(dogshow_id);
+        Date now = new Date();
+        Date date = new Date(now.getYear(), now.getMonth()-3,now.getDay());
+        modelAndView.addObject("date",date);
+    modelAndView.addObject("dogshow",dogShow);
+    return modelAndView;
+    }
+
 
 }

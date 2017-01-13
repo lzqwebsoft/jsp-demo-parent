@@ -175,7 +175,7 @@
                            <%--modelAttribute="uploadForm" enctype="multipart/form-data">--%>
 
                 <label for="upload-file-input">Upload your file:</label>
-                <input id="upload-file-input" type="file" name="uploadfile" accept="*" />
+                <input id="upload-file-input" type="file" name="file" accept="*" />
                     <br />
                     <%--<input type="submit" value="submit photo" />--%>
                     <%--<input id="addFile" type="button" value="Add File" />--%>
@@ -269,7 +269,8 @@
 ================================================== -->
 <!-- Scripts ==================================================
 ================================================== -->
-<script src="js/jquery-1.8.0.min.js" type="text/javascript"></script>
+<%--<script src="js/jquery-1.8.0.min.js" type="text/javascript"></script>--%>
+<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 <!-- Main js files -->
 <script src="js/screen.js" type="text/javascript"></script>
 <!-- Tabs -->

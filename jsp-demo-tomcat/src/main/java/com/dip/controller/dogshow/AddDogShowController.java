@@ -17,6 +17,7 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 
 import javax.servlet.http.HttpServletRequest;
@@ -73,12 +74,12 @@ public class AddDogShowController {
 
        @RequestMapping(value = {"/add_show"}, method = {RequestMethod.POST})
        @ResponseBody
- public ModelAndView addShow(@RequestParam("title") String title, @RequestParam("date") @DateTimeFormat(pattern="yyyy-MM-dd") Date date, @RequestParam("sponsor") String sponsor, @RequestParam("description") String description, @RequestParam("address") String address,
+ public RedirectView addShow(@RequestParam("title") String title, @RequestParam("date") @DateTimeFormat(pattern="yyyy-MM-dd") Date date, @RequestParam("sponsor") String sponsor, @RequestParam("description") String description, @RequestParam("address") String address,
                              @RequestParam("organizer") String organizer, @RequestParam("contest_title") String contest_title,
                              @RequestParam("contest_description") String contest_description, @RequestParam("contest_type_id") int contest_type_id,
                              @RequestParam("file") MultipartFile file){
+           ModelAndView modelAndView = new ModelAndView("dogshow/add_dog_show");
            System.out.println("FORM ADD");
-        ModelAndView mv = new ModelAndView();
         Contest_type contest_type = new Contest_type();
         contest_type.setContest_type_id(contest_type_id);
         Contest contest = new Contest();
@@ -114,9 +115,10 @@ public class AddDogShowController {
                System.out.println("Unable to upload. File is empty.");
            }
 
-
-
-           return new ModelAndView("dogshow/finished");
+           RedirectView redirectView = new RedirectView();
+           redirectView.setContextRelative(true);
+           redirectView.setUrl("/dogshows");
+           return redirectView;
         }
 
 

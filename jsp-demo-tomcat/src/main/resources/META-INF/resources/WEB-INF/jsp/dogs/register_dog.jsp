@@ -205,10 +205,14 @@
                     <label for="owner_location">Input owner's location:</label>
                     <input type="text" id="owner_location" name="owner_location" value="<c:out value="${owner.location}"/>" required/>
                 </div>
-                <form:select path="dogshow_list" id="dogshow_id" name="dogshow_id">
-                    <form:option  value="" label="Select Dog Show"></form:option>
-                    <form:options items="${dogshow_list}" itemLabel="title" itemValue="dogshow_id"></form:options>
-                </form:select>
+                <div class="name">
+                    <label>Choose Dog Show:</label>
+                    <form:select path="dogshow_list" id="dogshow_id" name="dogshow_id">
+                        <form:option  value="" label="Select Dog Show"></form:option>
+                        <form:options items="${dogshow_list}" itemLabel="title" itemValue="dogshow_id"></form:options>
+                    </form:select>
+                </div>
+
                 <div id="loader">
                     <input type="submit" value="Submit" />
                 </div>
