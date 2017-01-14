@@ -208,8 +208,8 @@
                 </div>
                 <div class="name">
                     <label>Choose Dog Show:</label>
-                    <select>
-                    <option selected value="${dogShow.dogshow_id}">${dogshow.title}</option>
+                    <select name="dogshow_id" id="dogshow_id">
+                    <option selected value="${dogshow.dogshow_id}" name="dogshow_id">${dogshow.title}</option>
                 </select>
                 </div>
 
@@ -286,7 +286,7 @@
 ================================================== -->
 <!-- Scripts ==================================================
 ================================================== -->
-<script src="${pageContext.request.contextPath}/js/jquery-1.8.0.min.js" type="text/javascript"></script>
+<%--<script src="${pageContext.request.contextPath}/js/jquery-1.8.0.min.js" type="text/javascript"></script>--%>
 <!-- Main js files -->
 <script src="${pageContext.request.contextPath}/js/screen.js" type="text/javascript"></script>
 <!-- Tabs -->

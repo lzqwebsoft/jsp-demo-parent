@@ -184,7 +184,7 @@
 
     <a href="${pageContext.request.contextPath}/dogs_list/${showdet.dogshow_id}"><h3>Registered Dogs List</h3></a>
     <hr class="separator1">
-    If You want to register on this show <a href="${pageContext.request.contextPath}/reg_dog_separate/${showdet.dogshow_id}">Press Here</a>
+    If You want to register on this show <a href="/reg_dog_separate/${showdet.dogshow_id}">Press Here</a>
 </div>
 
 <!-- container ends here -->

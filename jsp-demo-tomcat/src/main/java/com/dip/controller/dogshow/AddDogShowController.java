@@ -117,54 +117,17 @@ public class AddDogShowController {
 
            RedirectView redirectView = new RedirectView();
            redirectView.setContextRelative(true);
-           redirectView.setUrl("/dogshows");
+           redirectView.setUrl("/dogshow/finished");
            return redirectView;
         }
 
-
-
-
-
-
-
-            // When click on submit, below method will get called
-//    @RequestMapping("/submitFileUpload")
-//    public ModelAndView fileUploaded(
-//            @ModelAttribute("uploadedFile") FileUpload uploadedFile,
-//            BindingResult result) {
-//        InputStream inputStream = null;
-//        OutputStream outputStream = null;
-//        // Getting uploaded file
-//        MultipartFile file = uploadedFile.getFile();
-//        fileValidator.validate(uploadedFile, result);
-//
-//        String fileName = file.getOriginalFilename();
-//
-//        // If it has error, redirect it to same page
-//        if (result.hasErrors()) {
-//            return new ModelAndView("fileUploadForm");
-//        }
-//
-//        try {
-//            inputStream = file.getInputStream();
-//
-//            File newFile = new File("C:/Users/moneg/Desktop/spring-boot-jsp-demo-master/jsp-demo-tomcat/src/main/resources/static/pics/" + fileName);
-//            if (!newFile.exists()) {
-//                newFile.createNewFile();
-//            }
-//            outputStream = new FileOutputStream(newFile);
-//            int read = 0;
-//            byte[] bytes = new byte[1024];
-//
-//            while ((read = inputStream.read(bytes)) != -1) {
-//                outputStream.write(bytes, 0, read);
-//            }
-//        } catch (IOException e) {
-//            // TODO Auto-generated catch block
-//            e.printStackTrace();
-//        }
-//
-//        return new ModelAndView("dogshow/finished");
-//    }
+    @RequestMapping(value = {"/dogshow/finished"}, method = {RequestMethod.GET})
+    public ModelAndView FinishedPage() {
+        ModelAndView modelAndView = new ModelAndView("dogshow/finished");
+        Date date = new Date();
+        System.out.println(date);
+        modelAndView.addObject("date",date);
+        return modelAndView;
+    }
 
 }

@@ -19,6 +19,8 @@
 <html lang="en">
 <!--<![endif]-->
 <head>
+    <script>
+    </script>
 
     <!-- Basic Page Needs ==================================================
     ================================================== -->
@@ -281,7 +283,7 @@
 ================================================== -->
 <!-- Scripts ==================================================
 ================================================== -->
-<script src="js/jquery-1.8.0.min.js" type="text/javascript"></script>
+<%--<script src="js/jquery-1.8.0.min.js" type="text/javascript"></script>--%>
 <!-- Main js files -->
 <script src="js/screen.js" type="text/javascript"></script>
 <!-- Tabs -->
