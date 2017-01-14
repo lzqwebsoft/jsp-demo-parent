@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.*;
 
@@ -54,15 +55,15 @@ public class RegisterDogController {
         return modelAndView;
     }
 
-    @RequestMapping(value = {"/add_dog"}, method = {RequestMethod.POST})
-    public ModelAndView registerDog(@RequestParam("breed") String breed, @RequestParam("gender") String gender, @RequestParam("name") String name,
+    @RequestMapping(value = {"/add_dog","/reg_dog_separate/add_dog"}, method = {RequestMethod.POST})
+    public RedirectView registerDog(@RequestParam("breed") String breed, @RequestParam("gender") String gender, @RequestParam("name") String name,
                                 @RequestParam("dob") @DateTimeFormat(pattern="yyyy-MM-dd") Date dob, @RequestParam("color") String color,
                                 @RequestParam("chip") String chip, @RequestParam("brand") String brand, @RequestParam("pedigree") String pedigree,
                                 @RequestParam("sire") String sire, @RequestParam("dam") String dam, @RequestParam("fcigroup") int fcigroup,
                                 @RequestParam("breeder_fname") String breeder_fname, @RequestParam("breeder_sname") String breeder_sname,
                                 @RequestParam("breeder_lname") String breeder_lname, @RequestParam("owner_fname") String owner_fname,
                                 @RequestParam("owner_sname") String owner_sname, @RequestParam("owner_lname") String owner_lname,
-                                @RequestParam("owner_location") String owner_location,@RequestParam(value = "dogshow_id") int dogshow_id){
+                                @RequestParam("owner_location") String owner_location,@RequestParam("dogshow_id") int dogshow_id){
         ModelAndView mv = new ModelAndView("dogs/register_dog");
         Owner owner = new Owner();
         owner.setFname(owner_fname.trim());
@@ -107,10 +108,20 @@ public class RegisterDogController {
         registered_dog.setDogShow(dogShow);
         registered_dog.setNumber(registered_dogService.RandomNumber());
         registered_dogService.addRegisteredDog(registered_dog);
-        mv.setViewName("dogs/finished");
-        String human = "Dog";
-        mv.addObject("human", human);
-        return mv;
+
+        RedirectView redirectView = new RedirectView();
+        redirectView.setContextRelative(true);
+        redirectView.setUrl("/dogs/finished");
+        return redirectView;
+    }
+
+    @RequestMapping(value = {"/dogs/finished"}, method = {RequestMethod.GET})
+    public ModelAndView FinishedPage() {
+        ModelAndView modelAndView = new ModelAndView("dogs/finished");
+        Date date = new Date();
+        System.out.println(date);
+        modelAndView.addObject("date",date);
+        return modelAndView;
     }
 
     @RequestMapping(value = {"/reg_dog_separate/{dogshow_id}"}, method = {RequestMethod.GET})
