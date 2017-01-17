@@ -1,6 +1,7 @@
 package com.dip.entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Created by moneg on 05.01.2017.
@@ -23,6 +24,17 @@ public class Participant {
 
     @Column(name = "Age")
     private int age;
+
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "participants")
+    private Set<Contest> contests;
+
+    public Set<Contest> getContests() {
+        return contests;
+    }
+
+    public void setContests(Set<Contest> contests) {
+        this.contests = contests;
+    }
 
     public int getParticipant_id() {
         return participant_id;

@@ -74,14 +74,19 @@
                     <li><a>Register</a>
                         <ul>
                             <li><a href="${pageContext.request.contextPath}/register_dog">Register Dog</a></li>
-                            <li><a href="${pageContext.request.contextPath}/reg_participant">Register as Participant</a></li>
+                            <li><a>Register as Participant</a>
+                            <ul>
+                                <li><a href="${pageContext.request.contextPath}/reg_participant">Register as Participant</a></li>
+                                <li><a href="${pageContext.request.contextPath}/reg_dog_contest">Register dog to contest</a></li>
+                            </ul>
+                            </li>
                         </ul>
                     </li>
                     <li><a href="${pageContext.request.contextPath}/dogshows">Dog Shows</a></li>
                     <li><a href="${pageContext.request.contextPath}/registration">Registration test</a></li>
-                    <li><a href="${pageContext.request.contextPath}/register_dog">Add Dog test</a></li>
                     <li><a href="${pageContext.request.contextPath}/add_dog_show">Add dog show test</a></li>
                     <li><a href="${pageContext.request.contextPath}/register_expert">Add Expert test</a></li>
+                    <li><a href="${pageContext.request.contextPath}/search_page">Search</a></li>
                 </ul>
             </div>
             <!-- mainmenu ends here -->

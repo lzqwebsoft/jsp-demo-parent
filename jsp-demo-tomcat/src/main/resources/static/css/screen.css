@@ -271,8 +271,8 @@ html[xmlns] .slides {
 	padding: 2%;
 	margin: 0;
 	position: absolute;
-	left: 25%;
-	bottom: 20%;
+	left: 65%;
+	bottom: 18%;
 	text-align:center;
 	color:#2d2010;
 	background: rgba(234, 214, 189, 0.9);
@@ -1189,7 +1189,7 @@ form#contact_form input[type="submit"] {
 	background:#f9efe3 url(../images/rausch.png) repeat;
 	border:none;
 	padding:5px;
-	font-size:11px;
+	font-size:15px;
 	text-transform:uppercase;
 	margin-bottom:10px;
 }

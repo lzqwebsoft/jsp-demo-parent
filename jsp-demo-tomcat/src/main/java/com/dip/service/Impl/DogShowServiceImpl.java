@@ -1,16 +1,13 @@
 package com.dip.service.Impl;
 
-import com.dip.entity.Contest;
-import com.dip.entity.Contest_type;
+import com.dip.entity.ContestType;
 import com.dip.entity.DogShow;
-import com.dip.entity.Expert;
 import com.dip.repository.DogShowRepository;
 import com.dip.service.DogShowService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by moneg on 28.12.2016.
@@ -54,16 +51,17 @@ public class DogShowServiceImpl implements DogShowService {
     }
 
     @Override
-    public DogShow findByTitle(String title) {
+    public List<DogShow> findByTitle(String title) {
         return dogShowRepository.findByTitle(title);
     }
+
+    @Override
+    public List<DogShow> findByContestType(ContestType contestType) {
+        return dogShowRepository.findByContestContestType(contestType);
+    }
+
     private boolean existDogShow(DogShow dogShow){
         return dogShowRepository.exists(dogShow.getDogshow_id());
-    }
-    @Override
-    public void deleteByTitle(String title) {
-    if(existDogShow(findByTitle(title)))
-        dogShowRepository.deleteByTitle(title);
     }
 
 //    @Override

@@ -8,13 +8,11 @@ import com.dip.service.ExpertService;
 import com.dip.service.JudgingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -63,6 +61,18 @@ public class AddExpertController {
         modelAndView.setViewName("dogshow/finished");
         String expertt = "Expert";
         modelAndView.addObject("human",expertt);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = {"/add_expert_separate/{dogshow_id}"}, method = {RequestMethod.GET})
+    public ModelAndView AddExpertSeparate(@PathVariable("dogshow_id") int dogshow_id){
+
+        ModelAndView modelAndView = new ModelAndView("dogshow/add_expert_separate");
+        DogShow dogShow = dogShowService.getById(dogshow_id);
+        Date now = new Date();
+        Date date = new Date(now.getYear(), now.getMonth()-3,now.getDay());
+        modelAndView.addObject("date",date);
+        modelAndView.addObject("dogshow",dogShow);
         return modelAndView;
     }
 }

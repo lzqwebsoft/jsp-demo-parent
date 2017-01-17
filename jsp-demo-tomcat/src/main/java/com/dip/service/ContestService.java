@@ -1,7 +1,6 @@
 package com.dip.service;
 
 import com.dip.entity.Contest;
-import com.dip.entity.Contest_type;
 import com.dip.entity.DogShow;
 
 import java.util.List;
@@ -15,4 +14,5 @@ public interface ContestService {
     void delete(int id);
     Contest editContest(Contest contest);
     List<Contest> getAll();
+    Contest findByDogShow(DogShow dogShow);
 }

@@ -9,7 +9,7 @@
         <property name="hibernate.enable_lazy_load_no_trans">true</property>
         <mapping class="com.dip.entity.DogShow"/>
         <mapping class="com.dip.entity.Contest"/>
-        <mapping class="com.dip.entity.Contest_type"/>
+        <mapping class="com.dip.entity.ContestType"/>
         <mapping class="com.dip.entity.Dog"/>
         <mapping class="com.dip.entity.Breed"/>
         <mapping class="com.dip.entity.FciGroup"/>
@@ -25,7 +25,7 @@
         <mapping class="com.dip.entity.UserValidator"/>
         <mapping class="com.dip.entity.Role"/>
         <mapping class="com.dip.entity.Registered_dog"/>
-        <mapping class="com.dip.entity.Registered_Contest"/>
+        <mapping class="com.dip.entity.Registered_Contest_Participant"/>
 
 
 

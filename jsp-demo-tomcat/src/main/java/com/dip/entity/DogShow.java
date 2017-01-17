@@ -41,8 +41,9 @@ public class DogShow {
     @Column(name="contest_id")
     private int contest_id;
 
-    @OneToMany(fetch=FetchType.LAZY, mappedBy = "dogShow")
-    private Set<Contest> contests;
+    @OneToOne(optional = false)
+    @JoinColumn(name = "contest_id",unique = true,nullable = false,insertable = false,updatable = false)
+    private Contest contest;
 
     @ManyToMany
     @JoinTable(name = "registered_dog",
@@ -64,12 +65,12 @@ public class DogShow {
         this.contest_id = contest_id;
     }
 
-    public Set<Contest> getContests() {
-        return contests;
+    public Contest getContest() {
+        return contest;
     }
 
-    public void setContests(Set<Contest> contests) {
-        this.contests = contests;
+    public void setContest(Contest contest) {
+        this.contest = contest;
     }
 
     public String getTitle() {

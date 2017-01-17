@@ -136,7 +136,10 @@
                     <input hidden value="<c:out value="${dsh.dogshow_id}"/>" name="dogshow_id" id="${dsh.dogshow_id}" />
                 <a href="${pageContext.request.contextPath}/showDet/${dsh.dogshow_id}">more <span>-></span></a>
 
-                <div align="right"><input type="submit" value="Delete"/></div>
+                <div align="right">
+                    <input type="submit" value="Delete"/>
+                </div>
+
                     </form:form>
                 </article>
             </c:forEach>
@@ -148,51 +151,23 @@
             <h4 class="sidebarheader">Additional instruments</h4>
             <ul class="tabs">
                 <li><a class="active" href="#trends">Search</a></li>
-                <li><a class="" href="#fashion">Fashion</a></li>
-                <li><a class="" href="#shows">Shows</a></li>
             </ul>
             <ul class="tabs-content">
                 <li class="active" id="trends">
                     <p>Use this form to search that Dog Show You want.</p>
-                    <%--<form method="GET" id="search_type" name="search_type">--%>
-                    <%--<form:select path="search">--%>
-                        <%--<form:option value="1" label="Search By Title"></form:option>--%>
-                        <%--<form:option value="2" label="Search By Date"></form:option>--%>
-                        <%--<form:option value="3" label="Search By Sponsor"></form:option>--%>
-                        <%--<form:option value="4" label="Search By Organizer"></form:option>--%>
-                        <%--<input type="search" name="search_text">--%>
-                        <%--<a href="${pageContext.request.contextPath}/search/${search_type}/${search_text}">Search</a>--%>
-                    <%--</form:select>--%>
-                    <%--</form>--%>
-                </li>
-                <li id="fashion">
-                    <p>Lorem ipsum dolor sit amet, proscriptum videt ulteriori. Filiam sunt amore nec est cum autem est se in. Cellam sanctissima coniunx in lucem exempli paupers coniunx rex cum autem quod ait regem Ardalio. Filiam sunt amore nec est cum autem est se in.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. </p>
-                </li>
-                <li id="shows">
-                    <p>Lorem ipsum dolor sit amet, proscriptum videt ulteriori. Filiam sunt amore nec est cum autem est se in. Cellam sanctissima coniunx in lucem exempli paupers coniunx rex cum autem quod ait regem Ardalio. Filiam sunt amore nec est cum autem est se in.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam,feugiat vitae, ultricies eget, tempor sit amet, ante.</p>
+                    <select name="search_type" id="search_type">
+                        <option disabled> Choose Search Type</option>
+                        <option value="1">Search By Title</option>
+                        <option value="2">Search By Sponsor</option>
+                    </select>
+                        <br>
+                        <input type="text" name="search_text">
+                        <div class="content" align="right">
+                            <a href="${pageContext.request.contextPath}/search_dogshow/${search_text}">Search</a>
+                        </div>
                 </li>
             </ul>
         </section>
-        <!--end recent news-->
-        <section class="latestphotos">
-            <h4 class="sidebarheader">Latest Photos</h4>
-            <div class="one_half"> <img class="shadow" src="images/images/work1.jpg" alt="work1" /> </div>
-            <div class="one_half lastcolumn"> <img class="shadow" src="images/images/work2.jpg" alt="work2" /> </div>
-            <div class="one_half"> <img class="shadow" src="images/images/work3.jpg" alt="work3" /> </div>
-            <div class="one_half lastcolumn"> <img class="shadow" src="images/images/work4.jpg" alt="work4" /> </div>
-        </section>
-        <!--end latestphotos-->
-
-        <section class="categorie">
-            <h4 class="sidebarheader">Categories</h4>
-            <ul class="categories">
-                <li><a href="#">Fashion</a></li>
-                <li><a href="#">Beauty</a></li>
-                <li><a href="#">Charity</a></li>
-                <li><a href="#">Fashion Shows</a></li>
-            </ul>
-        </section>
-        <!--end categories-->
     </aside>
     <!--end six columns-->
 </div>

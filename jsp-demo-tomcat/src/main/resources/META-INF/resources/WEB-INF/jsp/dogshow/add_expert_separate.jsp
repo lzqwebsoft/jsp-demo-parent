@@ -19,12 +19,30 @@
 <html lang="en">
 <!--<![endif]-->
 <head>
+    <script>
+        $(document)
+            .ready(
+                function() {
+                    //add more file components if Add is clicked
+                    $('#addFile')
+                        .click(
+                            function() {
+                                var fileIndex = $('#fileTable tr')
+                                        .children().length - 1;
+                                $('#fileTable')
+                                    .append(
+                                        '<tr><td>'
+                                        + '   <input type="file" name="files['+ fileIndex +']" />'
+                                        + '</td></tr>');
+                            });
 
+                });
+    </script>
     <!-- Basic Page Needs ==================================================
     ================================================== -->
 
     <meta charset="utf-8">
-    <title>Register As Participant</title>
+    <title>Add Dog Show</title>
     <meta name="description" content="Place to put your description text">
     <meta name="author" content="">
     <!--[if lt IE 9]>
@@ -39,18 +57,19 @@
     <!-- CSS ==================================================
     ================================================== -->
 
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/skeleton.css">
-    <link rel="stylesheet" href="css/screen.css">
-    <link rel="stylesheet" href="css/prettyPhoto.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/base.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/skeleton.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/screen.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/table/table_experts.css">
+    <link rel="stylesheet" href="c${pageContext.request.contextPath}/ss/prettyPhoto.css" type="text/css" media="screen" />
 
     <!-- Favicons ==================================================
     ================================================== -->
 
-    <link rel="shortcut icon" href="images/favicon.png">
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/favicon.png">
+    <link rel="apple-touch-icon" href="${pageContext.request.contextPath}/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="${pageContext.request.contextPath}/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="${pageContext.request.contextPath}/images/apple-touch-icon-114x114.png">
 
     <!-- Google Fonts ==================================================
     ================================================== -->
@@ -71,7 +90,7 @@
                     <li><a href="${pageContext.request.contextPath}/home_page">Home</a></li>
                     <li><a href="${pageContext.request.contextPath}/about">About</a></li>
                     <li><a href="${pageContext.request.contextPath}/contact">Contact</a></li>
-                    <li><a id="visited">Register</a>
+                    <li><a>Register</a>
                         <ul>
                             <li><a href="${pageContext.request.contextPath}/register_dog">Register Dog</a></li>
                             <li><a href="${pageContext.request.contextPath}/register_participant">Register as Participant</a></li>
@@ -80,7 +99,7 @@
                     <li><a href="${pageContext.request.contextPath}/dogshows">Dog Shows</a></li>
                     <li><a href="${pageContext.request.contextPath}/reg">Registration test</a></li>
                     <li><a href="${pageContext.request.contextPath}/register_dog">Add Dog test</a></li>
-                    <li><a href="${pageContext.request.contextPath}/add_dog_show">Add dog show test</a></li>
+                    <li><a href="${pageContext.request.contextPath}/add_dog_show" id="visited">Add dog show test</a></li>
                 </ul>
             </div>
             <!-- mainmenu ends here -->
@@ -111,7 +130,7 @@
 <div class="breadcrumbs">
     <div class="container">
         <header>
-            <h3>Register As Participant</h3>
+            <h3>Add Dog Show Page</h3>
         </header>
     </div>
     <!-- container ends here -->
@@ -127,32 +146,37 @@
         <div id="contactForm">
             <h1>Fill in all the fields!</h1>
             <div class="sepContainer"></div>
-            <form action="add_participant" method="POST" id="contact_form">
+            <form action="add_expert" method="POST" id="contact_form">
                 <div class="name">
-                    <label for="fname">Your First Name:</label>
-                    <input type=text id=fname name="Fname" value="<c:out value="${participant.fname}"/>" required/>
+                    <label for="fname">Expert's First Name:</label>
+                    <input type=text id=fname name="fname" value="<c:out value="${expert.fname}"/>" required/>
                 </div>
                 <div class="name">
-                    <label for="sname">Your Second Name:</label>
-                    <input type=text id=sname name="Sname" value="<c:out value="${participant.sname}"/>" required/>
+                    <label for="sname">Expert's Second Name:</label>
+                    <input type=text id=sname name="sname" value="<c:out value="${expert.sname}"/>" required/>
                 </div>
                 <div class="name">
-                    <label for="lname">Your Last Name:</label>
-                    <input type=text id=lname name="Lname" value="<c:out value="${participant.lname}"/>" required/>
+                    <label for="lname">Expert's Last Name:</label>
+                    <input type=text id=lname name="lname" value="<c:out value="${expert.lname}"/>" required/>
                 </div>
                 <div class="name">
-                    <label for="age">Your Age:</label>
-                    <input type="number" size="1" min="9" max="18" id="age" name="Age" value="<c:out value="${participant.age}"/>" required/>
+                    <label for="country">Expert's Country:</label>
+                    <input type=text id=country name="country" value="<c:out value="${expert.country}"/>" required/>
                 </div>
                 <div class="name">
-                    <label for="dogshow_id">Select Dog Show for which You want to register:</label>
-                <form:select path="dogshow_list_for_people" id="dogshow_id" name="dogshow_id">
-                    <form:option  value="" label="Select Dog Show"></form:option>
-                    <form:options items="${dogshow_list_for_people}" itemLabel="title" itemValue="dogshow_id"></form:options>
-                </form:select>
+                    <label for="description">Expert's Description:</label>
+                    <%--<input type=text id=description name="description" value="<c:out value="${expert.description}"/>" required/>--%>
+                    <textarea id=description name=description rows=6 cols=10 maxlength="150" value="<c:out value="${expert.description}"/>" required></textarea>
+                </div>
+                <div class="name">
+                    <label for="dogshow_id">For whom will be Your Contest:</label>
+                    <%--<input type="text" id="contest_type" name="contest_type" value="<c:out value="${contest_type.forwhom}"/>" required/>--%>
+                    <select name="dogshow_id" id="dogshow_id">
+                        <option selected value="${dogshow.dogshow_id}" name="dogshow_id">${dogshow.title}</option>
+                    </select>
                 </div>
                 <div id="loader">
-                    <input type="submit" value="Submit" />
+                    <input type="submit" value="Submit"></input>
                 </div>
             </form>
         </div>
@@ -169,12 +193,12 @@
         <h3>Socialize with us!</h3>
         <section class="socials">
             <ul class="socials">
-                <li><a href="#"><img src="images/socials/twitter.png" alt="" /></a></li>
-                <li><a href="#"><img src="images/socials/facebook.png" alt="" /></a></li>
-                <li><a href="#"><img src="images/socials/dribbble.png" alt="" /></a></li>
-                <li><a href="#"><img src="images/socials/google+.png" alt="" /></a></li>
-                <li><a href="#"><img src="images/socials/linkedin.png" alt="" /></a></li>
-                <li><a href="#"><img src="images/socials/youtube.png" alt="" /></a></li>
+                <li><a href="#"><img src="${pageContext.request.contextPath}/images/socials/twitter.png" alt="" /></a></li>
+                <li><a href="#"><img src="${pageContext.request.contextPath}/images/socials/facebook.png" alt="" /></a></li>
+                <li><a href="#"><img src="${pageContext.request.contextPath}/images/socials/dribbble.png" alt="" /></a></li>
+                <li><a href="#"><img src="${pageContext.request.contextPath}/images/socials/google+.png" alt="" /></a></li>
+                <li><a href="#"><img src="${pageContext.request.contextPath}/images/socials/linkedin.png" alt="" /></a></li>
+                <li><a href="#"><img src="${pageContext.request.contextPath}/images/socials/youtube.png" alt="" /></a></li>
             </ul>
         </section>
     </div>
@@ -219,19 +243,17 @@
 ================================================== -->
 <!-- Scripts ==================================================
 ================================================== -->
-<%--<script src="js/jquery-1.8.0.min.js" type="text/javascript"></script>--%>
-<!-- Main js files -->
-<script src="js/screen.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/js/screen.js" type="text/javascript"></script>
 <!-- Tabs -->
-<script src="js/tabs.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/js/tabs.js" type="text/javascript"></script>
 <!-- Include prettyPhoto -->
-<script src="js/jquery.prettyPhoto.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.prettyPhoto.js" type="text/javascript"></script>
 <!-- Include Superfish -->
-<script src="js/superfish.js" type="text/javascript"></script>
-<script src="js/hoverIntent.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/js/superfish.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/js/hoverIntent.js" type="text/javascript"></script>
 <!-- Flexslider -->
-<script src="js/jquery.flexslider-min.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.flexslider-min.js" type="text/javascript"></script>
 <!-- Modernizr -->
-<script type="text/javascript" src="js/modernizr.custom.29473.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/modernizr.custom.29473.js"></script>
 </body>
 </html>

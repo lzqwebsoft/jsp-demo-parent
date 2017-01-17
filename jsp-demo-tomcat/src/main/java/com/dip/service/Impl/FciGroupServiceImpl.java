@@ -36,4 +36,9 @@ public class FciGroupServiceImpl implements FciGroupService{
     public List<FciGroup> getAll() {
         return fciGroupRepository.findAll();
     }
+
+    @Override
+    public FciGroup findById(int fcigroup) {
+        return fciGroupRepository.getOne(fcigroup);
+    }
 }

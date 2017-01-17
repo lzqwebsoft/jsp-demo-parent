@@ -1,6 +1,7 @@
 package com.dip.entity;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -17,7 +18,7 @@ public class FciGroup {
     private int number;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "fciGroup")
-    private Set<Breed> breeds;
+    private List<Breed> breeds;
 
     public int getFcigroup_id() {
         return fcigroup_id;
@@ -35,11 +36,11 @@ public class FciGroup {
         this.number = number;
     }
 
-    public Set<Breed> getBreeds() {
+    public List<Breed> getBreeds() {
         return breeds;
     }
 
-    public void setBreeds(Set<Breed> breeds) {
+    public void setBreeds(List<Breed> breeds) {
         this.breeds = breeds;
     }
 }

@@ -4,30 +4,19 @@ import com.dip.entity.*;
 import com.dip.service.ContestService;
 import com.dip.service.ContestTypeService;
 import com.dip.service.DogShowService;
-import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 
-import javax.servlet.http.HttpServletRequest;
 import java.io.*;
-import java.nio.file.Paths;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by moneg on 28.12.2016.
@@ -49,8 +38,8 @@ public class AddDogShowController {
     public static final String uploadingdir = System.getProperty("user.dir") + "/dippp/";
 
     @ModelAttribute("contest_type_list")
-    public List<Contest_type> contest_type(){
-        List<Contest_type> contest_types = new ArrayList<Contest_type>();
+    public List<ContestType> contest_type(){
+        List<ContestType> contest_types = new ArrayList<ContestType>();
         contest_types = contestTypeService.getAll();
         return contest_types;
     }
@@ -80,7 +69,7 @@ public class AddDogShowController {
                              @RequestParam("file") MultipartFile file){
            ModelAndView modelAndView = new ModelAndView("dogshow/add_dog_show");
            System.out.println("FORM ADD");
-        Contest_type contest_type = new Contest_type();
+        ContestType contest_type = new ContestType();
         contest_type.setContest_type_id(contest_type_id);
         Contest contest = new Contest();
         contest.setContest_type_id(contest_type.getContest_type_id());

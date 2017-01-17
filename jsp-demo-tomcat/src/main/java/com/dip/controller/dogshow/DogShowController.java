@@ -4,19 +4,11 @@ import com.dip.entity.*;
 import com.dip.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
-import javax.persistence.Convert;
-import javax.persistence.EntityManager;
-import javax.websocket.server.PathParam;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created by moneg on 28.12.2016.
@@ -34,7 +26,12 @@ public class DogShowController {
     JudgingService judgingService;
     @Autowired
     DogService dogService;
-
+    @Autowired
+    Registered_ContestParticipantService registered_contestParticipantService;
+    @Autowired
+    RegisteredContestDogService registeredContestDogService;
+    @Autowired
+    ParticipantService participantService;
 
     @RequestMapping(value = {"/dogshows"}, method = {RequestMethod.GET})
     public ModelAndView DogShowPage() {
@@ -72,6 +69,40 @@ public class DogShowController {
         ModelAndView modelAndView = new ModelAndView("dogs/dogs_on_show");
         modelAndView.addObject("dogs_registered_list",dogService.findByDogShow(dogShowService.getById(dogshow_id)));
         return modelAndView;
+    }
+
+    @RequestMapping(value = {"/dogs_on_contest/{dogshow_id}"},method = {RequestMethod.GET})
+    public ModelAndView DogsOnContestListPage(@PathVariable("dogshow_id") int dogshow_id){
+        ModelAndView modelAndView = new ModelAndView("dogs/dogs_on_contest");
+//        List<Registered_Contest_Dog> registered_contest_dogs = registeredContestDogService.findByContest(dogShowService.getById(dogshow_id).getContest());
+        List<Dog> dogs = dogService.findByContest(dogShowService.getById(dogshow_id).getContest());
+        if(dogs.isEmpty()){
+            ModelAndView modelAndView1 = new ModelAndView("dogshow/entity_not_found");
+            String entity = "Dogs's";
+            modelAndView1.addObject("entity",entity);
+            return modelAndView1;
+        }
+        else{
+            modelAndView.addObject("dogs_registered_list",dogs);
+            return modelAndView;
+        }
+
+    }
+
+    @RequestMapping(value = {"/participants_on_contest/{dogshow_id}"},method = {RequestMethod.GET})
+    public ModelAndView ParticipantsOnContestListPage(@PathVariable("dogshow_id") int dogshow_id){
+        ModelAndView modelAndView = new ModelAndView("participants/participants_on_contest");
+        List<Participant> participants = participantService.findByContest(dogShowService.getById(dogshow_id).getContest());
+        if(participants.isEmpty()) {
+            ModelAndView modelAndView1 = new ModelAndView("dogshow/entity_not_found");
+            String entity = "Participants's";
+            modelAndView1.addObject("entity",entity);
+            return modelAndView1;
+        }
+        else {
+            modelAndView.addObject("participants_registered_list", participants);
+            return modelAndView;
+        }
     }
 
     @RequestMapping(value = {"/delete_show"}, method = {RequestMethod.POST})

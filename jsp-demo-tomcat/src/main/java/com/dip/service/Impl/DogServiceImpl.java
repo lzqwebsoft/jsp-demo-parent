@@ -1,5 +1,6 @@
 package com.dip.service.Impl;
 
+import com.dip.entity.Contest;
 import com.dip.entity.Dog;
 import com.dip.entity.DogShow;
 import com.dip.repository.DogRepository;
@@ -40,6 +41,11 @@ public class DogServiceImpl implements DogService{
     @Override
     public List<Dog> findByDogShow(DogShow dogShow) {
         return dogRepository.findByDogShows(dogShow);
+    }
+
+    @Override
+    public List<Dog> findByContest(Contest contest) {
+        return dogRepository.findByContests(contest);
     }
 
 }

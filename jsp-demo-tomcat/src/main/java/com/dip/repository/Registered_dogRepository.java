@@ -14,12 +14,5 @@ import java.util.List;
  */
 public interface Registered_dogRepository extends JpaRepository<Registered_dog, Integer> {
 
-//    @Query(value = "select d.dog_id from registered_dog d where d.dogshow_id = :id")
-//    List<Dog> findDogs(@Param("id") int id);
-
-//    @Query(value = "SELECT * FROM registered_dog WHERE dogshow_id= ?0", nativeQuery = true)
-//    List<Dog> findByDogShowId(int id);
-
-//    List<Dog> findByDogshowId(int id);
 
 }

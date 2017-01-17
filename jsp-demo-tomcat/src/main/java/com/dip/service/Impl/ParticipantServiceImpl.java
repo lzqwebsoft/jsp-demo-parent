@@ -1,5 +1,6 @@
 package com.dip.service.Impl;
 
+import com.dip.entity.Contest;
 import com.dip.entity.Participant;
 import com.dip.repository.ParticipantRepository;
 import com.dip.service.ParticipantService;
@@ -35,5 +36,10 @@ public class ParticipantServiceImpl implements ParticipantService{
     @Override
     public List<Participant> getAll() {
         return participantRepository.findAll();
+    }
+
+    @Override
+    public List<Participant> findByContest(Contest contest) {
+        return participantRepository.findByContests(contest);
     }
 }

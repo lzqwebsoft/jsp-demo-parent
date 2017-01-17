@@ -1,6 +1,6 @@
 package com.dip.service.Impl;
 
-import com.dip.entity.Contest_type;
+import com.dip.entity.ContestType;
 import com.dip.repository.ContestTypeRepository;
 import com.dip.service.ContestTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,13 +17,13 @@ public class ContestTypeImpl  implements ContestTypeService{
     ContestTypeRepository contestTypeRepository;
 
     @Override
-    public Contest_type addContest(Contest_type contest) {
-        Contest_type saveContestType = contestTypeRepository.saveAndFlush(contest);
+    public ContestType addContest(ContestType contest) {
+        ContestType saveContestType = contestTypeRepository.saveAndFlush(contest);
         return saveContestType;
     }
 
     @Override
-    public Contest_type getById(int contest_type_id) {
+    public ContestType getById(int contest_type_id) {
         return contestTypeRepository.getOne(contest_type_id);
     }
 
@@ -33,12 +33,12 @@ public class ContestTypeImpl  implements ContestTypeService{
     }
 
     @Override
-    public Contest_type editContest(Contest_type contest) {
+    public ContestType editContest(ContestType contest) {
         return contestTypeRepository.saveAndFlush(contest);
     }
 
     @Override
-    public List<Contest_type> getAll() {
+    public List<ContestType> getAll() {
         return contestTypeRepository.findAll();
     }
 }

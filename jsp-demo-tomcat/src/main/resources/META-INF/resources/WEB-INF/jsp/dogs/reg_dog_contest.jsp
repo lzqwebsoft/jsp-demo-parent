@@ -19,12 +19,42 @@
 <html lang="en">
 <!--<![endif]-->
 <head>
+    <%--<script>--%>
+    <%--debugger;--%>
+    <%--$(document).ready(function () {--%>
+    <%--$('#fcigroup').on('change', getBreedList);--%>
+    <%--})--%>
+    <%--function getBreedList() {--%>
+    <%--var fcigroup =  $('#fcigroup').val();--%>
+    <%--$.ajax({--%>
+    <%--url: "/breedList" + fcigroup,--%>
+    <%--dataType: "json",--%>
+    <%--method: "GET",--%>
+    <%--success: function (breeds) {--%>
+
+    <%--var content = "";--%>
+    <%--content += '<option value="">Select Contest</option>';--%>
+    <%--$.each(breeds, function (key, value) {--%>
+    <%--content += "" +--%>
+    <%--'<option value="'+ value.breed_id +'">'+ value.title +'</option>';--%>
+    <%--});--%>
+    <%--$('#breed').html('');--%>
+    <%--$('#breed').html(content);--%>
+
+    <%--},--%>
+    <%--error: function (data) {--%>
+    <%--alert('Error');--%>
+    <%--}--%>
+
+    <%--});--%>
+    <%--};--%>
+    <%--</script>--%>
 
     <!-- Basic Page Needs ==================================================
     ================================================== -->
 
     <meta charset="utf-8">
-    <title>Home Page</title>
+    <title>Register Dog</title>
     <meta name="description" content="Place to put your description text">
     <meta name="author" content="">
     <!--[if lt IE 9]>
@@ -42,8 +72,6 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/skeleton.css">
     <link rel="stylesheet" href="css/screen.css">
-    <link rel="stylesheet" href="css/for_registration/reset.css">
-    <link rel="stylesheet" href="css/for_registration/style.css">
     <link rel="stylesheet" href="css/prettyPhoto.css" type="text/css" media="screen" />
 
     <!-- Favicons ==================================================
@@ -73,23 +101,16 @@
                     <li><a href="${pageContext.request.contextPath}/home_page">Home</a></li>
                     <li><a href="${pageContext.request.contextPath}/about">About</a></li>
                     <li><a href="${pageContext.request.contextPath}/contact">Contact</a></li>
-                    <li><a>Register</a>
+                    <li><a id="visited">Register</a>
                         <ul>
                             <li><a href="${pageContext.request.contextPath}/register_dog">Register Dog</a></li>
-                            <li><a href="${pageContext.request.contextPath}/reg_participant">Register as Participant</a></li>
+                            <li><a href="${pageContext.request.contextPath}/register_participant">Register as Participant</a></li>
                         </ul>
                     </li>
                     <li><a href="${pageContext.request.contextPath}/dogshows">Dog Shows</a></li>
-                    <li><a href="${pageContext.request.contextPath}/registration"id="visited">Registration test</a></li>
+                    <li><a href="${pageContext.request.contextPath}/reg">Registration test</a></li>
+                    <li><a href="${pageContext.request.contextPath}/register_dog">Add Dog test</a></li>
                     <li><a href="${pageContext.request.contextPath}/add_dog_show">Add dog show test</a></li>
-                    <li><a href="${pageContext.request.contextPath}/register_expert">Add Expert test</a></li>
-                    <nav class="main-nav ">
-                        <ul class="sf-menu">
-                            <!-- ссылки на вызов форм -->
-                            <li><a class="cd-signin" href="#0">Вход</a></li>
-                            <li><a class="cd-signup" href="#0">Регистрация</a></li>
-                        </ul>
-                    </nav>
                 </ul>
             </div>
             <!-- mainmenu ends here -->
@@ -107,7 +128,6 @@
                     <option value="${pageContext.request.contextPath}/reg">Registration test</option>
                     <option value="${pageContext.request.contextPath}/register_dog">Add Dog test</option>
                     <option value="${pageContext.request.contextPath}/add_dog_show">Add dog show test</option>
-                    <option value="${pageContext.request.contextPath}/register_expert">Add Expert test</option>
                 </select>
             </form>
         </div>
@@ -116,98 +136,125 @@
     <!-- container ends here -->
 </div>
 <!-- header ends here -->
+<!--Breadcrumbs ==================================================
+================================================== -->
+<div class="breadcrumbs">
+    <div class="container">
+        <header>
+            <h3>Register Dog Page</h3>
+        </header>
+    </div>
+    <!-- container ends here -->
+    <hr class="separator1">
+</div>
+<!-- breadcrumbs ends here -->
+<!-- Contact Content Part - Contact Form ==================================================
+================================================== -->
+<div class="container contact">
+    <!-- Contact Sidebar ==================================================
+  ================================================== -->
+    <div class="two_third lastcolumn contact1">
+        <div id="contactForm">
+            <h1>Fill in all the fields!</h1>
+            <div class="sepContainer"></div>
+            <form action="add_dog_contest" method="POST" id="contact_form">
+                <div class="name">
+                    <label for="name">Dog's Name:</label>
+                    <input type=text id=name name="name" value="<c:out value="${dog.name}"/>" required/>
+                </div>
+                <div class="name">
+                    <label for="dob">Dog's date of birth :</label>
+                    <input type="date" id="dob" name="dob" max=<fmt:formatDate value="${date}" pattern="yyyy-MM-dd" /> value="<c:out value="${dog.dob}"/>" required/>
+                </div>
+                <div class="name">
+                    <label for="gender">Dog's Gender:</label>
+                    <select name="gender" id="gender">
+                        <option disabled> Choose Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                    <%--<input type="text" id="gender" name="gender" value="<c:out value="${dog.gender}"/>" required/>--%>
+                </div>
+                <div class="name">
+                    <label for="color">Dog's Color:</label>
+                    <input type="text" id="color" name="color" value="<c:out value="${dog.color}"/>" required/>
+                </div>
+                <div class="name">
+                    <label for="chip">Dog's Chip:</label>
+                    <input type="text" id="chip" name="chip" value="<c:out value="${dog.chip}"/>" required/>
+                </div>
+                <div class="name">
+                    <label for="brand">Dog's Brand:</label>
+                    <input type="text" id="brand" name="brand" value="<c:out value="${dog.brand}"/>" required/>
+                </div>
+                <div class="name">
+                    <label for="pedigree">Dog's Pedigree:</label>
+                    <input type="text" id="pedigree" name="pedigree" value="<c:out value="${dog.pedigree}"/>" required/>
+                </div>
+                <div class="name">
+                    <label for="sire">Dog's Sire:</label>
+                    <input type="text" id="sire" name="sire" value="<c:out value="${dog.sire}"/>" required/>
+                </div>
+                <div class="name">
+                    <label for="dam">Dog's Dam:</label>
+                    <input type="text" id="dam" name="dam" value="<c:out value="${dog.dam}"/>" required/>
+                </div>
+                <div class="name">
+                    <label for="fcigroup">Dog's Fci Group:</label>
+                    <input type="number" size="1" min="1" max="11" id="fcigroup" name="fcigroup" value="<c:out value="${dog.fcigroup}"/>" required/>
+                </div>
+                <div class="name">
+                    <label for="breed">Dog's Breed:</label>
+                    <input type="text" id="breed" name="breed" value="<c:out value="${dog.breed}"/>" required/>
+                </div>
+                <div class="name">
+                    <label for="breeder_fname">Input breeder's first name:</label>
+                    <input type="text" id="breeder_fname" name="breeder_fname" value="<c:out value="${breeder.fname}"/>" required/>
+                </div>
+                <div class="name">
+                    <label for="breeder_sname">Input breeder's second name:</label>
+                    <input type="text" id="breeder_sname" name="breeder_sname" value="<c:out value="${breeder.sname}"/>" required/>
+                </div>
+                <div class="name">
+                    <label for="breeder_lname">Input breeder's last name:</label>
+                    <input type="text" id="breeder_lname" name="breeder_lname" value="<c:out value="${breeder.lname}"/>" required/>
+                </div>
+                <div class="name">
+                    <label for="owner_fname">Input owner's first name:</label>
+                    <input type="text" id="owner_fname" name="owner_fname" value="<c:out value="${owner.fname}"/>" required/>
+                </div>
+                <div class="name">
+                    <label for="owner_sname">Input owner's second name:</label>
+                    <input type="text" id="owner_sname" name="owner_sname" value="<c:out value="${owner.sname}"/>" required/>
+                </div>
+                <div class="name">
+                    <label for="owner_lname">Input owner's last name:</label>
+                    <input type="text" id="owner_lname" name="owner_lname" value="<c:out value="${owner.lname}"/>" required/>
+                </div>
+                <div class="name">
+                    <label for="owner_location">Input owner's location:</label>
+                    <input type="text" id="owner_location" name="owner_location" value="<c:out value="${owner.location}"/>" required/>
+                </div>
+                <div class="name">
+                    <label>Select Dog Show for which You want register Your Dog:</label>
+                    <form:select path="dogshow_list_for_dog" id="dogshow_id" name="dogshow_id">
+                        <form:option  value="" label="Select Dog Show"></form:option>
+                        <form:options items="${dogshow_list_for_dog}" itemLabel="title" itemValue="dogshow_id"></form:options>
+                    </form:select>
+                </div>
 
-<div class="cd-user-modal"> <!-- все формы на фоне затемнения-->
-    <div class="cd-user-modal-container"> <!-- основной контейнер -->
-        <ul class="cd-switcher">
-            <li><a href="#0">Вход</a></li>
-            <li><a href="#0">Регистрация</a></li>
-        </ul>
-
-        <div id="cd-login"> <!-- форма входа -->
-            <form class="cd-form">
-                <p class="fieldset">
-                    <label class="image-replace cd-email" for="signin-email">E-mail</label>
-                    <input class="full-width has-padding has-border" id="signin-email" type="email" placeholder="E-mail">
-                    <span class="cd-error-message">Здесь сообщение об ошибке!</span>
-                </p>
-
-                <p class="fieldset">
-                    <label class="image-replace cd-password" for="signin-password">Пароль</label>
-                    <input class="full-width has-padding has-border" id="signin-password" type="text"  placeholder="Пароль">
-                    <a href="#0" class="hide-password">Скрыть</a>
-                    <span class="cd-error-message">Здесь сообщение об ошибке!</span>
-                </p>
-
-                <p class="fieldset">
-                    <input type="checkbox" id="remember-me" checked>
-                    <label for="remember-me">Запомнить меня</label>
-                </p>
-
-                <p class="fieldset">
-                    <input class="full-width" type="submit" value="Войти">
-                </p>
+                <div id="loader">
+                    <input type="submit" value="Submit" />
+                </div>
             </form>
-
-            <p class="cd-form-bottom-message"><a href="#0">Забыли свой пароль?</a></p>
-            <!-- <a href="#0" class="cd-close-form">Close</a> -->
-        </div> <!-- cd-login -->
-
-        <div id="cd-signup"> <!-- форма регистрации -->
-            <form class="cd-form">
-                <p class="fieldset">
-                    <label class="image-replace cd-username" for="signup-username">Имя пользователя</label>
-                    <input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="Имя пользователя">
-                    <span class="cd-error-message">Здесь сообщение об ошибке!</span>
-                </p>
-
-                <p class="fieldset">
-                    <label class="image-replace cd-email" for="signup-email">E-mail</label>
-                    <input class="full-width has-padding has-border" id="signup-email" type="email" placeholder="E-mail">
-                    <span class="cd-error-message">Здесь сообщение об ошибке!</span>
-                </p>
-
-                <p class="fieldset">
-                    <label class="image-replace cd-password" for="signup-password">Пароль</label>
-                    <input class="full-width has-padding has-border" id="signup-password" type="text"  placeholder="Пароль">
-                    <a href="#0" class="hide-password">Скрыть</a>
-                    <span class="cd-error-message">Здесь сообщение об ошибке!</span>
-                </p>
-
-                <p class="fieldset">
-                    <input type="checkbox" id="accept-terms">
-                    <label for="accept-terms">Я согласен с <a href="#0">Условиями</a></label>
-                </p>
-
-                <p class="fieldset">
-                    <input class="full-width has-padding" type="submit" value="Создать аккаунт">
-                </p>
-            </form>
-
-            <!-- <a href="#0" class="cd-close-form">Close</a> -->
-        </div> <!-- cd-signup -->
-
-        <div id="cd-reset-password"> <!-- форма восстановления пароля -->
-            <p class="cd-form-message">Забыли пароль? Пожалуйста, введите адрес своей электронной почты. Вы получите ссылку, чтобы создать новый пароль.</p>
-
-            <form class="cd-form">
-                <p class="fieldset">
-                    <label class="image-replace cd-email" for="reset-email">E-mail</label>
-                    <input class="full-width has-padding has-border" id="reset-email" type="email" placeholder="E-mail">
-                    <span class="cd-error-message">Здесь сообщение об ошибке!</span>
-                </p>
-
-                <p class="fieldset">
-                    <input class="full-width has-padding" type="submit" value="Восстановить пароль">
-                </p>
-            </form>
-
-            <p class="cd-form-bottom-message"><a href="#0">Вернуться к входу</a></p>
-        </div> <!-- cd-reset-password -->
-        <a href="#0" class="cd-close-form">Закрыть</a>
+        </div>
+        <!-- end contactForm -->
     </div>
 </div>
+<div class="blankSeparator"></div>
 
+<!-- Socialize ==================================================
+================================================== -->
 <hr class="separator2">
 <div class="socialsblock">
     <div class="container socialize">
@@ -264,7 +311,7 @@
 ================================================== -->
 <!-- Scripts ==================================================
 ================================================== -->
-<script src="js/jquery-1.8.0.min.js" type="text/javascript"></script>
+<%--<script src="js/jquery-1.8.0.min.js" type="text/javascript"></script>--%>
 <!-- Main js files -->
 <script src="js/screen.js" type="text/javascript"></script>
 <!-- Tabs -->
@@ -278,7 +325,5 @@
 <script src="js/jquery.flexslider-min.js" type="text/javascript"></script>
 <!-- Modernizr -->
 <script type="text/javascript" src="js/modernizr.custom.29473.js"></script>
-<script type="text/javascript" src="js/for_registration/main.js"></script>
-<script type="text/javascript" src="js/for_registration/modernizr.js"></script>
 </body>
 </html>

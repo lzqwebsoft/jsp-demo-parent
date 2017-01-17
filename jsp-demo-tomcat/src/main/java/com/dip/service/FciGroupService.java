@@ -12,4 +12,5 @@ public interface FciGroupService {
     void delete(int id);
     FciGroup editFciGroup(FciGroup fciGroup);
     List<FciGroup> getAll();
+    FciGroup findById(int fcigroup);
 }

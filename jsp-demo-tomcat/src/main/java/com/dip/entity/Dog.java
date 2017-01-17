@@ -72,6 +72,10 @@ public class Dog {
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "dogs")
     private Set<DogShow> dogShows;
 
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "dogs")
+    private Set<Contest> contests;
+
+
     public Color getColor() {
         return color;
     }
@@ -222,5 +226,13 @@ public class Dog {
 
     public void setOwner_id(int owner_id) {
         this.owner_id = owner_id;
+    }
+
+    public Set<Contest> getContests() {
+        return contests;
+    }
+
+    public void setContests(Set<Contest> contests) {
+        this.contests = contests;
     }
 }

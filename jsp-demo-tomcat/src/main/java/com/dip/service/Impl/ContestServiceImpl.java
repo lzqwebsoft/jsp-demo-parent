@@ -1,7 +1,6 @@
 package com.dip.service.Impl;
 
 import com.dip.entity.Contest;
-import com.dip.entity.Contest_type;
 import com.dip.entity.DogShow;
 import com.dip.repository.ContestRepository;
 import com.dip.service.ContestService;
@@ -43,5 +42,10 @@ public class ContestServiceImpl implements ContestService {
     @Override
     public List<Contest> getAll() {
         return contestRepository.findAll();
+    }
+
+    @Override
+    public Contest findByDogShow(DogShow dogShow) {
+        return contestRepository.findByDogShow(dogShow);
     }
 }

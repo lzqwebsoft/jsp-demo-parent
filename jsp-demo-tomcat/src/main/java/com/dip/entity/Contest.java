@@ -22,11 +22,31 @@ public class Contest {
     @Column(name = "Description")
     private String description;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "contest")
-    private Set<Contest_type> contest_types;
+    @OneToOne(optional = false)
+    @JoinColumn(name="contest_type_id", unique = true, nullable = false,insertable = false,updatable = false)
+    private ContestType contestType;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinColumn(name = "contest_id", nullable = false, insertable = false, updatable = false)
+    @ManyToMany
+    @JoinTable(name = "registered_contest_participant",
+            joinColumns = @JoinColumn(name = "contest_id", referencedColumnName = "contest_id"),
+            inverseJoinColumns = @JoinColumn(name = "participant_id", referencedColumnName = "participant_id"))
+    private Set<Participant> participants;
+
+    @ManyToMany
+    @JoinTable(name = "registered_contest_dog",
+            joinColumns = @JoinColumn(name = "contest_id", referencedColumnName = "contest_id"),
+            inverseJoinColumns = @JoinColumn(name = "dog_id", referencedColumnName = "dog_id"))
+    private Set<Dog> dogs;
+
+    public Set<Dog> getDogs() {
+        return dogs;
+    }
+
+    public void setDogs(Set<Dog> dogs) {
+        this.dogs = dogs;
+    }
+
+    @OneToOne(optional = false,mappedBy = "contest")
     private DogShow dogShow;
 
     public int getContest_id() {
@@ -61,11 +81,28 @@ public class Contest {
         this.description = description;
     }
 
-    public Set<Contest_type> getContest_types() {
-        return contest_types;
+    public ContestType getContestType() {
+        return contestType;
     }
 
-    public void setContest_types(Set<Contest_type> contest_types) {
-        this.contest_types = contest_types;
+
+    public void setContestType(ContestType contestType) {
+        this.contestType = contestType;
+    }
+
+    public DogShow getDogShow() {
+        return dogShow;
+    }
+
+    public void setDogShow(DogShow dogShow) {
+        this.dogShow = dogShow;
+    }
+
+    public Set<Participant> getParticipants() {
+        return participants;
+    }
+
+    public void setParticipants(Set<Participant> participants) {
+        this.participants = participants;
     }
 }

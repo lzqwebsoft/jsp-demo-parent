@@ -179,8 +179,14 @@
                 </c:forEach>
                 </tbody>
             </table>
-
+            If You want to add expert to this show <a href="/add_expert_separate/${showdet.dogshow_id}">Press Here</a>
         <hr class="separator1">
+        <h3>Contest:</h3>
+        <p>${showdet.contest.title}</p>
+        <h4>Contest's description: </h4>
+        <p>${showdet.contest.description}</p>
+    <a href="${pageContext.request.contextPath}/dogs_on_contest/${showdet.dogshow_id}"><h3>Registered to Contest dogs</h3></a>
+    <a href="${pageContext.request.contextPath}/participants_on_contest/${showdet.dogshow_id}"><h3>Registered to Contest participants</h3></a>
 
     <a href="${pageContext.request.contextPath}/dogs_list/${showdet.dogshow_id}"><h3>Registered Dogs List</h3></a>
     <hr class="separator1">

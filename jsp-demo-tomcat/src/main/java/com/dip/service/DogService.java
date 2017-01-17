@@ -1,5 +1,6 @@
 package com.dip.service;
 
+import com.dip.entity.Contest;
 import com.dip.entity.Dog;
 import com.dip.entity.DogShow;
 
@@ -14,4 +15,5 @@ public interface DogService {
     Dog editDog(Dog dog);
     List<Dog> getAll();
     List<Dog> findByDogShow(DogShow dogShow);
+    List<Dog> findByContest(Contest contest);
 }

@@ -46,8 +46,8 @@ Main components
 -------------------------------- */
 header[role=banner] {
   position: relative;
-  height: 50px;
-  background: #343642;
+  height: 20px;
+  background: #343
 }
 header[role=banner] #cd-logo {
   float: left;
@@ -92,7 +92,6 @@ header[role=banner]::after {
   margin-right: 5%;
   width: 44px;
   height: 100%;
-  background: url("../img/cd-icon-menu.svg") no-repeat center center;
   cursor: pointer;
 }
 .main-nav ul {
@@ -116,7 +115,7 @@ header[role=banner]::after {
 .main-nav a {
   display: block;
   height: 50px;
-  line-height: 50px;
+  line-height: 5px;
   padding-left: 5%;
   background: #292a34;
   border-top: 1px solid #3b3d4b;

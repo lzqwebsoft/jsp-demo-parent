@@ -168,7 +168,7 @@
                     <textarea id=description name=description rows=6 cols=10 maxlength="150" value="<c:out value="${expert.description}"/>" required></textarea>
                 </div>
                 <div class="name">
-                    <label for="dogshow_id">For whom will be Your Contest:</label>
+                    <label for="dogshow_id">Choose Dog Show for Expert:</label>
                     <%--<input type="text" id="contest_type" name="contest_type" value="<c:out value="${contest_type.forwhom}"/>" required/>--%>
                     <form:select path="dogshow_list" id="dogshow_id" name="dogshow_id">
                     <form:option  value="" label="Select Dog Show"></form:option>

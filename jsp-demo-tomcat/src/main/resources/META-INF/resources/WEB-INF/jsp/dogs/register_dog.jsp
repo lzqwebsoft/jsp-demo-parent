@@ -19,8 +19,36 @@
 <html lang="en">
 <!--<![endif]-->
 <head>
-    <script>
-    </script>
+    <%--<script>--%>
+        <%--debugger;--%>
+        <%--$(document).ready(function () {--%>
+            <%--$('#fcigroup').on('change', getBreedList);--%>
+        <%--})--%>
+        <%--function getBreedList() {--%>
+            <%--var fcigroup =  $('#fcigroup').val();--%>
+            <%--$.ajax({--%>
+                <%--url: "/breedList" + fcigroup,--%>
+                <%--dataType: "json",--%>
+                <%--method: "GET",--%>
+                <%--success: function (breeds) {--%>
+
+                    <%--var content = "";--%>
+                    <%--content += '<option value="">Select Contest</option>';--%>
+                    <%--$.each(breeds, function (key, value) {--%>
+                        <%--content += "" +--%>
+                            <%--'<option value="'+ value.breed_id +'">'+ value.title +'</option>';--%>
+                    <%--});--%>
+                    <%--$('#breed').html('');--%>
+                    <%--$('#breed').html(content);--%>
+
+                <%--},--%>
+                <%--error: function (data) {--%>
+                    <%--alert('Error');--%>
+                <%--}--%>
+
+            <%--});--%>
+        <%--};--%>
+    <%--</script>--%>
 
     <!-- Basic Page Needs ==================================================
     ================================================== -->
@@ -177,7 +205,10 @@
                 </div>
                 <div class="name">
                     <label for="breed">Dog's Breed:</label>
-                    <input type="text" id="breed" name="breed" value="<c:out value="${dog.breed}"/>" required/>
+                    <%--<input type="text" id="breed" name="breed" value="<c:out value="${dog.breed}"/>" required/>--%>
+                    <select name="breed" id="breed">
+                        <option disabled> Choose Gender</option>
+                    </select>
                 </div>
                 <div class="name">
                     <label for="breeder_fname">Input breeder's first name:</label>

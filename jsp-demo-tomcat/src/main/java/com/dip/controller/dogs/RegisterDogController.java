@@ -26,13 +26,13 @@ public class RegisterDogController {
     @Autowired
     ColorService colorService;
     @Autowired
-    FciGroupService fciGroupService;
-    @Autowired
     DogService dogService;
     @Autowired
     DogShowService dogShowService;
     @Autowired
     Registered_dogService registered_dogService;
+    @Autowired
+    FciGroupService fciGroupService;
 
 
     @ModelAttribute("dogshow_list")
@@ -41,6 +41,7 @@ public class RegisterDogController {
         dogShows = dogShowService.getAll();
         return dogShows;
     }
+
 
     @RequestMapping(value = {"/register_dog"}, method = {RequestMethod.GET})
     public ModelAndView RegisterDogPage() {
@@ -52,6 +53,7 @@ public class RegisterDogController {
         Date now = new Date();
         Date date = new Date(now.getYear(), now.getMonth()-3,now.getDay());
         modelAndView.addObject("date",date);
+        FciGroup fciGroup = new FciGroup();
         return modelAndView;
     }
 

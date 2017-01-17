@@ -1,6 +1,7 @@
 package com.dip.service;
 
 import com.dip.entity.Breed;
+import com.dip.entity.FciGroup;
 
 import java.util.List;
 
@@ -12,4 +13,5 @@ public interface BreedService {
     void delete(int id);
     Breed editBreed(Breed breed);
     List<Breed> getAll();
+    List<Breed> findByFciGroup(FciGroup fciGroup);
 }

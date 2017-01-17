@@ -20,22 +20,4 @@ import java.util.Set;
  * Created by moneg on 08.01.2017.
  */
 
-@Component
-public class UserDetailsServiceImpl implements UserDetailsService{
-
-    @Autowired
-    UserRepository userRepository;
-
-    @Override
-    @Transactional(readOnly = true)
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByUsername(username);
-
-        Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
-        for (Role role : user.getRoles()){
-            grantedAuthorities.add(new SimpleGrantedAuthority(role.getName()));
-        }
-
-        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), grantedAuthorities);
-    }
-}
+//@Component

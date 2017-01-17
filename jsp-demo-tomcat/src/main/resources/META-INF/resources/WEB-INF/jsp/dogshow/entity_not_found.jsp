@@ -9,8 +9,6 @@
 
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form"   uri="http://www.springframework.org/tags/form" %>
-
-<c:set var="ctx" value="${pageContext['request'].contextPath}"/>
 <!DOCTYPE html>
 <!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
 <!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
@@ -24,7 +22,7 @@
     ================================================== -->
 
     <meta charset="utf-8">
-    <title>Register As Participant</title>
+    <title>Freebix Responsive Site Template</title>
     <meta name="description" content="Place to put your description text">
     <meta name="author" content="">
     <!--[if lt IE 9]>
@@ -39,18 +37,19 @@
     <!-- CSS ==================================================
     ================================================== -->
 
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/skeleton.css">
-    <link rel="stylesheet" href="css/screen.css">
-    <link rel="stylesheet" href="css/prettyPhoto.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/base.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/skeleton.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/screen.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/table/table_experts.css">
+    <link rel="stylesheet" href="c${pageContext.request.contextPath}/ss/prettyPhoto.css" type="text/css" media="screen" />
 
     <!-- Favicons ==================================================
     ================================================== -->
 
-    <link rel="shortcut icon" href="images/favicon.png">
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/favicon.png">
+    <link rel="apple-touch-icon" href="${pageContext.request.contextPath}/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="${pageContext.request.contextPath}/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="${pageContext.request.contextPath}/images/apple-touch-icon-114x114.png">
 
     <!-- Google Fonts ==================================================
     ================================================== -->
@@ -71,13 +70,13 @@
                     <li><a href="${pageContext.request.contextPath}/home_page">Home</a></li>
                     <li><a href="${pageContext.request.contextPath}/about">About</a></li>
                     <li><a href="${pageContext.request.contextPath}/contact">Contact</a></li>
-                    <li><a id="visited">Register</a>
+                    <li><a>Register</a>
                         <ul>
                             <li><a href="${pageContext.request.contextPath}/register_dog">Register Dog</a></li>
-                            <li><a href="${pageContext.request.contextPath}/register_participant">Register as Participant</a></li>
+                            <li><a href="${pageContext.request.contextPath}/reg_participant">Register as Participant</a></li>
                         </ul>
                     </li>
-                    <li><a href="${pageContext.request.contextPath}/dogshows">Dog Shows</a></li>
+                    <li><a href="${pageContext.request.contextPath}/dogshows" id="visited">Dog Shows</a></li>
                     <li><a href="${pageContext.request.contextPath}/reg">Registration test</a></li>
                     <li><a href="${pageContext.request.contextPath}/register_dog">Add Dog test</a></li>
                     <li><a href="${pageContext.request.contextPath}/add_dog_show">Add dog show test</a></li>
@@ -108,58 +107,25 @@
 <!-- header ends here -->
 <!--Breadcrumbs ==================================================
 ================================================== -->
-<div class="breadcrumbs">
-    <div class="container">
-        <header>
-            <h3>Register As Participant</h3>
-        </header>
-    </div>
-    <!-- container ends here -->
-    <hr class="separator1">
-</div>
-<!-- breadcrumbs ends here -->
-<!-- Contact Content Part - Contact Form ==================================================
-================================================== -->
+
 <div class="container contact">
-    <!-- Contact Sidebar ==================================================
-  ================================================== -->
     <div class="two_third lastcolumn contact1">
         <div id="contactForm">
-            <h1>Fill in all the fields!</h1>
-            <div class="sepContainer"></div>
-            <form action="add_participant" method="POST" id="contact_form">
-                <div class="name">
-                    <label for="fname">Your First Name:</label>
-                    <input type=text id=fname name="Fname" value="<c:out value="${participant.fname}"/>" required/>
-                </div>
-                <div class="name">
-                    <label for="sname">Your Second Name:</label>
-                    <input type=text id=sname name="Sname" value="<c:out value="${participant.sname}"/>" required/>
-                </div>
-                <div class="name">
-                    <label for="lname">Your Last Name:</label>
-                    <input type=text id=lname name="Lname" value="<c:out value="${participant.lname}"/>" required/>
-                </div>
-                <div class="name">
-                    <label for="age">Your Age:</label>
-                    <input type="number" size="1" min="9" max="18" id="age" name="Age" value="<c:out value="${participant.age}"/>" required/>
-                </div>
-                <div class="name">
-                    <label for="dogshow_id">Select Dog Show for which You want to register:</label>
-                <form:select path="dogshow_list_for_people" id="dogshow_id" name="dogshow_id">
-                    <form:option  value="" label="Select Dog Show"></form:option>
-                    <form:options items="${dogshow_list_for_people}" itemLabel="title" itemValue="dogshow_id"></form:options>
-                </form:select>
-                </div>
-                <div id="loader">
-                    <input type="submit" value="Submit" />
-                </div>
-            </form>
+            <br>
+            <br>
+            <br>
+            <br>
+            <h1>There is no </h1>
+            <br>
+            <h1>${entity}</h1>
+            <br>
+            <h1>contest on the Show!</h1>
+            <!-- end contactForm -->
         </div>
-        <!-- end contactForm -->
     </div>
 </div>
-<div class="blankSeparator"></div>
+
+<!-- container ends here -->
 
 <!-- Socialize ==================================================
 ================================================== -->
@@ -169,17 +135,18 @@
         <h3>Socialize with us!</h3>
         <section class="socials">
             <ul class="socials">
-                <li><a href="#"><img src="images/socials/twitter.png" alt="" /></a></li>
-                <li><a href="#"><img src="images/socials/facebook.png" alt="" /></a></li>
-                <li><a href="#"><img src="images/socials/dribbble.png" alt="" /></a></li>
-                <li><a href="#"><img src="images/socials/google+.png" alt="" /></a></li>
-                <li><a href="#"><img src="images/socials/linkedin.png" alt="" /></a></li>
-                <li><a href="#"><img src="images/socials/youtube.png" alt="" /></a></li>
+                <li><a href="#"><img src="${pageContext.request.contextPath}/images/socials/twitter.png" alt="" /></a></li>
+                <li><a href="#"><img src="${pageContext.request.contextPath}/images/socials/facebook.png" alt="" /></a></li>
+                <li><a href="#"><img src="${pageContext.request.contextPath}/images/socials/dribbble.png" alt="" /></a></li>
+                <li><a href="#"><img src="${pageContext.request.contextPath}/images/socials/google+.png" alt="" /></a></li>
+                <li><a href="#"><img src="${pageContext.request.contextPath}/images/socials/linkedin.png" alt="" /></a></li>
+                <li><a href="#"><img src="${pageContext.request.contextPath}/images/socials/youtube.png" alt="" /></a></li>
             </ul>
         </section>
     </div>
     <!-- container ends here -->
 </div>
+
 <!-- socialsblock ends here -->
 <!-- Footer ==================================================
 ================================================== -->
@@ -219,19 +186,19 @@
 ================================================== -->
 <!-- Scripts ==================================================
 ================================================== -->
-<%--<script src="js/jquery-1.8.0.min.js" type="text/javascript"></script>--%>
+<script src="${pageContext.request.contextPath}/js/jquery-1.8.0.min.js" type="text/javascript"></script>
 <!-- Main js files -->
-<script src="js/screen.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/js/screen.js" type="text/javascript"></script>
 <!-- Tabs -->
-<script src="js/tabs.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/js/tabs.js" type="text/javascript"></script>
 <!-- Include prettyPhoto -->
-<script src="js/jquery.prettyPhoto.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.prettyPhoto.js" type="text/javascript"></script>
 <!-- Include Superfish -->
-<script src="js/superfish.js" type="text/javascript"></script>
-<script src="js/hoverIntent.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/js/superfish.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/js/hoverIntent.js" type="text/javascript"></script>
 <!-- Flexslider -->
-<script src="js/jquery.flexslider-min.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.flexslider-min.js" type="text/javascript"></script>
 <!-- Modernizr -->
-<script type="text/javascript" src="js/modernizr.custom.29473.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/modernizr.custom.29473.js"></script>
 </body>
 </html>
