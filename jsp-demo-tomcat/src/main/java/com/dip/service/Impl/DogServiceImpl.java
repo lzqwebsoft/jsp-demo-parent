@@ -48,4 +48,64 @@ public class DogServiceImpl implements DogService{
         return dogRepository.findByContests(contest);
     }
 
+    @Override
+    public List<Dog> findByBreed(String breed) {
+        return dogRepository.findByBreedLike(breed);
+    }
+
+    @Override
+    public List<Dog> findByBreederFname(String breederFname) {
+        return dogRepository.findByBreederFnameLike(breederFname);
+    }
+
+    @Override
+    public List<Dog> findByBreederSname(String breederSname) {
+        return dogRepository.findByBreederSnameLike(breederSname);
+    }
+
+    @Override
+    public List<Dog> findByBreederLname(String breederLname) {
+        return dogRepository.findByBreederLnameLike(breederLname);
+    }
+
+    @Override
+    public List<Dog> findByColor(String color) {
+        return dogRepository.findByColorLike(color);
+    }
+
+    @Override
+    public List<Dog> findByDam(String dam) {
+        return dogRepository.findByDamLike(dam);
+    }
+
+    @Override
+    public List<Dog> findBySire(String sire) {
+        return dogRepository.findBySireLike(sire);
+    }
+
+    @Override
+    public List<Dog> findByGender(String gender) {
+        return dogRepository.findByGenderLike(gender);
+    }
+
+    @Override
+    public List<Dog> findByName(String name) {
+        return dogRepository.findByNameLike(name);
+    }
+
+    @Override
+    public List<Dog> findByOwnerFname(String ownerFname) {
+        return dogRepository.findByOwnerFnameLike(ownerFname);
+    }
+
+    @Override
+    public List<Dog> findByOwnerSname(String ownerSname) {
+        return dogRepository.findByOwnerSnameLike(ownerSname);
+    }
+
+    @Override
+    public List<Dog> findByOwnerLname(String ownerLname) {
+        return dogRepository.findByOwnerLnameLike(ownerLname);
+    }
+
 }

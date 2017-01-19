@@ -38,10 +38,11 @@
     <!-- CSS ==================================================
     ================================================== -->
 
+    <link rel="stylesheet" href="css/search.css">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/skeleton.css">
     <link rel="stylesheet" href="css/screen.css">
-    <link rel="stylesheet" href="css/search/search.css">
+    <link rel="stylesheet" href="css/search.css">
     <link rel="stylesheet" href="css/prettyPhoto.css" type="text/css" media="screen" />
 
     <!-- Favicons ==================================================
@@ -150,21 +151,33 @@
         <section class="recentnews">
             <h4 class="sidebarheader">Additional instruments</h4>
             <ul class="tabs">
-                <li><a class="active" href="#trends">Search</a></li>
-            </ul>
+                <li><a class="active">Search</a></li>
+            </ul
             <ul class="tabs-content">
                 <li class="active" id="trends">
                     <p>Use this form to search that Dog Show You want.</p>
-                    <select name="search_type" id="search_type">
-                        <option disabled> Choose Search Type</option>
-                        <option value="1">Search By Title</option>
-                        <option value="2">Search By Sponsor</option>
-                    </select>
-                        <br>
-                        <input type="text" name="search_text">
-                        <div class="content" align="right">
-                            <a href="${pageContext.request.contextPath}/search_dogshow/${search_text}">Search</a>
+                    <form action="/search_dogshow" method="POST" class="search_bar small">
+                        <div class="search_dropdown" style="width: 6px;" id="search_type" name="search_type">
+                            <span>Search Type</span>
+                            <ul>
+                                <li><input type="hidden" value= 1 name="search_type">Title</li>
+                                <li><input type="hidden" value= 2 name="search_type">Sponsor</li>
+                                <li><input type="hidden" value= 3 name="search_type">Organizer</li>
+                            </ul>
                         </div>
+                        <input type="text" placeholder="Search for anything" name="search_text" id="search_text"/>
+                    <%--<select name="search_type" id="search_typ">--%>
+                        <%--<option disabled> Choose Search Type</option>--%>
+                        <%--<option value="1">Search By Title</option>--%>
+                        <%--<option value="2">Search By Sponsor</option>--%>
+                        <%--<option value="3">Search By Organizer</option>--%>
+                        <%--<option value="4">Search By Contest type</option>--%>
+                    <%--</select>--%>
+                        <br>
+                        <%--<input type="text" name="search_text" id="search_text">--%>
+                        <%--<input type="submit" value="Search">--%>
+                        <button type="submit" value="Search">Search</button>
+                    </form>
                 </li>
             </ul>
         </section>
@@ -231,6 +244,7 @@
 <!-- Scripts ==================================================
 ================================================== -->
 <script src="js/jquery-1.8.0.min.js" type="text/javascript"></script>
+<script src="js/search.js" type="text/javascript"></script>
 <!-- Main js files -->
 <script src="js/screen.js" type="text/javascript"></script>
 <!-- Tabs -->

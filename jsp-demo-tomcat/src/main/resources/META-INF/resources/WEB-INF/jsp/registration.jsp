@@ -82,14 +82,14 @@
                     <li><a href="${pageContext.request.contextPath}/dogshows">Dog Shows</a></li>
                     <li><a href="${pageContext.request.contextPath}/registration"id="visited">Registration test</a></li>
                     <li><a href="${pageContext.request.contextPath}/add_dog_show">Add dog show test</a></li>
-                    <li><a href="${pageContext.request.contextPath}/register_expert">Add Expert test</a></li>
-                    <nav class="main-nav ">
-                        <ul class="sf-menu">
+                    <%--<li><a class="cd-signin" href="#0">Sign up / Sign in</a></li>--%>
+                    <li>
+                        <nav class="main-nav ">
                             <!-- ссылки на вызов форм -->
-                            <li><a class="cd-signin" href="#0">Вход</a></li>
-                            <li><a class="cd-signup" href="#0">Регистрация</a></li>
-                        </ul>
+                            <li><a  href="#0">Sign up / Sign in</a></li>
+                            <%--<li><a class="cd-signup" href="#0">Регистрация</a></li>--%>
                     </nav>
+                    </li>
                 </ul>
             </div>
             <!-- mainmenu ends here -->

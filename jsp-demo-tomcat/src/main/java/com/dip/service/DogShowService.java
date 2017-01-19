@@ -16,5 +16,9 @@ public interface DogShowService {
     DogShow getById(int id);
     DogShow setById(int id);
     List<DogShow> findByTitle(String title);
+    List<DogShow> findBySponsor(String sponsor);
+    List<DogShow> findByOrganizer(String organizer);
+    List<DogShow> findByForwhom(String forwhom);
+
     List<DogShow> findByContestType(ContestType contestType);
 }

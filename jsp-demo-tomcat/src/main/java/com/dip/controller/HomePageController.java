@@ -44,6 +44,11 @@ public class HomePageController {
 		return "home_page";
 	}
 
+	@RequestMapping(value = {"/terms"}, method = {RequestMethod.GET})
+	public String TermsPage() {
+		return "terms";
+	}
+
 
 	@RequestMapping(value = "/registration", method = RequestMethod.GET)
 	public String registration(Model model) {

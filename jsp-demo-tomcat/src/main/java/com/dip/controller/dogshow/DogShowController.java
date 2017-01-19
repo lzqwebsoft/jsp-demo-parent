@@ -54,19 +54,11 @@ public class DogShowController {
         return modelAndView;
     }
 
-//    @RequestMapping(value = {"/search/${search_type}"}, method = {RequestMethod.GET})
-//    public ModelAndView SearchPage(@PathVariable ("search_type") int search_type) {
-//        System.out.println("DogShow search");
-//        System.out.println(search_type);
-//
-//        ModelAndView modelAndView = new ModelAndView("dogshow/dog_show_details");
-//        return modelAndView;
-//    }
-
     @RequestMapping(value = {"/dogs_list/{dogshow_id}"},method = {RequestMethod.GET})
     public ModelAndView DogsListPage(@PathVariable("dogshow_id") int dogshow_id){
         System.out.println("DOGSHOW_LIST");
         ModelAndView modelAndView = new ModelAndView("dogs/dogs_on_show");
+//        List<Integer> numbers = registered_dogService.findByDogShowId(dogshow_id);
         modelAndView.addObject("dogs_registered_list",dogService.findByDogShow(dogShowService.getById(dogshow_id)));
         return modelAndView;
     }

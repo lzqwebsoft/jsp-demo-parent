@@ -42,15 +42,18 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/skeleton.css">
     <link rel="stylesheet" href="css/screen.css">
+    <link rel="stylesheet" href="css/for_registration/reset.css">
+    <link rel="stylesheet" href="css/for_registration/style.css">
     <link rel="stylesheet" href="css/prettyPhoto.css" type="text/css" media="screen" />
 
     <!-- Favicons ==================================================
     ================================================== -->
 
-    <link rel="shortcut icon" href="images/favicon.png">
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="shortcut icon" type="image/png" href="images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="images/favicon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/favicon.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/favicon.png">
 
     <!-- Google Fonts ==================================================
     ================================================== -->
@@ -64,7 +67,7 @@
     <div class="container">
         <!-- Header | Logo, Menu
             ================================================== -->
-        <div class="logo"><a href="${pageContext.request.contextPath}/home_page"><img src="images/logo.png" alt="" /></a></div>
+        <div class="logo"><a href="${pageContext.request.contextPath}/home_page" al><img src="images/logo.png" alt="" style="height: 120px; margin-bottom: 10px"/></a></div>
         <div class="mainmenu">
             <div id="mainmenu">
                 <ul class="sf-menu">
@@ -74,7 +77,7 @@
                     <li><a>Register</a>
                         <ul>
                             <li><a href="${pageContext.request.contextPath}/register_dog">Register Dog</a></li>
-                            <li><a>Register as Participant</a>
+                            <li><a>Register to Contest</a>
                             <ul>
                                 <li><a href="${pageContext.request.contextPath}/reg_participant">Register as Participant</a></li>
                                 <li><a href="${pageContext.request.contextPath}/reg_dog_contest">Register dog to contest</a></li>
@@ -83,10 +86,15 @@
                         </ul>
                     </li>
                     <li><a href="${pageContext.request.contextPath}/dogshows">Dog Shows</a></li>
-                    <li><a href="${pageContext.request.contextPath}/registration">Registration test</a></li>
-                    <li><a href="${pageContext.request.contextPath}/add_dog_show">Add dog show test</a></li>
-                    <li><a href="${pageContext.request.contextPath}/register_expert">Add Expert test</a></li>
-                    <li><a href="${pageContext.request.contextPath}/search_page">Search</a></li>
+                    <li><a href="${pageContext.request.contextPath}/add_dog_show">Add dog show</a></li>
+                    <li><a href="${pageContext.request.contextPath}/register_expert">Add Expert</a></li>
+                    <li>
+                        <nav class="main-nav ">
+                            <!-- ссылки на вызов форм -->
+                    <li><a  href="#0">Sign up / Sign in</a></li>
+                    <%--<li><a class="cd-signup" href="#0">Регистрация</a></li>--%>
+                    </nav>
+                    </li>
                 </ul>
             </div>
             <!-- mainmenu ends here -->
@@ -113,6 +121,94 @@
     <!-- container ends here -->
 </div>
 <!-- header ends here -->
+<div class="cd-user-modal"> <!-- все формы на фоне затемнения-->
+    <div class="cd-user-modal-container"> <!-- основной контейнер -->
+        <ul class="cd-switcher">
+            <li><a href="#0">Sign in</a></li>
+            <li><a href="#0">Sign up</a></li>
+        </ul>
+
+        <div id="cd-login"> <!-- форма входа -->
+            <form class="cd-form">
+                <p class="fieldset">
+                    <label class="image-replace cd-email" for="signin-email">E-mail</label>
+                    <input class="full-width has-padding has-border" id="signin-email" type="email" placeholder="E-mail">
+                    <span class="cd-error-message">Error!</span>
+                </p>
+
+                <p class="fieldset">
+                    <label class="image-replace cd-password" for="signin-password">Password</label>
+                    <input class="full-width has-padding has-border" id="signin-password" type="text"  placeholder="Password">
+                    <span class="cd-error-message">Error!</span>
+                </p>
+
+                <p class="fieldset">
+                    <input type="checkbox" id="remember-me" checked>
+                    <label for="remember-me">Remember me</label>
+                </p>
+
+                <p class="fieldset">
+                    <input class="full-width" type="submit" value="Enter">
+                </p>
+            </form>
+
+            <p class="cd-form-bottom-message"><a href="#0">Forget Your password?</a></p>
+            <!-- <a href="#0" class="cd-close-form">Close</a> -->
+        </div> <!-- cd-login -->
+
+        <div id="cd-signup"> <!-- форма регистрации -->
+            <form class="cd-form">
+                <p class="fieldset">
+                    <label class="image-replace cd-username" for="signup-username">Username</label>
+                    <input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="Username">
+                    <span class="cd-error-message">Error here!</span>
+                </p>
+
+                <p class="fieldset">
+                    <label class="image-replace cd-email" for="signup-email">E-mail</label>
+                    <input class="full-width has-padding has-border" id="signup-email" type="email" placeholder="E-mail">
+                    <span class="cd-error-message">There is an error!</span>
+                </p>
+
+                <p class="fieldset">
+                    <label class="image-replace cd-password" for="signup-password">Password</label>
+                    <input class="full-width has-padding has-border" id="signup-password" type="text"  placeholder="Password">
+                    <span class="cd-error-message">There is an error here!</span>
+                </p>
+
+                <p class="fieldset">
+                    <input type="checkbox" id="accept-terms">
+                    <label for="accept-terms">I accept the <a href="${pageContext.request.contextPath}/terms">Terms of the license agreement</a></label>
+                </p>
+
+                <p class="fieldset">
+                    <input class="full-width has-padding" type="submit" value="Create account">
+                </p>
+            </form>
+
+            <!-- <a href="#0" class="cd-close-form">Close</a> -->
+        </div> <!-- cd-signup -->
+
+        <div id="cd-reset-password"> <!-- форма восстановления пароля -->
+            <p class="cd-form-message">If You forget Your password, write Your email and we'll send You a new one.</p>
+
+            <form class="cd-form">
+                <p class="fieldset">
+                    <label class="image-replace cd-email" for="reset-email">E-mail</label>
+                    <input class="full-width has-padding has-border" id="reset-email" type="email" placeholder="E-mail">
+                    <span class="cd-error-message">Error here!</span>
+                </p>
+
+                <p class="fieldset">
+                    <input class="full-width has-padding" type="submit" value="Restore password">
+                </p>
+            </form>
+
+            <p class="cd-form-bottom-message"><a href="#0">Return to Sign in</a></p>
+        </div> <!-- cd-reset-password -->
+        <a href="#0" class="cd-close-form">Close</a>
+    </div>
+</div>
 <!-- Slider ==================================================
 ================================================== -->
 <section class="slider">
@@ -131,7 +227,7 @@
 <div class="infobox">
     <div class="container info">
         <header>
-            <h1>Introducing SERVICE NAME!</h1>
+            <h1>Introducing Dog Show Live!</h1>
         </header>
         <hr class="separator">
     </div>
@@ -142,21 +238,21 @@
 ================================================== -->
 <div class="container latest">
     <div class="one_third">
-        <figure class="shadow"><a href="#" class="thumb"><img src="images/portfolio/a.jpg" alt="alt" /></a>
-            <figcaption> <a href="#">
-                <h3 class="heading">Retro Movie</h3>
+        <figure class="shadow"><a href="${pageContext.request.contextPath}/register_dog" class="thumb"><img src="images/portfolio/a.jpg" alt="alt" /></a>
+            <figcaption> <a href="${pageContext.request.contextPath}/register_dog">
+                <h3 class="heading">Register Dog</h3>
             </a>
-                <p class="bioquote">One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. </p>
+                <p class="bioquote">You could register Your dog to any available Dog Show.</p>
             </figcaption>
         </figure>
     </div>
     <!-- one_third ends here -->
     <div class="one_third">
-        <figure class="shadow"><a href="#" class="thumb"><img src="images/portfolio/b.jpg" alt="alt" /></a>
-            <figcaption> <a href="#">
-                <h3 class="heading">Retro Movie</h3>
+        <figure class="shadow"><a href="${pageContext.request.contextPath}/contact" class="thumb"><img src="images/portfolio/b.jpg" alt="alt" /></a>
+            <figcaption> <a href="${pageContext.request.contextPath}/contact">
+                <h3 class="heading">Open to cooperation</h3>
             </a>
-                <p class="bioquote">One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. </p>
+                <p class="bioquote">We are open to cooperation with everyone. If You want to tell us something, use our form to it! </p>
             </figcaption>
         </figure>
     </div>
@@ -164,9 +260,9 @@
     <div class="one_third lastcolumn">
         <figure class="shadow"><a href="#" class="thumb"><img src="images/portfolio/c.jpg" alt="alt" /></a>
             <figcaption> <a href="#">
-                <h3 class="heading">Retro Movie</h3>
+                <h3 class="heading">Perfect Usability</h3>
             </a>
-                <p class="bioquote">One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. </p>
+                <p class="bioquote">This service made with perfect usability. </p>
             </figcaption>
         </figure>
     </div>
@@ -175,109 +271,7 @@
 <!-- end container -->
 <!--Heading Box ==================================================
 ================================================== -->
-<div class="headingblock">
-    <div class="container heading">
-        <header>
-            <h2>Introducing Freebix!</h2>
-            <p>- Free, fully <span class="pink">responsive HTML</span> site template made by <a href="http://www.anarieldesign.com/" rel="nofollow"><strong>Anariel Design</strong></a> -</p>
-        </header>
-    </div>
-    <!-- container ends here -->
-    <hr class="separator1">
-</div>
-<!-- headingblock ends here -->
-<!-- Latest News & Faq ==================================================
-================================================== -->
-<div class="container latest">
-    <div class="two_third">
-        <div class="accordion-trigger">
-            <h3>What did you eat for breakfast?</h3>
-        </div>
-        <div class="accordion-container">
-            <div class="one_third"> <img class="shadow" src="images/portfolio/a.jpg" alt="" /> </div>
-            <!--end one_third-->
-            <div class="one_third"> <img class="shadow" src="images/portfolio/b.jpg" alt="" /> </div>
-            <!--end one_third-->
-            <div class="one_third lastcolumn"> <img class="shadow" src="images/portfolio/c.jpg" alt="" /> </div>
-            <!--end one_third-->
-            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. </p>
-            <hr class="separator1">
-        </div>
-        <div class="accordion-trigger">
-            <h3>Morning or Night person?</h3>
-        </div>
-        <div class="accordion-container">
-            <div class="one_half">
-                <div class="video-holder">
-                    <div class="video-container">
-                        <iframe title="YouTube video player" class="youtube-player" src="http://www.youtube.com/embed/W7JXcoTty3Q"></iframe>
-                    </div>
-                    <!--video-container ends here-->
-                </div>
-                <!--video-holder ends here-->
-            </div>
-            <!--end one_half-->
-            <div class="one_half lastcolumn">
-                <div class="video-holder">
-                    <div class="video-container">
-                        <iframe title="YouTube video player" class="youtube-player" src="http://www.youtube.com/embed/W7JXcoTty3Q"></iframe>
-                    </div>
-                    <!--video-container ends here-->
-                </div>
-                <!--video-holder ends here-->
-            </div>
-            <!--end one_half-->
-            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. </p>
-            <hr class="separator1">
-        </div>
-        <div class="accordion-trigger">
-            <h3>If you were a animal, which would you be?</h3>
-        </div>
-        <div class="accordion-container">
-            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. </p>
-            <hr class="separator1">
-        </div>
-        <div class="accordion-trigger">
-            <h3>Your favorite places in the world?</h3>
-        </div>
-        <div class="accordion-container">
-            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. </p>
-            <hr class="separator1">
-        </div>
-        <div class="accordion-trigger">
-            <h3>Your favorite color?</h3>
-        </div>
-        <div class="accordion-container">
-            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. </p>
-            <hr class="separator1">
-        </div>
-        <div class="accordion-trigger">
-            <h3>The 5 things you can't live without?</h3>
-        </div>
-        <div class="accordion-container">
-            <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper.</p>
-            <hr class="separator1">
-            <!-- ENDS Accordions -->
-        </div>
-    </div>
-    <!-- two_third ends here -->
-    <div class="one_third lastcolumn">
-        <h3>New Entries</h3>
-        <article>
-            <p>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin.</p>
-            <p class="quote">One morning, when Gregor Samsa woke from troubled dreams.</p>
-            <a href="#" title="">&rarr; download</a></article>
-        <hr class="separator1">
-        <article>
-            <p>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin.</p>
-            <p class="quote">One morning, when Gregor Samsa woke from troubled dreams.</p>
-            <a href="#" title="">&rarr; download</a></article>
-        <hr class="separator1">
-        <article>
-            <p>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin.</p>
-            <p class="quote">One morning, when Gregor Samsa woke from troubled dreams.</p>
-            <a href="#" title="">&rarr; download</a></article>
-    </div>
+
     <!-- one_third ends here -->
 </div>
 <!-- end container -->
@@ -330,7 +324,7 @@
 ================================================== -->
 <div id="copyright">
     <div class="container">
-        <p class="copyright">&copy; Copyright 2017. &quot;SERVICE NAME&quot; by Max Design. All rights reserved.</p>
+        <p class="copyright">&copy; Copyright 2017. &quot;Dog Show Live&quot; by Max Design. All rights reserved.</p>
     </div>
     <!-- container ends here -->
 </div>
@@ -353,5 +347,8 @@
 <script src="js/jquery.flexslider-min.js" type="text/javascript"></script>
 <!-- Modernizr -->
 <script type="text/javascript" src="js/modernizr.custom.29473.js"></script>
+
+<script type="text/javascript" src="js/for_registration/main.js"></script>
+<script type="text/javascript" src="js/for_registration/modernizr.js"></script>
 </body>
 </html>

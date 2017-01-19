@@ -16,4 +16,16 @@ public interface DogService {
     List<Dog> getAll();
     List<Dog> findByDogShow(DogShow dogShow);
     List<Dog> findByContest(Contest contest);
+    List<Dog> findByBreed(String breed);
+    List<Dog> findByBreederFname(String breederFname);
+    List<Dog> findByBreederSname(String breederSname);
+    List<Dog> findByBreederLname(String breederLname);
+    List<Dog> findByColor(String color);
+    List<Dog> findByDam(String dam);
+    List<Dog> findBySire(String sire);
+    List<Dog> findByGender(String gender);
+    List<Dog> findByName(String name);
+    List<Dog> findByOwnerFname(String ownerFname);
+    List<Dog> findByOwnerSname(String ownerSname);
+    List<Dog> findByOwnerLname(String ownerLname);
 }

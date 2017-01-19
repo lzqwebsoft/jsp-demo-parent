@@ -39,6 +39,7 @@
     <!-- CSS ==================================================
     ================================================== -->
 
+    <link rel="stylesheet" href="css/search.css">
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/skeleton.css">
     <link rel="stylesheet" href="css/screen.css">
@@ -70,7 +71,7 @@
                 <ul class="sf-menu">
                     <li><a href="${pageContext.request.contextPath}/home_page">Home</a></li>
                     <li><a href="${pageContext.request.contextPath}/about">About</a></li>
-                    <li><a href="${pageContext.request.contextPath}/contact" id="visited">Contact</a></li>
+                    <li><a href="${pageContext.request.contextPath}/contact">Contact</a></li>
                     <li><a>Register</a>
                         <ul>
                             <li><a href="${pageContext.request.contextPath}/register_dog">Register Dog</a></li>
@@ -111,7 +112,7 @@
 <div class="breadcrumbs">
     <div class="container">
         <header>
-            <h3>Contact Page</h3>
+            <h3>Result Page</h3>
         </header>
     </div>
     <!-- container ends here -->
@@ -124,17 +125,50 @@
 <!-- Contact Content Part - Contact Form ==================================================
 ================================================== -->
 <div class="container contact">
-    <select name="search_type" id="search_type">
-        <option disabled> Choose Search Type</option>
-        <option value="1">Search By Title</option>
-        <option value="2">Search By Sponsor</option>
-    </select>
-    <br>
-    <input type="search" name="search_text">
-    <div class="content" align="right">
-        <a href="${pageContext.request.contextPath}/search_dogshow/${search_type}">Search</a>
-    </div>
 
+    <form action="/search_dogshow" method="POST" class="search_bar large">
+        <%--<select name="search_type" id="search_type">--%>
+            <%--<option disabled> Choose Search Type</option>--%>
+            <%--<option value="1">Search By Title</option>--%>
+            <%--<option value="2">Search By Sponsor</option>--%>
+            <%--<option value="3">Search By Organizer</option>--%>
+            <%--<option value="4">Search By Contest type</option>--%>
+        <%--</select>--%>
+        <%--<br>--%>
+        <%--<input type="text" name="search_text" id="search_text">--%>
+        <%--<input type="submit" value="Search">--%>
+            <div class="search_dropdown" style="width: 16px;">
+                <span>Search Type</span>
+                <ul>
+                    <li><input type="hidden" value="1" name="search_type">Title</li>
+                    <li><input type="hidden" value="2" name="search_type">Sponsor</li>
+                    <li><input type="hidden" value="3" name="search_type">Organizer</li>
+                </ul>
+            </div>
+
+            <input type="text" placeholder="Search for anything" name="search_text" />
+
+            <button type="submit" value="Search">Search</button>
+
+    </form>
+
+    <div class="blankSeparator"></div>
+    <div class="ten columns alpha">
+        <c:forEach var="dsh" items="${dogshows_list}">
+                <article class="post">
+                <h3>${dsh.title}</h3>
+                <a href="pics/${dsh.dogshow_id}.jpg" class="prettyPhoto[gal]"><img class="shadow" src="pics/${dsh.dogshow_id}.jpg" alt="" height="200" /></a>
+                <div class="entry-date">
+                        <%--KOSTIL--%>
+                    <p></p>
+                    <p><fmt:formatDate value="${dsh.date}" pattern="dd MMM yyyy" /></p>
+                </div>
+                <p>${dsh.description}</p>
+                <input hidden value="<c:out value="${dsh.dogshow_id}"/>" name="dogshow_id" id="${dsh.dogshow_id}" />
+                <a href="${pageContext.request.contextPath}/showDet/${dsh.dogshow_id}">more <span>-></span></a>
+            </article>
+        </c:forEach>
+    </div>
 
 
 </div>
@@ -199,6 +233,7 @@
 <!-- Scripts ==================================================
 ================================================== -->
 <script src="js/jquery-1.8.0.min.js" type="text/javascript"></script>
+<script src="js/search/search.js" type="text/javascript"></script>
 <!-- Main js files -->
 <script src="js/screen.js" type="text/javascript"></script>
 <!-- Tabs -->

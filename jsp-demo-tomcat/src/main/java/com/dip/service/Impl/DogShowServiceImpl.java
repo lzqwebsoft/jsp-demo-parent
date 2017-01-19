@@ -52,7 +52,22 @@ public class DogShowServiceImpl implements DogShowService {
 
     @Override
     public List<DogShow> findByTitle(String title) {
-        return dogShowRepository.findByTitle(title);
+        return dogShowRepository.findByTitleLike(title);
+    }
+
+    @Override
+    public List<DogShow> findBySponsor(String sponsor) {
+        return dogShowRepository.findBySponsorLike(sponsor);
+    }
+
+    @Override
+    public List<DogShow> findByOrganizer(String organizer) {
+        return dogShowRepository.findByOrganizerLike(organizer);
+    }
+
+    @Override
+    public List<DogShow> findByForwhom(String forwhom) {
+        return dogShowRepository.findByForwhomLike(forwhom);
     }
 
     @Override

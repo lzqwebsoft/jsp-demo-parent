@@ -231,7 +231,7 @@ input[type="text"], input[type="password"], input[type="email"], textarea, selec
 	margin: 0;
 	width: 198px;
 	max-width: 100%;
-	display: block;
+	display: auto;
 	margin-bottom: 10px;
 	background: #eee;
 }

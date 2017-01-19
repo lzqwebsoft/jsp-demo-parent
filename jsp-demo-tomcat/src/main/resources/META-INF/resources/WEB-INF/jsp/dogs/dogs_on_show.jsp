@@ -17,7 +17,6 @@
 <html lang="en">
 <!--<![endif]-->
 <head>
-
     <!-- Basic Page Needs ==================================================
     ================================================== -->
 
@@ -28,8 +27,6 @@
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/js-table/jquery-1.2.6.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/js-table/style-table.js"></script>
     <!-- Mobile Specific Metas ==================================================
     ================================================== -->
 
@@ -41,8 +38,10 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/base.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/skeleton.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/screen.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/ss/prettyPhoto.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/table/table_experts.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/theme.bootstrap_3.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/prettyPhoto.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/js/jquery.tablesorter.pager.css" type="text/css" media="screen" />
 
     <!-- Favicons ==================================================
     ================================================== -->
@@ -55,6 +54,11 @@
     <!-- Google Fonts ==================================================
     ================================================== -->
     <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+    <style>
+        .tablesorter-pager .btn-group-sm .btn {
+            font-size: 1.2em; /* make pager arrows more visible */
+        }
+    </style>
 </head>
 <body>
 
@@ -125,28 +129,46 @@
 <div class="container" align="center">
 
 
-    <table id="travel" summary="Travel times to work by main mode (Autumn 2006) - Source: London Travel Report 2007 http://www.tfl.gov.uk/assets/downloads/corporate/London-Travel-Report-2007-final.pdf">
+    <table id="travel" class="table table-striped table-bordered" cellspacing="0" width="100%" align="center" style="text-align: center">
 
 
-        <thead>
+        <thead class="thead-inverse">
         <tr>
-            <th scope="col" >Breed</th>
-            <th scope="col" >Name</th>
-            <th scope="col" >FCI Group</th>
-            <th scope="col" >Gender</th>
-            <th scope="col" >Date Of Birth</th>
-            <th scope="col" >Color</th>
-            <th scope="col" >Chip</th>
-            <th scope="col" >Brand</th>
-            <th scope="col" >Pedigree</th>
-            <th scope="col" >Sire</th>
-            <th scope="col" >Dam</th>
-            <th scope="col" >Breeder</th>
-            <th scope="col" >Owner</th>
+            <th>Breed</th>
+            <th>Name</th>
+            <th>FCI Group</th>
+            <th>Gender</th>
+            <th>Date Of Birth</th>
+            <th>Color</th>
+            <th>Chip</th>
+            <th>Brand</th>
+            <th>Pedigree</th>
+            <th>Sire</th>
+            <th>Dam</th>
+            <th>Breeder</th>
+            <th>Owner</th>
         </tr>
 
 
         </thead>
+
+        <tfoot>
+        <tr>
+            <th>Breed</th>
+            <th>Name</th>
+            <th>FCI Group</th>
+            <th>Gender</th>
+            <th>Date Of Birth</th>
+            <th>Color</th>
+            <th>Chip</th>
+            <th>Brand</th>
+            <th>Pedigree</th>
+            <th>Sire</th>
+            <th>Dam</th>
+            <th>Breeder</th>
+            <th>Owner</th>
+        </tr>
+        </tfoot>
 
         <tbody>
         <c:forEach var="dog" items="${dogs_registered_list}">
@@ -240,7 +262,15 @@
 ================================================== -->
 <!-- Scripts ==================================================
 ================================================== -->
-<script src="${pageContext.request.contextPath}/js/jquery-1.8.0.min.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/js/jquery-3.1.1.min.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.browser.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.dataTables.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/dataTables.bootstrap.min.js"></script>
+<%--<script src="${pageContext.request.contextPath}/js/jquery.tablesorter.js" type="text/javascript"></script>--%>
+<%--<script src="${pageContext.request.contextPath}/js/jquery.tablesorter.widgets.js" type="text/javascript"></script>--%>
+<%--<script src="${pageContext.request.contextPath}/js/jquery.tablesorter.pager.js" type="text/javascript"></script>--%>
+<script src="${pageContext.request.contextPath}/js/table.js" type="text/javascript"></script>
+
 <!-- Main js files -->
 <script src="${pageContext.request.contextPath}/js/screen.js" type="text/javascript"></script>
 <!-- Tabs -->
@@ -254,5 +284,10 @@
 <script src="${pageContext.request.contextPath}/js/jquery.flexslider-min.js" type="text/javascript"></script>
 <!-- Modernizr -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/modernizr.custom.29473.js"></script>
+
+
+
+
+
 </body>
 </html>

@@ -15,7 +15,18 @@ public interface DogShowRepository extends JpaRepository<DogShow, Integer> {
 
     void deleteByTitle(String title);
 
-    List<DogShow> findByTitle(String title);
+
+    @Query("Select d from DogShow d where d.title like %:title%")
+    List<DogShow> findByTitleLike(@Param("title") String title);
+
+    @Query("Select d from DogShow d where d.organizer like %:organizer%")
+    List<DogShow> findByOrganizerLike(@Param("organizer") String organizer);
+
+    @Query("Select d from DogShow d where d.sponsor like %:sponsor%")
+    List<DogShow> findBySponsorLike(@Param("sponsor") String sponsor);
+
+    @Query("Select d from DogShow d where d.contest.contestType.forwhom like %:forwhom%")
+    List<DogShow> findByForwhomLike(@Param("forwhom") String forwhom);
 
     List<DogShow> findByContestContestType(ContestType contestType);
 }
