@@ -25,6 +25,7 @@ import com.dip.service.HumanService;
 import com.dip.service.UserService;
 import org.hibernate.sql.Select;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -51,9 +52,17 @@ public class HomePageController {
 	@Autowired
 	HumanService humanService;
 
+	@Autowired
+	private PasswordEncoder encoder;
+
 	@RequestMapping(value = {"/","/home_page"}, method = {RequestMethod.GET})
 	public String HomePage() {
 		return "home_page";
+	}
+
+	@RequestMapping(value = {"/admin/home_page"}, method = {RequestMethod.GET})
+	public String adminHome() {
+		return "admin_home";
 	}
 
 	@RequestMapping(value = {"/terms"}, method = {RequestMethod.GET})
@@ -68,7 +77,7 @@ public class HomePageController {
 		ModelAndView modelAndView = new ModelAndView("dogs/finished");
 		User user = new User();
 		user.setEmail(signup_email);
-		user.setPassword(signup_password);
+		user.setPassword(encoder.encode(signup_password));
 		user.setUsername(signup_username);
 		Human human = humanService.getById(2);
 		user.setHuman(human);
@@ -77,7 +86,7 @@ public class HomePageController {
 		}
 		else{
 			System.out.println("USER EXISTT");
-			modelAndView.setViewName("home_page");
+			modelAndView.setViewName("about");
 		}
 
 		return modelAndView;

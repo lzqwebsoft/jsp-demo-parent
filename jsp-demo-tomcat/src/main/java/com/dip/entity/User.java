@@ -110,6 +110,6 @@ public class User implements Serializable, UserDetails, GrantedAuthority {
 
     @Override
     public String getAuthority() {
-        return null;
+        return "ROLE_ADMIN";
     }
 }

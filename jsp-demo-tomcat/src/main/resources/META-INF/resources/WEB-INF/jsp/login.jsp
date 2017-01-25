@@ -60,111 +60,86 @@
     <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
+<div id="header">
+    <div class="container">
+        <!-- Header | Logo, Menu
+            ================================================== -->
+        <div class="logo"><a href="${pageContext.request.contextPath}/home_page" al><img src="images/logo.png" alt="" style="height: 120px; margin-bottom: 10px"/></a></div>
+        <div class="mainmenu">
+            <div id="mainmenu">
+                <ul class="sf-menu">
+                    <li><a href="${pageContext.request.contextPath}/home_page" id="visited">Home</a></li>
+                    <li><a href="${pageContext.request.contextPath}/about">About</a></li>
+                    <li><a href="${pageContext.request.contextPath}/contact">Contact</a></li>
+                    <li><a>Register</a>
+                        <ul>
+                            <li><a href="${pageContext.request.contextPath}/register_dog">Register Dog</a></li>
+                            <li><a>Register to Contest</a>
+                                <ul>
+                                    <li><a href="${pageContext.request.contextPath}/reg_participant">Register as Participant</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/reg_dog_contest">Register dog to contest</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="${pageContext.request.contextPath}/dogshows">Dog Shows</a></li>
+                    <li><a href="${pageContext.request.contextPath}/add_dog_show">Add dog show</a></li>
+                    <li><a href="${pageContext.request.contextPath}/register_expert">Add Expert</a></li>
+                    <li>
+                        <nav class="main-nav ">
+                            <!-- ссылки на вызов форм -->
+                    <li><a  href="#0">Sign up / Sign in</a></li>
+                    <%--<li><a class="cd-signup" href="#0">Регистрация</a></li>--%>
+                    </nav>
+                    </li>
+                </ul>
+            </div>
+            <!-- mainmenu ends here -->
 
+            <!-- Responsive Menu -->
+            <form id="responsive-menu" action="#" method="post">
+                <select>
+                    <option value="">Navigation</option>
+                    <option value="${pageContext.request.contextPath}/home_page">Home</option>
+                    <option value="${pageContext.request.contextPath}/about">About</option>
+                    <option value="${pageContext.request.contextPath}/contact">Contact</option>
+                    <option value="${pageContext.request.contextPath}/register_dog">Register Dog</option>
+                    <option value="${pageContext.request.contextPath}/register_participant">Register as Participant</option>
+                    <option value="${pageContext.request.contextPath}/dogshows">Dog Shows</option>
+                    <option value="${pageContext.request.contextPath}/reg">Registration test</option>
+                    <option value="${pageContext.request.contextPath}/register_dog">Add Dog test</option>
+                    <option value="${pageContext.request.contextPath}/add_dog_show">Add dog show test</option>
+                    <option value="${pageContext.request.contextPath}/register_expert">Add Expert test</option>
+                </select>
+            </form>
+        </div>
+        <!-- mainmenu ends here -->
+    </div>
+    <!-- container ends here -->
+</div>
 <!--Content Part ==================================================
 ================================================== -->
 <!-- header ends here -->
-<div class="cd-user-modal"> <!-- все формы на фоне затемнения-->
- ============================================== -->
-    <div class="cd-user-modal"> <!-- все формы на фоне затемнения-->
-        <div class="cd-user-modal-container"> <!-- основной контейнер -->
-            <ul class="cd-switcher">
-                <li><a href="#0">Sign in</a></li>
-                <li><a href="#0">Sign up</a></li>
-            </ul>
+<div class="container" style="width: 300px;">
 
-            <div id="cd-login"> <!-- форма входа -->
-                <form class="cd-form" action="j_spring_security_check">
-                    <p class="fieldset">
-                        <label class="image-replace cd-email" for="j_username">E-mail</label>
-                        <input class="full-width has-padding has-border" id="j_username" name="j_username" type="email" placeholder="E-mail">
-                        <span class="cd-error-message">Error!</span>
-                    </p>
-
-                    <p class="fieldset">
-                        <label class="image-replace cd-password" for="j_password">Password</label>
-                        <input class="full-width has-padding has-border" id="j_password" name="j_password" type="text"  placeholder="Password">
-                        <span class="cd-error-message">Error!</span>
-                    </p>
-
-                    <p class="fieldset">
-                        <input type="checkbox" id="remember-me" checked>
-                        <label for="remember-me">Remember me</label>
-                    </p>
-
-                    <p class="fieldset">
-                        <input class="full-width" type="submit" value="Enter">
-                    </p>
-                </form>
-
-                <p class="cd-form-bottom-message"><a href="#0">Forget Your password?</a></p>
-                <!-- <a href="#0" class="cd-close-form">Close</a> -->
-            </div> <!-- cd-login -->
-
-            <div id="cd-signup"> <!-- форма регистрации -->
-                <form class="cd-form">
-                    <p class="fieldset">
-                        <label class="image-replace cd-username" for="signup-username">Username</label>
-                        <input class="full-width has-padding has-border" id="signup-username" type="text" placeholder="Username">
-                        <span class="cd-error-message">Error here!</span>
-                    </p>
-
-                    <p class="fieldset">
-                        <label class="image-replace cd-email" for="signup-email">E-mail</label>
-                        <input class="full-width has-padding has-border" id="signup-email" type="email" placeholder="E-mail">
-                        <span class="cd-error-message">There is an error!</span>
-                    </p>
-
-                    <p class="fieldset">
-                        <label class="image-replace cd-password" for="signup-password">Password</label>
-                        <input class="full-width has-padding has-border" id="signup-password" type="text"  placeholder="Password">
-                        <span class="cd-error-message">There is an error here!</span>
-                    </p>
-
-                    <p class="fieldset">
-                        <input type="checkbox" id="accept-terms">
-                        <label for="accept-terms">I accept the <a href="${pageContext.request.contextPath}/terms">Terms of the license agreement</a></label>
-                    </p>
-
-                    <p class="fieldset">
-                        <input class="full-width has-padding" type="submit" value="Create account">
-                    </p>
-                </form>
-
-                <!-- <a href="#0" class="cd-close-form">Close</a> -->
-            </div> <!-- cd-signup -->
-
-            <div id="cd-reset-password"> <!-- форма восстановления пароля -->
-                <p class="cd-form-message">If You forget Your password, write Your email and we'll send You a new one.</p>
-
-                <form class="cd-form">
-                    <p class="fieldset">
-                        <label class="image-replace cd-email" for="reset-email">E-mail</label>
-                        <input class="full-width has-padding has-border" id="reset-email" type="email" placeholder="E-mail">
-                        <span class="cd-error-message">Error here!</span>
-                    </p>
-
-                    <p class="fieldset">
-                        <input class="full-width has-padding" type="submit" value="Restore password">
-                    </p>
-                </form>
-
-                <p class="cd-form-bottom-message"><a href="#0">Return to Sign in</a></p>
-            </div> <!-- cd-reset-password -->
-            <a href="#0" class="cd-close-form">Close</a>
+    <form class="form-signin" action="login" method="POST">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input name="username" type="text" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="remember-me"> Remember me
+            </label>
         </div>
-    </div>
-<!-- one_third ends here -->
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    </form>
+
 </div>
 <!-- end container -->
 <!-- Socialize ==================================================
 ================================================== -->
-
-<nav class="main-nav ">
-    <!-- ссылки на вызов форм -->
-    <li><a  href="#0">Sign up / Sign in</a></li>
-    <%--<li><a class="cd-signup" href="#0">Регистрация</a></li>--%>
-</nav>
 
 <hr class="separator2">
 <div class="socialsblock">
