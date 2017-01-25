@@ -2,7 +2,6 @@ package com.dip.service.Impl;
 
 import com.dip.entity.Contest;
 import com.dip.entity.Registered_Contest_Dog;
-import com.dip.entity.Registered_dog;
 import com.dip.repository.Registered_Contest_DogRepository;
 import com.dip.service.RegisteredContestDogService;
 import org.springframework.beans.factory.annotation.Autowired;

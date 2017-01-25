@@ -49,7 +49,7 @@
     <!-- Favicons ==================================================
     ================================================== -->
 
-    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="shortcut icon" href="favicon.ico">
     <link rel="shortcut icon" type="image/png" href="images/favicon.ico"/>
     <link rel="apple-touch-icon" href="images/favicon.png">
     <link rel="apple-touch-icon" sizes="72x72" href="images/favicon.png">
@@ -65,7 +65,57 @@
 ================================================== -->
 <div id="header">
     <div class="container">
+        <!-- Header | Logo, Menu
+            ================================================== -->
+        <div class="logo"><a href="${pageContext.request.contextPath}/home_page" al><img src="images/logo.png" alt="" style="height: 120px; margin-bottom: 10px"/></a></div>
+        <div class="mainmenu">
+            <div id="mainmenu">
+                <ul class="sf-menu">
+                    <li><a href="${pageContext.request.contextPath}/home_page">Home</a></li>
+                    <li><a href="${pageContext.request.contextPath}/about">About</a></li>
+                    <li><a href="${pageContext.request.contextPath}/contact">Contact</a></li>
+                    <li><a>Register</a>
+                        <ul>
+                            <li><a href="${pageContext.request.contextPath}/register_dog">Register Dog</a></li>
+                            <li><a>Register to Contest</a>
+                                <ul>
+                                    <li><a href="${pageContext.request.contextPath}/reg_participant">Register as Participant</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/reg_dog_contest">Register dog to contest</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="${pageContext.request.contextPath}/dogshows">Dog Shows</a></li>
+                    <li><a href="${pageContext.request.contextPath}/add_dog_show">Add dog show</a></li>
+                    <li><a href="${pageContext.request.contextPath}/register_expert">Add Expert</a></li>
+                    <li>
+                        <nav class="main-nav ">
+                            <!-- ссылки на вызов форм -->
+                    <li><a  href="#0">Sign up / Sign in</a></li>
+                    <%--<li><a class="cd-signup" href="#0">Регистрация</a></li>--%>
+                    </nav>
+                    </li>
+                </ul>
+            </div>
+            <!-- mainmenu ends here -->
 
+            <!-- Responsive Menu -->
+            <form id="responsive-menu" action="#" method="post">
+                <select>
+                    <option value="">Navigation</option>
+                    <option value="${pageContext.request.contextPath}/home_page">Home</option>
+                    <option value="${pageContext.request.contextPath}/about">About</option>
+                    <option value="${pageContext.request.contextPath}/contact">Contact</option>
+                    <option value="${pageContext.request.contextPath}/register_dog">Register Dog</option>
+                    <option value="${pageContext.request.contextPath}/register_participant">Register as Participant</option>
+                    <option value="${pageContext.request.contextPath}/dogshows">Dog Shows</option>
+                    <option value="${pageContext.request.contextPath}/reg">Registration test</option>
+                    <option value="${pageContext.request.contextPath}/register_dog">Add Dog test</option>
+                    <option value="${pageContext.request.contextPath}/add_dog_show">Add dog show test</option>
+                    <option value="${pageContext.request.contextPath}/register_expert">Add Expert test</option>
+                </select>
+            </form>
+        </div>
         <!-- mainmenu ends here -->
     </div>
     <!-- container ends here -->

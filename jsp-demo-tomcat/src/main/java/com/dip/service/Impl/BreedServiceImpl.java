@@ -24,6 +24,17 @@ public class BreedServiceImpl implements BreedService{
     }
 
     @Override
+    public Breed findOne(int id) {
+        return breedRepository.findOne(id);
+    }
+
+
+    @Override
+    public Breed findByTitle(String title) {
+        return breedRepository.findByTitle(title);
+    }
+
+    @Override
     public void delete(int id) {
     breedRepository.delete(id);
     }

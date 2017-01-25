@@ -2,18 +2,16 @@ package com.dip.controller.dogshow;
 
 import com.dip.entity.DogShow;
 import com.dip.entity.Expert;
-import com.dip.entity.Judging;
+import com.dip.entity.Human;
 import com.dip.service.DogShowService;
 import com.dip.service.ExpertService;
-import com.dip.service.JudgingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by moneg on 07.01.2017.
@@ -24,8 +22,6 @@ public class AddExpertController {
     DogShowService dogShowService;
     @Autowired
     ExpertService expertService;
-    @Autowired
-    JudgingService judgingService;
 
     @ModelAttribute("dogshow_list")
     public List<DogShow> dogShows(){
@@ -46,22 +42,33 @@ public class AddExpertController {
                                            @RequestParam("description") String description,@RequestParam("dogshow_id") int dogshow_id) {
 
         Expert expert = new Expert();
-        expert.setFname(fname.trim());
-        expert.setSname(sname.trim());
-        expert.setLname(lname.trim());
+        Human human = new Human();
+        human.setFname(fname);
+        human.setSname(sname);
+        human.setLname(lname);
+        expert.setHuman(human);
         expert.setCountry(country.trim());
         expert.setDescription(description.trim());
         expertService.addExpert(expert);
         DogShow dogShow = dogShowService.getById(dogshow_id);
-        Judging judging = new Judging();
-        judging.setDogShow(dogShow);
-        judging.setExpert(expert);
-        judgingService.addJudging(judging);
+        Set<Expert> expertSet = new TreeSet<Expert>();
+        expertSet.add(expert);
+        dogShow.setExperts(expertSet);
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("dogshow/finished");
+        modelAndView.setViewName("dogshow/finished_expert");
         String expertt = "Expert";
         modelAndView.addObject("human",expertt);
         return modelAndView;
+    }
+
+    @RequestMapping(value = {"/delete_expert"}, method = {RequestMethod.POST})
+    public RedirectView deleteExpert(@RequestParam ("showdet.dogshow_id") int dogshow_id) {
+        System.out.println("delete dog show");
+//        judgingService.deleteByJudging(judgingService.findByDogShow(dogShowService.getById(dogshow_id)));
+        RedirectView redirectView = new RedirectView();
+        redirectView.setContextRelative(true);
+        redirectView.setUrl("/dogshows");
+        return redirectView;
     }
 
     @RequestMapping(value = {"/add_expert_separate/{dogshow_id}"}, method = {RequestMethod.GET})

@@ -1,6 +1,7 @@
 package com.dip.entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Created by moneg on 29.12.2016.
@@ -22,6 +23,20 @@ public class Breed {
     @JoinColumn(name = "fcigroup_id", nullable = false, insertable = false, updatable = false)
     private FciGroup fciGroup;
 
+    @ManyToMany
+    @JoinTable(name="colouring",
+            joinColumns = @JoinColumn(name="breed_id", referencedColumnName="breed_id"),
+            inverseJoinColumns = @JoinColumn(name="colour_id", referencedColumnName="colour_id")
+    )
+    private Set<Colour> colourSet;
+
+    public Set<Colour> getColourSet() {
+        return colourSet;
+    }
+
+    public void setColourSet(Set<Colour> colourSet) {
+        this.colourSet = colourSet;
+    }
 
     public int getBreed_id() {
         return breed_id;

@@ -17,7 +17,6 @@
 <html lang="en">
 <!--<![endif]-->
 <head>
-
     <!-- Basic Page Needs ==================================================
     ================================================== -->
 
@@ -28,8 +27,6 @@
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/js-table/jquery-1.2.6.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/js/js-table/style-table.js"></script>
     <!-- Mobile Specific Metas ==================================================
     ================================================== -->
 
@@ -41,13 +38,15 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/base.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/skeleton.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/screen.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/ss/prettyPhoto.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/table/table_experts.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/theme.bootstrap_3.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/prettyPhoto.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/js/jquery.tablesorter.pager.css" type="text/css" media="screen" />
 
     <!-- Favicons ==================================================
     ================================================== -->
 
-    <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/favicon.png">
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/favicon.png">
     <link rel="apple-touch-icon" href="${pageContext.request.contextPath}/images/apple-touch-icon.png">
     <link rel="apple-touch-icon" sizes="72x72" href="${pageContext.request.contextPath}/images/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="${pageContext.request.contextPath}/images/apple-touch-icon-114x114.png">
@@ -55,6 +54,11 @@
     <!-- Google Fonts ==================================================
     ================================================== -->
     <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+    <style>
+        .tablesorter-pager .btn-group-sm .btn {
+            font-size: 1.2em; /* make pager arrows more visible */
+        }
+    </style>
 </head>
 <body>
 
@@ -64,7 +68,7 @@
     <div class="container">
         <!-- Header | Logo, Menu
             ================================================== -->
-        <div class="logo"><a href="${pageContext.request.contextPath}/home_page"><img src="images/logo.png" alt="" /></a></div>
+        <div class="logo"><a href="${pageContext.request.contextPath}/home_page" al><img src="${pageContext.request.contextPath}/images/logo.png" alt="" style="height: 120px; margin-bottom: 10px"/></a></div>
         <div class="mainmenu">
             <div id="mainmenu">
                 <ul class="sf-menu">
@@ -74,13 +78,24 @@
                     <li><a>Register</a>
                         <ul>
                             <li><a href="${pageContext.request.contextPath}/register_dog">Register Dog</a></li>
-                            <li><a href="${pageContext.request.contextPath}/reg_participant">Register as Participant</a></li>
+                            <li><a>Register to Contest</a>
+                                <ul>
+                                    <li><a href="${pageContext.request.contextPath}/reg_participant">Register as Participant</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/reg_dog_contest">Register dog to contest</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </li>
                     <li><a href="${pageContext.request.contextPath}/dogshows" id="visited">Dog Shows</a></li>
-                    <li><a href="${pageContext.request.contextPath}/reg">Registration test</a></li>
-                    <li><a href="${pageContext.request.contextPath}/register_dog">Add Dog test</a></li>
-                    <li><a href="${pageContext.request.contextPath}/add_dog_show">Add dog show test</a></li>
+                    <li><a href="${pageContext.request.contextPath}/add_dog_show">Add dog show</a></li>
+                    <li><a href="${pageContext.request.contextPath}/register_expert">Add Expert</a></li>
+                    <li>
+                        <nav class="main-nav ">
+                            <!-- ссылки на вызов форм -->
+                    <li><a  href="#0">Sign up / Sign in</a></li>
+                    <%--<li><a class="cd-signup" href="#0">Регистрация</a></li>--%>
+                    </nav>
+                    </li>
                 </ul>
             </div>
             <!-- mainmenu ends here -->
@@ -98,6 +113,7 @@
                     <option value="${pageContext.request.contextPath}/reg">Registration test</option>
                     <option value="${pageContext.request.contextPath}/register_dog">Add Dog test</option>
                     <option value="${pageContext.request.contextPath}/add_dog_show">Add dog show test</option>
+                    <option value="${pageContext.request.contextPath}/register_expert">Add Expert test</option>
                 </select>
             </form>
         </div>
@@ -125,19 +141,34 @@
 <div class="container" align="center">
 
 
-    <table id="travel" summary="Travel times to work by main mode (Autumn 2006) - Source: London Travel Report 2007 http://www.tfl.gov.uk/assets/downloads/corporate/London-Travel-Report-2007-final.pdf">
+    <table id="travel" class="table table-striped table-bordered" cellspacing="0" width="100%" align="right" style="text-align: center">
 
 
-        <thead>
+        <thead class="thead-inverse">
         <tr>
-            <th scope="col" >First Name</th>
-            <th scope="col" >Second Name</th>
-            <th scope="col" >Last Name</th>
-            <th scope="col" >Age</th>
+            <th>First Name</th>
+            <th>Second Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+            <th hidden></th>
+            <th hidden></th>
+            <th hidden></th>
         </tr>
 
 
         </thead>
+
+        <tfoot>
+        <tr>
+            <th>First Name</th>
+            <th>Second Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+            <th hidden></th>
+            <th hidden></th>
+            <th hidden></th>
+        </tr>
+        </tfoot>
 
         <tbody>
         <c:forEach var="part" items="${participants_registered_list}">
@@ -146,8 +177,10 @@
                 <td>${part.sname}</td>
                 <td>${part.lname}</td>
                 <td>${part.age}</td>
+
             </tr>
         </c:forEach>
+
 
         </tbody>
 
@@ -221,7 +254,15 @@
 ================================================== -->
 <!-- Scripts ==================================================
 ================================================== -->
-<script src="${pageContext.request.contextPath}/js/jquery-1.8.0.min.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/js/jquery-3.1.1.min.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.browser.js"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.dataTables.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/dataTables.bootstrap.min.js"></script>
+<%--<script src="${pageContext.request.contextPath}/js/jquery.tablesorter.js" type="text/javascript"></script>--%>
+<%--<script src="${pageContext.request.contextPath}/js/jquery.tablesorter.widgets.js" type="text/javascript"></script>--%>
+<%--<script src="${pageContext.request.contextPath}/js/jquery.tablesorter.pager.js" type="text/javascript"></script>--%>
+<script src="${pageContext.request.contextPath}/js/table.js" type="text/javascript"></script>
+
 <!-- Main js files -->
 <script src="${pageContext.request.contextPath}/js/screen.js" type="text/javascript"></script>
 <!-- Tabs -->
@@ -235,5 +276,10 @@
 <script src="${pageContext.request.contextPath}/js/jquery.flexslider-min.js" type="text/javascript"></script>
 <!-- Modernizr -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/modernizr.custom.29473.js"></script>
+
+
+
+
+
 </body>
 </html>

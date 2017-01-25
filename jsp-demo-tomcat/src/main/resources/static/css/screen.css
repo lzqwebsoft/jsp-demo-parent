@@ -128,7 +128,7 @@ ul.sf-menu li li li:hover ul, ul.sf-menu li li li.sfHover ul {
 }
 .sf-menu li a {
 	font-family:'Oswald', serif;
-	font-size:15px;
+	font-size:17px;
 	padding:45px 15px 45px 15px;
 	text-decoration:none;
 	text-transform:uppercase;
@@ -1016,7 +1016,7 @@ p.gallery {
 	margin-bottom:40px;
 }
 .post a {
-	font-size:12px;
+	font-size:32px;
 	text-transform:uppercase;
 	font-weight:bold;
 }
@@ -1157,7 +1157,7 @@ ul.categories li a {
 form#contact_form input[type="text"] {
 	border: 1px solid #e2d3c1;
 	background-color: white;
-	height: 30px;
+	height: 37px;
 	padding: 0 10px;
 	width: 250px;
 	margin-bottom:20px;
@@ -1178,7 +1178,7 @@ form#contact_form textarea {
 }
 form#contact_form label {
 	margin-right: 20px;
-	font-size: 12px;
+	font-size: 17px;
 	font-weight:bold;
 	text-transform: uppercase;
 }
@@ -1189,7 +1189,7 @@ form#contact_form input[type="submit"] {
 	background:#f9efe3 url(../images/rausch.png) repeat;
 	border:none;
 	padding:5px;
-	font-size:15px;
+	font-size:25px;
 	text-transform:uppercase;
 	margin-bottom:10px;
 }
@@ -1213,7 +1213,7 @@ form#contact_form input[type="submit"] {
 	margin-bottom:40px;
 }
 .contact ul li {
-	font-size:14px;
+	font-size:22px;
 }
 /****************************** Shortcodes ******************************/
 /* Content Shortcodes */

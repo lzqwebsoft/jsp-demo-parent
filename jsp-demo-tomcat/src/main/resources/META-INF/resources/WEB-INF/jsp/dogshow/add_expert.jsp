@@ -19,25 +19,6 @@
 <html lang="en">
 <!--<![endif]-->
 <head>
-    <script>
-        $(document)
-            .ready(
-                function() {
-                    //add more file components if Add is clicked
-                    $('#addFile')
-                        .click(
-                            function() {
-                                var fileIndex = $('#fileTable tr')
-                                        .children().length - 1;
-                                $('#fileTable')
-                                    .append(
-                                        '<tr><td>'
-                                        + '   <input type="file" name="files['+ fileIndex +']" />'
-                                        + '</td></tr>');
-                            });
-
-                });
-    </script>
     <!-- Basic Page Needs ==================================================
     ================================================== -->
 
@@ -65,7 +46,7 @@
     <!-- Favicons ==================================================
     ================================================== -->
 
-    <link rel="shortcut icon" href="images/favicon.png">
+    <link rel="shortcut icon" href="favicon.png">
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
     <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
@@ -82,7 +63,7 @@
     <div class="container">
         <!-- Header | Logo, Menu
             ================================================== -->
-        <div class="logo"><a href="${pageContext.request.contextPath}/home_page"><img src="images/logo.png" alt="" /></a></div>
+        <div class="logo"><a href="${pageContext.request.contextPath}/home_page" al><img src="images/logo.png" alt="" style="height: 120px; margin-bottom: 10px"/></a></div>
         <div class="mainmenu">
             <div id="mainmenu">
                 <ul class="sf-menu">
@@ -92,13 +73,24 @@
                     <li><a>Register</a>
                         <ul>
                             <li><a href="${pageContext.request.contextPath}/register_dog">Register Dog</a></li>
-                            <li><a href="${pageContext.request.contextPath}/register_participant">Register as Participant</a></li>
+                            <li><a>Register to Contest</a>
+                                <ul>
+                                    <li><a href="${pageContext.request.contextPath}/reg_participant">Register as Participant</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/reg_dog_contest">Register dog to contest</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </li>
-                    <li><a href="${pageContext.request.contextPath}/dogshows">Dog Shows</a></li>
-                    <li><a href="${pageContext.request.contextPath}/reg">Registration test</a></li>
-                    <li><a href="${pageContext.request.contextPath}/register_dog">Add Dog test</a></li>
-                    <li><a href="${pageContext.request.contextPath}/add_dog_show" id="visited">Add dog show test</a></li>
+                    <li><a href="${pageContext.request.contextPath}/dogshows" id="visited">Dog Shows</a></li>
+                    <li><a href="${pageContext.request.contextPath}/add_dog_show">Add dog show</a></li>
+                    <li><a href="${pageContext.request.contextPath}/register_expert">Add Expert</a></li>
+                    <li>
+                        <nav class="main-nav ">
+                            <!-- ссылки на вызов форм -->
+                    <li><a  href="#0">Sign up / Sign in</a></li>
+                    <%--<li><a class="cd-signup" href="#0">Регистрация</a></li>--%>
+                    </nav>
+                    </li>
                 </ul>
             </div>
             <!-- mainmenu ends here -->
@@ -116,6 +108,7 @@
                     <option value="${pageContext.request.contextPath}/reg">Registration test</option>
                     <option value="${pageContext.request.contextPath}/register_dog">Add Dog test</option>
                     <option value="${pageContext.request.contextPath}/add_dog_show">Add dog show test</option>
+                    <option value="${pageContext.request.contextPath}/register_expert">Add Expert test</option>
                 </select>
             </form>
         </div>
@@ -176,7 +169,7 @@
                     </form:select>
                 </div>
                 <div id="loader">
-                    <input type="submit" value="Submit">Submit</input>
+                    <input type="submit" value="Submit"></input>
                 </div>
             </form>
         </div>

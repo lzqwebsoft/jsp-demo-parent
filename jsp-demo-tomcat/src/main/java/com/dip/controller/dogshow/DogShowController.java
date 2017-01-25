@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,11 +20,7 @@ public class DogShowController {
     @Autowired
     DogShowService dogShowService;
     @Autowired
-    Registered_dogService registered_dogService;
-    @Autowired
     ExpertService expertService;
-    @Autowired
-    JudgingService judgingService;
     @Autowired
     DogService dogService;
     @Autowired
@@ -32,6 +29,16 @@ public class DogShowController {
     RegisteredContestDogService registeredContestDogService;
     @Autowired
     ParticipantService participantService;
+
+
+    @ModelAttribute("search_list")
+    public List<String> Search(){
+        List<String> search = new ArrayList<String>();
+        search.add("Title");
+        search.add("Sponsor");
+        search.add("Organizer");
+        return search;
+    }
 
     @RequestMapping(value = {"/dogshows"}, method = {RequestMethod.GET})
     public ModelAndView DogShowPage() {
@@ -59,6 +66,7 @@ public class DogShowController {
         System.out.println("DOGSHOW_LIST");
         ModelAndView modelAndView = new ModelAndView("dogs/dogs_on_show");
 //        List<Integer> numbers = registered_dogService.findByDogShowId(dogshow_id);
+        modelAndView.addObject("dogshow_id", dogshow_id);
         modelAndView.addObject("dogs_registered_list",dogService.findByDogShow(dogShowService.getById(dogshow_id)));
         return modelAndView;
     }
@@ -105,6 +113,16 @@ public class DogShowController {
         RedirectView redirectView = new RedirectView();
         redirectView.setContextRelative(true);
         redirectView.setUrl("/dogshows");
+        return redirectView;
+    }
+
+    @RequestMapping(value = {"/delete_dog"}, method = {RequestMethod.POST})
+    public RedirectView DeleteDogFromDogShow(@RequestParam ("dog_id") int dog_id, @RequestParam("dogshow_id") int dogshow_id) {
+        System.out.println("DELETE DOG");
+//        registered_dogService.delete(dogService.findByName(dogService.));
+        RedirectView redirectView = new RedirectView();
+        redirectView.setContextRelative(true);
+        redirectView.setUrl("/dogs_list/"+dogshow_id);
         return redirectView;
     }
 

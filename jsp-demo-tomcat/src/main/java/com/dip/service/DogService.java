@@ -13,6 +13,7 @@ public interface DogService {
     Dog addDog(Dog dog);
     void delete(int id);
     Dog editDog(Dog dog);
+    Dog findByPedigree(String pedigree);
     List<Dog> getAll();
     List<Dog> findByDogShow(DogShow dogShow);
     List<Dog> findByContest(Contest contest);
@@ -20,7 +21,6 @@ public interface DogService {
     List<Dog> findByBreederFname(String breederFname);
     List<Dog> findByBreederSname(String breederSname);
     List<Dog> findByBreederLname(String breederLname);
-    List<Dog> findByColor(String color);
     List<Dog> findByDam(String dam);
     List<Dog> findBySire(String sire);
     List<Dog> findByGender(String gender);

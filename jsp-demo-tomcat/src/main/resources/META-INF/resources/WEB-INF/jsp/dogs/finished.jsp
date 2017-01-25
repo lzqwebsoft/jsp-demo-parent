@@ -22,7 +22,7 @@
     ================================================== -->
 
     <meta charset="utf-8">
-    <title>Freebix Responsive Site Template</title>
+    <title>Home Page</title>
     <meta name="description" content="Place to put your description text">
     <meta name="author" content="">
     <!--[if lt IE 9]>
@@ -40,16 +40,18 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/base.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/skeleton.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/screen.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/table/table_experts.css">
-    <link rel="stylesheet" href="c${pageContext.request.contextPath}/ss/prettyPhoto.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/for_registration/reset.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/for_registration/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/prettyPhoto.css" type="text/css" media="screen" />
 
     <!-- Favicons ==================================================
     ================================================== -->
 
-    <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/favicon.png">
-    <link rel="apple-touch-icon" href="${pageContext.request.contextPath}/images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="${pageContext.request.contextPath}/images/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="${pageContext.request.contextPath}/images/apple-touch-icon-114x114.png">
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/favicon.ico">
+    <link rel="shortcut icon" type="image/png" href="${pageContext.request.contextPath}/images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="${pageContext.request.contextPath}/images/favicon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="${pageContext.request.contextPath}/images/favicon.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="${pageContext.request.contextPath}/images/favicon.png">
 
     <!-- Google Fonts ==================================================
     ================================================== -->
@@ -63,23 +65,34 @@
     <div class="container">
         <!-- Header | Logo, Menu
             ================================================== -->
-        <div class="logo"><a href="${pageContext.request.contextPath}/home_page"><img src="images/logo.png" alt="" /></a></div>
+        <div class="logo"><a href="${pageContext.request.contextPath}/home_page" al><img src="${pageContext.request.contextPath}/images/logo.png" alt="" style="height: 120px; margin-bottom: 10px"/></a></div>
         <div class="mainmenu">
             <div id="mainmenu">
                 <ul class="sf-menu">
-                    <li><a href="${pageContext.request.contextPath}/home_page">Home</a></li>
+                    <li><a href="${pageContext.request.contextPath}/home_page" id="visited">Home</a></li>
                     <li><a href="${pageContext.request.contextPath}/about">About</a></li>
                     <li><a href="${pageContext.request.contextPath}/contact">Contact</a></li>
                     <li><a>Register</a>
                         <ul>
                             <li><a href="${pageContext.request.contextPath}/register_dog">Register Dog</a></li>
-                            <li><a href="${pageContext.request.contextPath}/reg_participant">Register as Participant</a></li>
+                            <li><a>Register to Contest</a>
+                                <ul>
+                                    <li><a href="${pageContext.request.contextPath}/reg_participant">Register as Participant</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/reg_dog_contest">Register dog to contest</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </li>
-                    <li><a href="${pageContext.request.contextPath}/dogshows" id="visited">Dog Shows</a></li>
-                    <li><a href="${pageContext.request.contextPath}/reg">Registration test</a></li>
-                    <li><a href="${pageContext.request.contextPath}/register_dog">Add Dog test</a></li>
-                    <li><a href="${pageContext.request.contextPath}/add_dog_show">Add dog show test</a></li>
+                    <li><a href="${pageContext.request.contextPath}/dogshows">Dog Shows</a></li>
+                    <li><a href="${pageContext.request.contextPath}/add_dog_show">Add dog show</a></li>
+                    <li><a href="${pageContext.request.contextPath}/register_expert">Add Expert</a></li>
+                    <li>
+                        <nav class="main-nav ">
+                            <!-- ссылки на вызов форм -->
+                    <li><a  href="#0">Sign up / Sign in</a></li>
+                    <%--<li><a class="cd-signup" href="#0">Регистрация</a></li>--%>
+                    </nav>
+                    </li>
                 </ul>
             </div>
             <!-- mainmenu ends here -->
@@ -97,14 +110,14 @@
                     <option value="${pageContext.request.contextPath}/reg">Registration test</option>
                     <option value="${pageContext.request.contextPath}/register_dog">Add Dog test</option>
                     <option value="${pageContext.request.contextPath}/add_dog_show">Add dog show test</option>
+                    <option value="${pageContext.request.contextPath}/register_expert">Add Expert test</option>
                 </select>
             </form>
         </div>
         <!-- mainmenu ends here -->
     </div>
     <!-- container ends here -->
-</div>
-<!-- header ends here -->
+</div><!-- header ends here -->
 <!--Breadcrumbs ==================================================
 ================================================== -->
 

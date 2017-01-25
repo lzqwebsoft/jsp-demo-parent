@@ -20,7 +20,7 @@ public class Registered_Contest_Dog {
     private Contest contest;
 
     @OneToOne(optional = false)
-    @JoinColumn(name = "dog_id", unique = true, nullable = false)
+    @JoinColumn(name = "pedigree", unique = true, nullable = false)
     private Dog dog;
 
     public int getRegistered_contest_dog_id() {

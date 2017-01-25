@@ -34,6 +34,11 @@ public class DogServiceImpl implements DogService{
     }
 
     @Override
+    public Dog findByPedigree(String pedigree) {
+        return dogRepository.findByPedigreeLike(pedigree);
+    }
+
+    @Override
     public List<Dog> getAll() {
         return dogRepository.findAll();
     }
@@ -66,11 +71,6 @@ public class DogServiceImpl implements DogService{
     @Override
     public List<Dog> findByBreederLname(String breederLname) {
         return dogRepository.findByBreederLnameLike(breederLname);
-    }
-
-    @Override
-    public List<Dog> findByColor(String color) {
-        return dogRepository.findByColorLike(color);
     }
 
     @Override

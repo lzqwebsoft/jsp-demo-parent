@@ -19,36 +19,6 @@
 <html lang="en">
 <!--<![endif]-->
 <head>
-    <%--<script>--%>
-    <%--debugger;--%>
-    <%--$(document).ready(function () {--%>
-    <%--$('#fcigroup').on('change', getBreedList);--%>
-    <%--})--%>
-    <%--function getBreedList() {--%>
-    <%--var fcigroup =  $('#fcigroup').val();--%>
-    <%--$.ajax({--%>
-    <%--url: "/breedList" + fcigroup,--%>
-    <%--dataType: "json",--%>
-    <%--method: "GET",--%>
-    <%--success: function (breeds) {--%>
-
-    <%--var content = "";--%>
-    <%--content += '<option value="">Select Contest</option>';--%>
-    <%--$.each(breeds, function (key, value) {--%>
-    <%--content += "" +--%>
-    <%--'<option value="'+ value.breed_id +'">'+ value.title +'</option>';--%>
-    <%--});--%>
-    <%--$('#breed').html('');--%>
-    <%--$('#breed').html(content);--%>
-
-    <%--},--%>
-    <%--error: function (data) {--%>
-    <%--alert('Error');--%>
-    <%--}--%>
-
-    <%--});--%>
-    <%--};--%>
-    <%--</script>--%>
 
     <!-- Basic Page Needs ==================================================
     ================================================== -->
@@ -77,7 +47,7 @@
     <!-- Favicons ==================================================
     ================================================== -->
 
-    <link rel="shortcut icon" href="images/favicon.png">
+    <link rel="shortcut icon" href="favicon.png">
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
     <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
@@ -94,7 +64,7 @@
     <div class="container">
         <!-- Header | Logo, Menu
             ================================================== -->
-        <div class="logo"><a href="${pageContext.request.contextPath}/home_page"><img src="images/logo.png" alt="" /></a></div>
+        <div class="logo"><a href="${pageContext.request.contextPath}/home_page" al><img src="images/logo.png" alt="" style="height: 120px; margin-bottom: 10px"/></a></div>
         <div class="mainmenu">
             <div id="mainmenu">
                 <ul class="sf-menu">
@@ -104,13 +74,24 @@
                     <li><a id="visited">Register</a>
                         <ul>
                             <li><a href="${pageContext.request.contextPath}/register_dog">Register Dog</a></li>
-                            <li><a href="${pageContext.request.contextPath}/register_participant">Register as Participant</a></li>
+                            <li><a>Register to Contest</a>
+                                <ul>
+                                    <li><a href="${pageContext.request.contextPath}/reg_participant">Register as Participant</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/reg_dog_contest">Register dog to contest</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </li>
                     <li><a href="${pageContext.request.contextPath}/dogshows">Dog Shows</a></li>
-                    <li><a href="${pageContext.request.contextPath}/reg">Registration test</a></li>
-                    <li><a href="${pageContext.request.contextPath}/register_dog">Add Dog test</a></li>
-                    <li><a href="${pageContext.request.contextPath}/add_dog_show">Add dog show test</a></li>
+                    <li><a href="${pageContext.request.contextPath}/add_dog_show">Add dog show</a></li>
+                    <li><a href="${pageContext.request.contextPath}/register_expert">Add Expert</a></li>
+                    <li>
+                        <nav class="main-nav ">
+                            <!-- ссылки на вызов форм -->
+                    <li><a  href="#0">Sign up / Sign in</a></li>
+                    <%--<li><a class="cd-signup" href="#0">Регистрация</a></li>--%>
+                    </nav>
+                    </li>
                 </ul>
             </div>
             <!-- mainmenu ends here -->
@@ -128,6 +109,7 @@
                     <option value="${pageContext.request.contextPath}/reg">Registration test</option>
                     <option value="${pageContext.request.contextPath}/register_dog">Add Dog test</option>
                     <option value="${pageContext.request.contextPath}/add_dog_show">Add dog show test</option>
+                    <option value="${pageContext.request.contextPath}/register_expert">Add Expert test</option>
                 </select>
             </form>
         </div>
@@ -176,8 +158,8 @@
                     <%--<input type="text" id="gender" name="gender" value="<c:out value="${dog.gender}"/>" required/>--%>
                 </div>
                 <div class="name">
-                    <label for="color">Dog's Color:</label>
-                    <input type="text" id="color" name="color" value="<c:out value="${dog.color}"/>" required/>
+                    <label for="colour">Dog's Color:</label>
+                    <input type="text" id="colour" name="colour" value="<c:out value="${dog.colour}"/>" required/>
                 </div>
                 <div class="name">
                     <label for="chip">Dog's Chip:</label>

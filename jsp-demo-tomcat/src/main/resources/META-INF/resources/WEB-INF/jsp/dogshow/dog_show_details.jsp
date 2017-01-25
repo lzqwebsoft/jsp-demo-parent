@@ -41,12 +41,12 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/skeleton.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/screen.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/table/table_experts.css">
-    <link rel="stylesheet" href="c${pageContext.request.contextPath}/ss/prettyPhoto.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/prettyPhoto.css" type="text/css" media="screen" />
 
     <!-- Favicons ==================================================
     ================================================== -->
 
-    <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/favicon.png">
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/favicon.png">
     <link rel="apple-touch-icon" href="${pageContext.request.contextPath}/images/apple-touch-icon.png">
     <link rel="apple-touch-icon" sizes="72x72" href="${pageContext.request.contextPath}/images/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="${pageContext.request.contextPath}/images/apple-touch-icon-114x114.png">
@@ -63,7 +63,7 @@
     <div class="container">
         <!-- Header | Logo, Menu
             ================================================== -->
-        <div class="logo"><a href="${pageContext.request.contextPath}/home_page"><img src="images/logo.png" alt="" /></a></div>
+        <div class="logo"><a href="${pageContext.request.contextPath}/home_page" al><img src="${pageContext.request.contextPath}/images/logo.png" alt="" style="height: 120px; margin-bottom: 10px"/></a></div>
         <div class="mainmenu">
             <div id="mainmenu">
                 <ul class="sf-menu">
@@ -73,13 +73,24 @@
                     <li><a>Register</a>
                         <ul>
                             <li><a href="${pageContext.request.contextPath}/register_dog">Register Dog</a></li>
-                            <li><a href="${pageContext.request.contextPath}/reg_participant">Register as Participant</a></li>
+                            <li><a>Register to Contest</a>
+                                <ul>
+                                    <li><a href="${pageContext.request.contextPath}/reg_participant">Register as Participant</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/reg_dog_contest">Register dog to contest</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </li>
                     <li><a href="${pageContext.request.contextPath}/dogshows" id="visited">Dog Shows</a></li>
-                    <li><a href="${pageContext.request.contextPath}/reg">Registration test</a></li>
-                    <li><a href="${pageContext.request.contextPath}/register_dog">Add Dog test</a></li>
-                    <li><a href="${pageContext.request.contextPath}/add_dog_show">Add dog show test</a></li>
+                    <li><a href="${pageContext.request.contextPath}/add_dog_show">Add dog show</a></li>
+                    <li><a href="${pageContext.request.contextPath}/register_expert">Add Expert</a></li>
+                    <li>
+                        <nav class="main-nav ">
+                            <!-- ссылки на вызов форм -->
+                    <li><a  href="#0">Sign up / Sign in</a></li>
+                    <%--<li><a class="cd-signup" href="#0">Регистрация</a></li>--%>
+                    </nav>
+                    </li>
                 </ul>
             </div>
             <!-- mainmenu ends here -->
@@ -97,6 +108,7 @@
                     <option value="${pageContext.request.contextPath}/reg">Registration test</option>
                     <option value="${pageContext.request.contextPath}/register_dog">Add Dog test</option>
                     <option value="${pageContext.request.contextPath}/add_dog_show">Add dog show test</option>
+                    <option value="${pageContext.request.contextPath}/register_expert">Add Expert test</option>
                 </select>
             </form>
         </div>
@@ -110,7 +122,7 @@
 <div class="breadcrumbs">
     <div class="container">
         <header>
-            <h3><c:out value="${showdet.title}"/></h3>
+            <h3><c:out value="${showdet.title}"/></h3><br>
         </header>
     </div>
     <!-- container ends here -->
@@ -121,13 +133,13 @@
 ================================================== -->
 <div class="container" align="center">
     <table align="top">
-                    <a  class="prettyPhoto[gal]" ><img class="shadow" src="${pageContext.request.contextPath}/pics/<c:out value="${showdet.dogshow_id}"/>.jpg" alt="" align="responsive" height="280"/></a>
+                    <a  class="prettyPhoto[gal]" ><img class="shadow" src="${pageContext.request.contextPath}/pics/<c:out value="${showdet.dogshow_id}"/>.jpg" alt="" align="responsive" height="380"/></a>
     </table>
         <br>
     <hr class="separator1">
     <div class="container contact" align="center">
     <div class="one" align="center">
-        <h3>Date:</h3>
+        <h3>Date:</h3><br>
         <section class="first shadow">
             <ul>
                 <li><strong><fmt:formatDate value="${showdet.date}" pattern="dd MMM yyyy" /></strong></li>
@@ -143,15 +155,15 @@
     <div id="resume">
         <div class="container resume">
 
-            <div class="one_third">
+            <div class="one_third"><br>
                 <h4>Address</h4>
                 <p><c:out value="${showdet.address}"/></p>
             </div>
-            <div class="one_third">
+            <div class="one_third"><br>
                 <h4>Organizer</h4>
                 <p><c:out value="${showdet.organizer}"/></p>
             </div>
-            <div class="one_third">
+            <div class="one_third lastcolumn"><br>
                 <h4>Sponsor</h4>
                 <p><c:out value="${showdet.sponsor}"/></p>
             </div>
@@ -169,28 +181,32 @@
             <table>
                 <tbody>
                 <c:forEach var="expert" items="${experts_list}">
+                    <form:form method="POST" action="${pageContext.request.contextPath}/delete_expert">
                 <tr>
                 <td>${expert.fname}</td>
                 <td>${expert.sname}</td>
                 <td>${expert.lname}</td>
                     <td>from</td>
                     <td>${expert.country}</td>
+                    <input hidden value="<c:out value="${showdet.dogshow_id}"/>" name="showdet.dogshow_id" id="${showdet.dogshow_id}" />
+                    <td><input type="submit" value="Delete"/></td>
                 </tr>
+                    </form:form>
                 </c:forEach>
                 </tbody>
-            </table>
-            If You want to add expert to this show <a href="/add_expert_separate/${showdet.dogshow_id}">Press Here</a>
-        <hr class="separator1">
+            </table><br>
+    <p>If You want to add expert to this show <a href="/add_expert_separate/${showdet.dogshow_id}">Press Here</a></p><br><br>
+        <hr class="separator1"><br>
         <h3>Contest:</h3>
         <p>${showdet.contest.title}</p>
         <h4>Contest's description: </h4>
-        <p>${showdet.contest.description}</p>
-    <a href="${pageContext.request.contextPath}/dogs_on_contest/${showdet.dogshow_id}"><h3>Registered to Contest dogs</h3></a>
-    <a href="${pageContext.request.contextPath}/participants_on_contest/${showdet.dogshow_id}"><h3>Registered to Contest participants</h3></a>
+        <p>${showdet.contest.description}</p><br>
+    <a href="${pageContext.request.contextPath}/dogs_on_contest/${showdet.dogshow_id}"><h3>Registered to Contest dogs</h3></a><br>
+    <a href="${pageContext.request.contextPath}/participants_on_contest/${showdet.dogshow_id}"><h3>Registered to Contest participants</h3></a><br>
 
-    <a href="${pageContext.request.contextPath}/dogs_list/${showdet.dogshow_id}"><h3>Registered Dogs List</h3></a>
+    <a href="${pageContext.request.contextPath}/dogs_list/${showdet.dogshow_id}"><h3>Registered Dogs List</h3></a><br>
     <hr class="separator1">
-    If You want to register on this show <a href="/reg_dog_separate/${showdet.dogshow_id}">Press Here</a>
+    <p>If You want to register on this show <a href="/reg_dog_separate/${showdet.dogshow_id}">Press Here</a></p>
 </div>
 
 <!-- container ends here -->

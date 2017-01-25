@@ -13,15 +13,6 @@ public class Expert {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private int expert_id;
 
-    @Column(name = "Fname")
-    private String fname;
-
-    @Column(name = "Sname")
-    private String sname;
-
-    @Column(name = "Lname")
-    private String lname;
-
     @Column(name = "Country")
     private String country;
 
@@ -31,6 +22,10 @@ public class Expert {
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "experts")
     private Set<DogShow> dogShows;
 
+    @OneToOne(optional = false)
+    @JoinColumn(name="human_id", unique = true, nullable = false)
+    private Human human;
+
     public int getExpert_id() {
         return expert_id;
     }
@@ -39,28 +34,20 @@ public class Expert {
         this.expert_id = expert_id;
     }
 
-    public String getFname() {
-        return fname;
+    public Set<DogShow> getDogShows() {
+        return dogShows;
     }
 
-    public void setFname(String fname) {
-        this.fname = fname;
+    public void setDogShows(Set<DogShow> dogShows) {
+        this.dogShows = dogShows;
     }
 
-    public String getSname() {
-        return sname;
+    public Human getHuman() {
+        return human;
     }
 
-    public void setSname(String sname) {
-        this.sname = sname;
-    }
-
-    public String getLname() {
-        return lname;
-    }
-
-    public void setLname(String lname) {
-        this.lname = lname;
+    public void setHuman(Human human) {
+        this.human = human;
     }
 
     public String getCountry() {

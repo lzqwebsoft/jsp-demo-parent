@@ -10,6 +10,7 @@ table {
     color: rgba(0,0,0,.87);
     border-collapse: inherit;
     border-spacing: 0;
+    font-size: 15px;
 }
 thead th {
     cursor: auto;
@@ -32,6 +33,7 @@ tr:first-child td {
     padding: .78571429em;
     text-align: inherit;
     border: none;
+
 }
 tr:hover {
     background-color: gray;

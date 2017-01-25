@@ -5,24 +5,30 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Collection;
-import java.util.Set;
 
 /**
  * Created by moneg on 08.01.2017.
  */
 @Entity
 @Table(name = "user")
-public class User implements Serializable, UserDetails {
-
-    private int id;
-    private String username;
-    private String password;
-    private String passwordConfirm;
-    private Set<Role> roles;
+public class User implements Serializable, UserDetails, GrantedAuthority {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
+    private int id;
+    @Column(name="username")
+    private String username;
+    @Column(name = "password")
+    private String password;
+    @Column(name = "email")
+    private String email;
+//    @Column
+//    private String passwordConfirm;
+
+
     public int getId() {
         return id;
     }
@@ -39,9 +45,16 @@ public class User implements Serializable, UserDetails {
         this.username = username;
     }
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+    @OneToOne(optional = false)
+    @JoinColumn(name="human_id", unique = true, nullable = false)
+    private Human human;
+
+    public Human getHuman() {
+        return human;
+    }
+
+    public void setHuman(Human human) {
+        this.human = human;
     }
 
     public String getPassword() {
@@ -52,23 +65,27 @@ public class User implements Serializable, UserDetails {
         this.password = password;
     }
 
-    @Transient
-    public String getPasswordConfirm() {
-        return passwordConfirm;
+//    @Transient
+//    public String getPasswordConfirm() {
+//        return passwordConfirm;
+//    }
+//
+//    public void setPasswordConfirm(String passwordConfirm) {
+//        this.passwordConfirm = passwordConfirm;
+//    }
+
+
+    public String getEmail() {
+        return email;
     }
 
-    public void setPasswordConfirm(String passwordConfirm) {
-        this.passwordConfirm = passwordConfirm;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    @ManyToMany
-    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-    public Set<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return Arrays.asList(new GrantedAuthority[]{this});
     }
 
     @Override
@@ -89,5 +106,10 @@ public class User implements Serializable, UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    @Override
+    public String getAuthority() {
+        return null;
     }
 }

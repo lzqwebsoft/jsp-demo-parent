@@ -47,7 +47,7 @@
     <!-- Favicons ==================================================
     ================================================== -->
 
-    <link rel="shortcut icon" href="images/favicon.png">
+    <link rel="shortcut icon" href="favicon.png">
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
     <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
@@ -64,7 +64,7 @@
     <div class="container">
         <!-- Header | Logo, Menu
             ================================================== -->
-        <div class="logo"><a href="${pageContext.request.contextPath}/home_page"><img src="images/logo.png" alt="" /></a></div>
+        <div class="logo"><a href="${pageContext.request.contextPath}/home_page" al><img src="images/logo.png" alt="" style="height: 120px; margin-bottom: 10px"/></a></div>
         <div class="mainmenu">
             <div id="mainmenu">
                 <ul class="sf-menu">
@@ -73,14 +73,25 @@
                     <li><a href="${pageContext.request.contextPath}/contact">Contact</a></li>
                     <li><a id="visited">Register</a>
                         <ul>
-                            <li><a href="${pageContext.request.contextPath}/register_dog">Register Dog</a></li>
-                            <li><a href="${pageContext.request.contextPath}/register_participant">Register as Participant</a></li>
+                            <li><a href="${pageContext.request.contextPath}/register_dog" >Register Dog</a></li>
+                            <li><a>Register to Contest</a>
+                                <ul>
+                                    <li><a href="${pageContext.request.contextPath}/reg_participant">Register as Participant</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/reg_dog_contest">Register dog to contest</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </li>
                     <li><a href="${pageContext.request.contextPath}/dogshows">Dog Shows</a></li>
-                    <li><a href="${pageContext.request.contextPath}/reg">Registration test</a></li>
-                    <li><a href="${pageContext.request.contextPath}/register_dog">Add Dog test</a></li>
-                    <li><a href="${pageContext.request.contextPath}/add_dog_show">Add dog show test</a></li>
+                    <li><a href="${pageContext.request.contextPath}/add_dog_show">Add dog show</a></li>
+                    <li><a href="${pageContext.request.contextPath}/register_expert">Add Expert</a></li>
+                    <li>
+                        <nav class="main-nav ">
+                            <!-- ссылки на вызов форм -->
+                    <li><a  href="#0">Sign up / Sign in</a></li>
+                    <%--<li><a class="cd-signup" href="#0">Регистрация</a></li>--%>
+                    </nav>
+                    </li>
                 </ul>
             </div>
             <!-- mainmenu ends here -->
@@ -98,6 +109,7 @@
                     <option value="${pageContext.request.contextPath}/reg">Registration test</option>
                     <option value="${pageContext.request.contextPath}/register_dog">Add Dog test</option>
                     <option value="${pageContext.request.contextPath}/add_dog_show">Add dog show test</option>
+                    <option value="${pageContext.request.contextPath}/register_expert">Add Expert test</option>
                 </select>
             </form>
         </div>
@@ -143,11 +155,6 @@
                         <option value="male">Male</option>
                         <option value="female">Female</option>
                     </select>
-                    <%--<input type="text" id="gender" name="gender" value="<c:out value="${dog.gender}"/>" required/>--%>
-                </div>
-                <div class="name">
-                    <label for="color">Dog's Color:</label>
-                    <input type="text" id="color" name="color" value="<c:out value="${dog.color}"/>" required/>
                 </div>
                 <div class="name">
                     <label for="chip">Dog's Chip:</label>
@@ -171,11 +178,64 @@
                 </div>
                 <div class="name">
                     <label for="fcigroup">Dog's Fci Group:</label>
-                    <input type="number" size="1" min="1" max="11" id="fcigroup" name="fcigroup" value="<c:out value="${dog.fcigroup}"/>" required/>
+                    <%--<input type="text" id="fcigroup" name="fcigroup" value="<c:out value="${dog.fcigroup}"/>" required/>--%>
+                    <select id="fcigroup" name="fcigroup">
+                        <option value="" disabled>Select Fci Group</option>
+                        <c:forEach var="fcigroup" items="${fcigroup}">
+                            <option value="${fcigroup.number}">${fcigroup.number}</option>
+                        </c:forEach>
+
+                    </select>
                 </div>
                 <div class="name">
                     <label for="breed">Dog's Breed:</label>
-                    <input type="text" id="breed" name="breed" value="<c:out value="${dog.breed}"/>" required/>
+                    <%--<input type="text" id="breed" name="breed" value="<c:out value="${dog.breed}"/>" required/>--%>
+                    <select id="breed" name="breed">
+                        <option value="" disabled>Select Breed</option>
+                        <c:forEach var="breed" items="${breed_1}">
+                            <option value="${breed.title}" class="1">${breed.title}</option>
+                        </c:forEach>
+                        <c:forEach var="breed" items="${breed_2}">
+                            <option value="${breed.title}" class="2">${breed.title}</option>
+                        </c:forEach>
+                        <c:forEach var="breed" items="${breed_3}">
+                            <option value="${breed.title}" class="3">${breed.title}</option>
+                        </c:forEach>
+                        <c:forEach var="breed" items="${breed_4}">
+                            <option value="${breed.title}" class="4">${breed.title}</option>
+                        </c:forEach>
+                        <c:forEach var="breed" items="${breed_5}">
+                            <option value="${breed.title}" class="5">${breed.title}</option>
+                        </c:forEach>
+                        <c:forEach var="breed" items="${breed_6}">
+                            <option value="${breed.title}" class="6">${breed.title}</option>
+                        </c:forEach>
+                        <c:forEach var="breed" items="${breed_7}">
+                            <option value="${breed.title}" class="7">${breed.title}</option>
+                        </c:forEach>
+                        <c:forEach var="breed" items="${breed_8}">
+                            <option value="${breed.title}" class="8">${breed.title}</option>
+                        </c:forEach>
+                        <c:forEach var="breed" items="${breed_9}">
+                            <option value="${breed.title}" class="9">${breed.title}</option>
+                        </c:forEach>
+                        <c:forEach var="breed" items="${breed_10}">
+                            <option value="${breed.title}" class="10">${breed.title}</option>
+                        </c:forEach>
+                        <c:forEach var="breed" items="${breed_11}">
+                            <option value="${breed.title}" class="11">${breed.title}</option>
+                        </c:forEach>
+                    </select>
+                </div>
+                <div class="name">
+                    <label for="colour">Dog's Color:</label>
+                    <%--<input type="text" id="colour" name="colour" value="<c:out value="${dog.colour}"/>" required/>--%>
+                    <select id="colour" name="colour">
+                        <option value="" disabled>Select Color</option>
+                    <c:forEach var="colour" items="${colour}">
+                        <option value="${colour.title}" class="1">${colour.title}</option>
+                    </c:forEach>
+                    </select>
                 </div>
                 <div class="name">
                     <label for="breeder_fname">Input breeder's first name:</label>
@@ -281,7 +341,10 @@
 ================================================== -->
 <!-- Scripts ==================================================
 ================================================== -->
-<%--<script src="js/jquery-1.8.0.min.js" type="text/javascript"></script>--%>
+<script src="js/jquery-1.8.0.min.js" type="text/javascript"></script>
+<script src="js/jquery.chained.min.js"></script>
+<script src="js/list.js"></script>
+
 <!-- Main js files -->
 <script src="js/screen.js" type="text/javascript"></script>
 <!-- Tabs -->
@@ -295,5 +358,6 @@
 <script src="js/jquery.flexslider-min.js" type="text/javascript"></script>
 <!-- Modernizr -->
 <script type="text/javascript" src="js/modernizr.custom.29473.js"></script>
+
 </body>
 </html>

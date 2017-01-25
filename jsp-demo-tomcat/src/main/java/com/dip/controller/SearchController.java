@@ -31,6 +31,15 @@ public class SearchController {
         if(search_type == 1){
             System.out.println("search by title" + search_type);
             List<DogShow> dogShows = dogShowService.findByTitle(search_text.trim());
+            if(dogShows.isEmpty()){
+                dogShows = dogShowService.findBySponsor(search_text.trim());
+                if(dogShows.isEmpty()){
+                    dogShows = dogShowService.findByOrganizer(search_text.trim());
+                    if(dogShows.isEmpty()){
+                        dogShows = dogShowService.findByForwhom(search_text);
+                    }
+                }
+            }
             System.out.println(dogShows);
             modelAndView.addObject("dogshows_list",dogShows);
             return modelAndView;

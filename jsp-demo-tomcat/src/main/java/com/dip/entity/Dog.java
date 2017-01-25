@@ -10,9 +10,10 @@ import java.util.Set;
 @Entity
 @Table(name = "dog")
 public class Dog {
+
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private int dog_id;
+    @Column(name = "Pedigree")
+    private String pedigree;
 
     @Column(name = "Gender")
     private String gender;
@@ -29,17 +30,12 @@ public class Dog {
     @Column(name = "Brand")
     private String brand;
 
-    @Column(name = "Pedigree")
-    private String pedigree;
 
     @Column(name = "Sire")
     private String sire;
 
     @Column(name = "Dam")
     private String dam;
-
-    @Column(name = "color_id")
-    private int color_id;
 
     @Column(name = "breed_id")
     private int breed_id;
@@ -50,6 +46,9 @@ public class Dog {
     @Column(name = "owner_id")
     private int owner_id;
 
+    @Column(name = "colour_id")
+    private int colour_id;
+
     @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "owner_id", nullable = false, insertable = false, updatable = false)
     private Owner owner;
@@ -58,6 +57,10 @@ public class Dog {
     @JoinColumn(name="breed_id", unique = true, nullable = false,insertable = false,updatable = false)
     private Breed breed;
 
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn(name="colour_id", unique = true, nullable = false,insertable = false,updatable = false)
+    private Colour colour;
+
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "dog")
     private Set<Breeder> breeders;
 
@@ -65,9 +68,6 @@ public class Dog {
     @JoinColumn(name="breeder_id", unique = true, nullable = false,insertable = false,updatable = false)
     private Breeder breeder;
 
-    @OneToOne(optional = false)
-    @JoinColumn(name="color_id", unique = true, nullable = false,insertable = false,updatable = false)
-    private Color color;
 
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "dogs")
     private Set<DogShow> dogShows;
@@ -75,21 +75,12 @@ public class Dog {
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "dogs")
     private Set<Contest> contests;
 
-
-    public Color getColor() {
-        return color;
+    public Colour getColour() {
+        return colour;
     }
 
-    public void setColor(Color color) {
-        this.color = color;
-    }
-
-    public int getDog_id() {
-        return dog_id;
-    }
-
-    public void setDog_id(int dog_id) {
-        this.dog_id = dog_id;
+    public void setColour(Colour colour) {
+        this.colour = colour;
     }
 
     public String getGender() {
@@ -156,13 +147,6 @@ public class Dog {
         this.dam = dam;
     }
 
-    public int getColor_id() {
-        return color_id;
-    }
-
-    public void setColor_id(int color_id) {
-        this.color_id = color_id;
-    }
 
     public int getBreed_id() {
         return breed_id;
@@ -234,5 +218,13 @@ public class Dog {
 
     public void setContests(Set<Contest> contests) {
         this.contests = contests;
+    }
+
+    public int getColour_id() {
+        return colour_id;
+    }
+
+    public void setColour_id(int colour_id) {
+        this.colour_id = colour_id;
     }
 }

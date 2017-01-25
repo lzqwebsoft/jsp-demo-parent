@@ -48,7 +48,7 @@
     <!-- Favicons ==================================================
     ================================================== -->
 
-    <link rel="shortcut icon" href="images/favicon.png">
+    <link rel="shortcut icon" href="favicon.png">
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
     <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
@@ -65,7 +65,7 @@
     <div class="container">
         <!-- Header | Logo, Menu
             ================================================== -->
-        <div class="logo"><a href="${pageContext.request.contextPath}/home_page"><img src="images/logo.png" alt="" /></a></div>
+        <div class="logo"><a href="${pageContext.request.contextPath}/home_page" al><img src="images/logo.png" alt="" style="height: 120px; margin-bottom: 10px"/></a></div>
         <div class="mainmenu">
             <div id="mainmenu">
                 <ul class="sf-menu">
@@ -75,13 +75,24 @@
                     <li><a>Register</a>
                         <ul>
                             <li><a href="${pageContext.request.contextPath}/register_dog">Register Dog</a></li>
-                            <li><a href="${pageContext.request.contextPath}/reg_participant">Register as Participant</a></li>
+                            <li><a>Register to Contest</a>
+                                <ul>
+                                    <li><a href="${pageContext.request.contextPath}/reg_participant">Register as Participant</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/reg_dog_contest">Register dog to contest</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </li>
                     <li><a href="${pageContext.request.contextPath}/dogshows" id="visited">Dog Shows</a></li>
-                    <li><a href="${pageContext.request.contextPath}/reg">Registration test</a></li>
-                    <li><a href="${pageContext.request.contextPath}/register_dog">Add Dog test</a></li>
-                    <li><a href="${pageContext.request.contextPath}/add_dog_show">Add dog show test</a></li>
+                    <li><a href="${pageContext.request.contextPath}/add_dog_show">Add dog show</a></li>
+                    <li><a href="${pageContext.request.contextPath}/register_expert">Add Expert</a></li>
+                    <li>
+                        <nav class="main-nav ">
+                            <!-- ссылки на вызов форм -->
+                    <li><a  href="#0">Sign up / Sign in</a></li>
+                    <%--<li><a class="cd-signup" href="#0">Регистрация</a></li>--%>
+                    </nav>
+                    </li>
                 </ul>
             </div>
             <!-- mainmenu ends here -->
@@ -99,6 +110,7 @@
                     <option value="${pageContext.request.contextPath}/reg">Registration test</option>
                     <option value="${pageContext.request.contextPath}/register_dog">Add Dog test</option>
                     <option value="${pageContext.request.contextPath}/add_dog_show">Add dog show test</option>
+                    <option value="${pageContext.request.contextPath}/register_expert">Add Expert test</option>
                 </select>
             </form>
         </div>
@@ -126,7 +138,7 @@
             <c:forEach var="dsh" items="${dogshows_list}">
                 <form:form method="POST" action="delete_show">
                 <article class="post">
-                <h3>${dsh.title}</h3>
+                    <h3><a href="${pageContext.request.contextPath}/showDet/${dsh.dogshow_id}">${dsh.title}</a></h3><br>
                 <a href="pics/${dsh.dogshow_id}.jpg" class="prettyPhoto[gal]"><img class="shadow" src="pics/${dsh.dogshow_id}.jpg" alt="" height="200" /></a>
                 <div class="entry-date">
                     <%--KOSTIL--%>
@@ -135,7 +147,7 @@
                 </div>
                 <p>${dsh.description}</p>
                     <input hidden value="<c:out value="${dsh.dogshow_id}"/>" name="dogshow_id" id="${dsh.dogshow_id}" />
-                <a href="${pageContext.request.contextPath}/showDet/${dsh.dogshow_id}">more <span>-></span></a>
+                <a href="${pageContext.request.contextPath}/showDet/${dsh.dogshow_id}" style="font-size: 15px">more <span>-></span></a>
 
                 <div align="right">
                     <input type="submit" value="Delete"/>
@@ -152,17 +164,18 @@
             <h4 class="sidebarheader">Additional instruments</h4>
             <ul class="tabs">
                 <li><a class="active">Search</a></li>
-            </ul
+            </ul>
             <ul class="tabs-content">
                 <li class="active" id="trends">
                     <p>Use this form to search that Dog Show You want.</p>
                     <form action="/search_dogshow" method="POST" class="search_bar small">
-                        <div class="search_dropdown" style="width: 6px;" id="search_type" name="search_type">
+                        <div class="search_dropdown" style="width: 1px;" id="search_type" name="search_type">
                             <span>Search Type</span>
                             <ul>
                                 <li><input type="hidden" value= 1 name="search_type">Title</li>
                                 <li><input type="hidden" value= 2 name="search_type">Sponsor</li>
                                 <li><input type="hidden" value= 3 name="search_type">Organizer</li>
+                                <li><input type="hidden" value= 4 name="search_type">Contest Type</li>
                             </ul>
                         </div>
                         <input type="text" placeholder="Search for anything" name="search_text" id="search_text"/>

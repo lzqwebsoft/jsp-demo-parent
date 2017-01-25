@@ -13,17 +13,12 @@ public class Participant {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private int participant_id;
 
-    @Column(name = "Fname")
-    private String fname;
-
-    @Column(name = "Sname")
-    private String sname;
-
-    @Column(name = "Lname")
-    private String lname;
-
     @Column(name = "Age")
     private int age;
+
+    @OneToOne(optional = false)
+    @JoinColumn(name="human_id", unique = true, nullable = false)
+    private Human human;
 
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "participants")
     private Set<Contest> contests;
@@ -44,28 +39,12 @@ public class Participant {
         this.participant_id = participant_id;
     }
 
-    public String getFname() {
-        return fname;
+    public Human getHuman() {
+        return human;
     }
 
-    public void setFname(String fname) {
-        this.fname = fname;
-    }
-
-    public String getSname() {
-        return sname;
-    }
-
-    public void setSname(String sname) {
-        this.sname = sname;
-    }
-
-    public String getLname() {
-        return lname;
-    }
-
-    public void setLname(String lname) {
-        this.lname = lname;
+    public void setHuman(Human human) {
+        this.human = human;
     }
 
     public int getAge() {

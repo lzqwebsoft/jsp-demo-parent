@@ -10,6 +10,8 @@ import java.util.List;
  */
 public interface BreedService {
     Breed addBreed(Breed breed);
+    Breed findOne(int id);
+    Breed findByTitle(String title);
     void delete(int id);
     Breed editBreed(Breed breed);
     List<Breed> getAll();

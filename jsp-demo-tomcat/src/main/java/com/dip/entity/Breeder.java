@@ -12,15 +12,6 @@ public class Breeder {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private int breeder_id;
 
-    @Column(name = "Fname")
-    private String fname;
-
-    @Column(name = "Sname")
-    private String sname;
-
-    @Column(name = "Lname")
-    private String lname;
-
     public int getBreeder_id() {
         return breeder_id;
     }
@@ -29,31 +20,28 @@ public class Breeder {
     @JoinColumn(name = "breeder_id", nullable = false, insertable = false, updatable = false)
     private Dog dog;
 
+    @OneToOne(optional = false)
+    @JoinColumn(name="human_id", unique = true, nullable = false)
+    private Human human;
+
     public void setBreeder_id(int breeder_id) {
         this.breeder_id = breeder_id;
     }
 
-    public String getFname() {
-        return fname;
+
+    public Dog getDog() {
+        return dog;
     }
 
-    public void setFname(String fname) {
-        this.fname = fname;
+    public void setDog(Dog dog) {
+        this.dog = dog;
     }
 
-    public String getSname() {
-        return sname;
+    public Human getHuman() {
+        return human;
     }
 
-    public void setSname(String sname) {
-        this.sname = sname;
-    }
-
-    public String getLname() {
-        return lname;
-    }
-
-    public void setLname(String lname) {
-        this.lname = lname;
+    public void setHuman(Human human) {
+        this.human = human;
     }
 }

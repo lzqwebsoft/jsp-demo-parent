@@ -5,7 +5,6 @@ import com.dip.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
@@ -24,15 +23,15 @@ public class RegisterDogController {
     @Autowired
     BreedService breedService;
     @Autowired
-    ColorService colorService;
+    ColourService colourService;
     @Autowired
     DogService dogService;
     @Autowired
     DogShowService dogShowService;
     @Autowired
-    Registered_dogService registered_dogService;
-    @Autowired
     FciGroupService fciGroupService;
+    @Autowired
+    HumanService humanService;
 
 
     @ModelAttribute("dogshow_list")
@@ -42,6 +41,13 @@ public class RegisterDogController {
         return dogShows;
     }
 
+//    @ModelAttribute("breed_list")
+//    public List<Breed> breeds(Integer fciGroup){
+//        System.out.println(fciGroup);
+//        List<Breed> breeds = new ArrayList<Breed>();
+//        breeds = breedService.findByFciGroup(fciGroupService.findById(fciGroup));
+//        return breeds;
+//    }
 
     @RequestMapping(value = {"/register_dog"}, method = {RequestMethod.GET})
     public ModelAndView RegisterDogPage() {
@@ -53,13 +59,38 @@ public class RegisterDogController {
         Date now = new Date();
         Date date = new Date(now.getYear(), now.getMonth()-3,now.getDay());
         modelAndView.addObject("date",date);
-        FciGroup fciGroup = new FciGroup();
+        List<FciGroup> fciGroups = fciGroupService.getAll();
+        modelAndView.addObject("fcigroup",fciGroups);
+        List<Breed> breeds1 = breedService.findByFciGroup(fciGroupService.findById(1));
+        modelAndView.addObject("breed_1",breeds1);
+        List<Breed> breeds2 = breedService.findByFciGroup(fciGroupService.findById(2));
+        modelAndView.addObject("breed_2",breeds2);
+        List<Breed> breeds3 = breedService.findByFciGroup(fciGroupService.findById(3));
+        modelAndView.addObject("breed_3",breeds3);
+        List<Breed> breeds4 = breedService.findByFciGroup(fciGroupService.findById(4));
+        modelAndView.addObject("breed_4",breeds4);
+        List<Breed> breeds5 = breedService.findByFciGroup(fciGroupService.findById(5));
+        modelAndView.addObject("breed_5",breeds5);
+        List<Breed> breeds6 = breedService.findByFciGroup(fciGroupService.findById(6));
+        modelAndView.addObject("breed_6",breeds6);
+        List<Breed> breeds7 = breedService.findByFciGroup(fciGroupService.findById(7));
+        modelAndView.addObject("breed_7",breeds7);
+        List<Breed> breeds8 = breedService.findByFciGroup(fciGroupService.findById(8));
+        modelAndView.addObject("breed_8",breeds8);
+        List<Breed> breeds9 = breedService.findByFciGroup(fciGroupService.findById(9));
+        modelAndView.addObject("breed_9",breeds9);
+        List<Breed> breeds10 = breedService.findByFciGroup(fciGroupService.findById(10));
+        modelAndView.addObject("breed_10",breeds10);
+        List<Breed> breeds11 = breedService.findByFciGroup(fciGroupService.findById(11));
+        modelAndView.addObject("breed_11",breeds11);
+        List<Colour> colours = colourService.findByBreed(breedService.findOne(1));
+        modelAndView.addObject("colour", colours);
         return modelAndView;
     }
 
     @RequestMapping(value = {"/add_dog","/reg_dog_separate/add_dog"}, method = {RequestMethod.POST})
     public RedirectView registerDog(@RequestParam("breed") String breed, @RequestParam("gender") String gender, @RequestParam("name") String name,
-                                @RequestParam("dob") @DateTimeFormat(pattern="yyyy-MM-dd") Date dob, @RequestParam("color") String color,
+                                @RequestParam("dob") @DateTimeFormat(pattern="yyyy-MM-dd") Date dob, @RequestParam("colour") String color,
                                 @RequestParam("chip") String chip, @RequestParam("brand") String brand, @RequestParam("pedigree") String pedigree,
                                 @RequestParam("sire") String sire, @RequestParam("dam") String dam, @RequestParam("fcigroup") int fcigroup,
                                 @RequestParam("breeder_fname") String breeder_fname, @RequestParam("breeder_sname") String breeder_sname,
@@ -67,33 +98,34 @@ public class RegisterDogController {
                                 @RequestParam("owner_sname") String owner_sname, @RequestParam("owner_lname") String owner_lname,
                                 @RequestParam("owner_location") String owner_location,@RequestParam("dogshow_id") int dogshow_id){
         ModelAndView mv = new ModelAndView("dogs/register_dog");
+        System.out.println("FCI GROUP " + fcigroup);
+        Human human_owner = new Human();
+        human_owner.setSname(owner_sname.trim());
+        human_owner.setFname(owner_fname.trim());
+        human_owner.setLname(owner_lname.trim());
+        humanService.addHuman(human_owner);
         Owner owner = new Owner();
-        owner.setFname(owner_fname.trim());
-        owner.setSname(owner_sname.trim());
-        owner.setLname(owner_lname.trim());
+        owner.setHuman(human_owner);
         owner.setLocation(owner_location.trim());
         ownerService.addOwner(owner);
         Breeder breeder = new Breeder();
-        breeder.setFname(breeder_fname.trim());
-        breeder.setSname(breeder_sname.trim());
-        breeder.setLname(breeder_lname.trim());
+        Human human_breeder = new Human();
+        human_breeder.setFname(breeder_fname.trim());
+        human_breeder.setSname(breeder_sname.trim());
+        human_breeder.setLname(breeder_lname.trim());
+        humanService.addHuman(human_breeder);
+        breeder.setHuman(human_breeder);
         breederService.addBreeder(breeder);
-        Color color1 = new Color();
-        color1.setTitle(color.trim());
-        colorService.addColor(color1);
-        FciGroup fciGroup = new FciGroup();
-        fciGroup.setNumber(fcigroup);
+        FciGroup fciGroup = fciGroupService.findById(fcigroup);
         fciGroupService.addFciGroup(fciGroup);
         Breed breed1 = new Breed();
-        breed1.setTitle(breed.trim());
-        breed1.setFcigroup_id(fciGroup.getFcigroup_id());
-        breedService.addBreed(breed1);
+        breed1 = breedService.findByTitle(breed);
+        Colour colour = colourService.findByTitle(color);
         Dog dog = new Dog();
         dog.setOwner(owner);
         dog.setOwner_id(owner.getOwner_id());
         dog.setBreeder(breeder);
         dog.setBreeder_id(breeder.getBreeder_id());
-        dog.setColor_id(color1.getColor_id());
         dog.setBreed_id(breed1.getBreed_id());
         dog.setDam(dam.trim());
         dog.setSire(sire.trim());
@@ -103,13 +135,16 @@ public class RegisterDogController {
         dog.setDob(dob);
         dog.setName(name.trim());
         dog.setGender(gender.trim());
-        dogService.addDog(dog);
+        dog.setColour_id(colour.getColour_id());
+        dog.setBreed_id(breed1.getBreed_id());
         DogShow dogShow = dogShowService.getById(dogshow_id);
-        Registered_dog registered_dog = new Registered_dog();
-        registered_dog.setDog(dog);
-        registered_dog.setDogShow(dogShow);
-        registered_dog.setNumber(registered_dogService.RandomNumber());
-        registered_dogService.addRegisteredDog(registered_dog);
+        Set<Dog> dogs = new HashSet<Dog>();
+        dogs.add(dog);
+        dogShow.setDogs(dogs);
+        Set<DogShow> dogShows = new HashSet<DogShow>();
+        dogShows.add(dogShow);
+        dog.setDogShows(dogShows);
+        dogService.addDog(dog);
 
         RedirectView redirectView = new RedirectView();
         redirectView.setContextRelative(true);
@@ -137,6 +172,5 @@ public class RegisterDogController {
     modelAndView.addObject("dogshow",dogShow);
     return modelAndView;
     }
-
 
 }

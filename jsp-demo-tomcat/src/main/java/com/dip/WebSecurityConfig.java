@@ -1,7 +1,8 @@
-package uits.school.web.conf;
+package com.dip;
 
-import uits.school.domain.User;
-import uits.school.service.UserService;
+import com.dip.entity.User;
+import com.dip.repository.UserRepository;
+
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -28,15 +29,16 @@ import org.springframework.transaction.annotation.Transactional;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private UserService userService;
+    private UserRepository userService;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.authorizeRequests()
-                .antMatchers("/admin/**").access("hasRole('ADMIN')")
-                .and().formLogin().loginPage("/login").permitAll()
-                .defaultSuccessUrl("/admin/home", false).and().logout().logoutUrl("/logout");
+                // шаблоны адресов вписать свои!!!
+                .antMatchers("/admin/**").access("hasRole('ADMIN')") //шаблон пути и соответствие роли
+                .and().formLogin().loginPage("/login").permitAll()//логин разрешаешь неавторизованному, отдельная страница
+                .defaultSuccessUrl("/admin/home_page", false).and().logout().logoutUrl("/logout");//дефолтная страница после авторизации и урл на логаут
         http.sessionManagement().maximumSessions(100).sessionRegistry(sessionRegistry());
     }
 
@@ -86,7 +88,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             public UserDetails loadUserByUsername(String string) throws UsernameNotFoundException {
                 User user = null;
                 try{
-                    user = userService.byUsername(string);
+                    user = userService.findByUsername(string);
                 }catch(Exception ex){
                     System.out.println("user not found or error");
                     ex.printStackTrace();

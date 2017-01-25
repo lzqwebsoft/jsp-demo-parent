@@ -46,7 +46,7 @@
     <!-- Favicons ==================================================
     ================================================== -->
 
-    <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/favicon.png">
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/favicon.png">
     <link rel="apple-touch-icon" href="${pageContext.request.contextPath}/images/apple-touch-icon.png">
     <link rel="apple-touch-icon" sizes="72x72" href="${pageContext.request.contextPath}/images/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="${pageContext.request.contextPath}/images/apple-touch-icon-114x114.png">
@@ -59,51 +59,64 @@
 
 <!--Content Part ==================================================
 ================================================== -->
-<div id="header">
-    <div class="container">
-        <!-- Header | Logo, Menu
-            ================================================== -->
-        <div class="logo"><a href="${pageContext.request.contextPath}/home_page"><img src="images/logo.png" alt="" /></a></div>
-        <div class="mainmenu">
-            <div id="mainmenu">
-                <ul class="sf-menu">
-                    <li><a href="${pageContext.request.contextPath}/home_page">Home</a></li>
-                    <li><a href="${pageContext.request.contextPath}/about">About</a></li>
-                    <li><a href="${pageContext.request.contextPath}/contact">Contact</a></li>
-                    <li><a>Register</a>
-                        <ul>
-                            <li><a href="${pageContext.request.contextPath}/register_dog">Register Dog</a></li>
-                            <li><a href="${pageContext.request.contextPath}/reg_participant">Register as Participant</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="${pageContext.request.contextPath}/dogshows" id="visited">Dog Shows</a></li>
-                    <li><a href="${pageContext.request.contextPath}/reg">Registration test</a></li>
-                    <li><a href="${pageContext.request.contextPath}/register_dog">Add Dog test</a></li>
-                    <li><a href="${pageContext.request.contextPath}/add_dog_show">Add dog show test</a></li>
-                </ul>
-            </div>
-            <!-- mainmenu ends here -->
+<%--<div id="header">--%>
+    <%--<div class="container">--%>
+        <%--<!-- Header | Logo, Menu--%>
+            <%--================================================== -->--%>
+        <%--<div class="logo"><a href="${pageContext.request.contextPath}/home_page" al><img src="images/logo.png" alt="" style="height: 120px; margin-bottom: 10px"/></a></div>--%>
+        <%--<div class="mainmenu">--%>
+            <%--<div id="mainmenu">--%>
+                <%--<ul class="sf-menu">--%>
+                    <%--<li><a href="${pageContext.request.contextPath}/home_page" >Home</a></li>--%>
+                    <%--<li><a href="${pageContext.request.contextPath}/about">About</a></li>--%>
+                    <%--<li><a href="${pageContext.request.contextPath}/contact">Contact</a></li>--%>
+                    <%--<li><a>Register</a>--%>
+                        <%--<ul>--%>
+                            <%--<li><a href="${pageContext.request.contextPath}/register_dog">Register Dog</a></li>--%>
+                            <%--<li><a>Register to Contest</a>--%>
+                                <%--<ul>--%>
+                                    <%--<li><a href="${pageContext.request.contextPath}/reg_participant">Register as Participant</a></li>--%>
+                                    <%--<li><a href="${pageContext.request.contextPath}/reg_dog_contest">Register dog to contest</a></li>--%>
+                                <%--</ul>--%>
+                            <%--</li>--%>
+                        <%--</ul>--%>
+                    <%--</li>--%>
+                    <%--<li><a href="${pageContext.request.contextPath}/dogshows" id="visited">Dog Shows</a></li>--%>
+                    <%--<li><a href="${pageContext.request.contextPath}/add_dog_show">Add dog show</a></li>--%>
+                    <%--<li><a href="${pageContext.request.contextPath}/register_expert">Add Expert</a></li>--%>
+                    <%--<li><a href="${pageContext.request.contextPath}/admin/registration">Reg</a></li>--%>
+                    <%--<li>--%>
+                        <%--<nav class="main-nav ">--%>
+                            <%--<!-- ссылки на вызов форм -->--%>
+                    <%--<li><a  href="#0">Sign up / Sign in</a></li>--%>
+                    <%--&lt;%&ndash;<li><a class="cd-signup" href="#0">Регистрация</a></li>&ndash;%&gt;--%>
+                    <%--</nav>--%>
+                    <%--</li>--%>
+                <%--</ul>--%>
+            <%--</div>--%>
+            <%--<!-- mainmenu ends here -->--%>
 
-            <!-- Responsive Menu -->
-            <form id="responsive-menu" action="#" method="post">
-                <select>
-                    <option value="">Navigation</option>
-                    <option value="${pageContext.request.contextPath}/home_page">Home</option>
-                    <option value="${pageContext.request.contextPath}/about">About</option>
-                    <option value="${pageContext.request.contextPath}/contact">Contact</option>
-                    <option value="${pageContext.request.contextPath}/register_dog">Register Dog</option>
-                    <option value="${pageContext.request.contextPath}/register_participant">Register as Participant</option>
-                    <option value="${pageContext.request.contextPath}/dogshows">Dog Shows</option>
-                    <option value="${pageContext.request.contextPath}/reg">Registration test</option>
-                    <option value="${pageContext.request.contextPath}/register_dog">Add Dog test</option>
-                    <option value="${pageContext.request.contextPath}/add_dog_show">Add dog show test</option>
-                </select>
-            </form>
-        </div>
-        <!-- mainmenu ends here -->
-    </div>
-    <!-- container ends here -->
-</div>
+            <%--<!-- Responsive Menu -->--%>
+            <%--<form id="responsive-menu" action="#" method="post">--%>
+                <%--<select>--%>
+                    <%--<option value="">Navigation</option>--%>
+                    <%--<option value="${pageContext.request.contextPath}/home_page">Home</option>--%>
+                    <%--<option value="${pageContext.request.contextPath}/about">About</option>--%>
+                    <%--<option value="${pageContext.request.contextPath}/contact">Contact</option>--%>
+                    <%--<option value="${pageContext.request.contextPath}/register_dog">Register Dog</option>--%>
+                    <%--<option value="${pageContext.request.contextPath}/register_participant">Register as Participant</option>--%>
+                    <%--<option value="${pageContext.request.contextPath}/dogshows">Dog Shows</option>--%>
+                    <%--<option value="${pageContext.request.contextPath}/reg">Registration test</option>--%>
+                    <%--<option value="${pageContext.request.contextPath}/register_dog">Add Dog test</option>--%>
+                    <%--<option value="${pageContext.request.contextPath}/add_dog_show">Add dog show test</option>--%>
+                    <%--<option value="${pageContext.request.contextPath}/register_expert">Add Expert test</option>--%>
+                <%--</select>--%>
+            <%--</form>--%>
+        <%--</div>--%>
+        <%--<!-- mainmenu ends here -->--%>
+    <%--</div>--%>
+    <%--<!-- container ends here -->--%>
+<%--</div>--%>
 <!-- header ends here -->
 <!--Breadcrumbs ==================================================
 ================================================== -->
@@ -128,58 +141,58 @@
 
 <!-- Socialize ==================================================
 ================================================== -->
-<hr class="separator2">
-<div class="socialsblock">
-    <div class="container socialize">
-        <h3>Socialize with us!</h3>
-        <section class="socials">
-            <ul class="socials">
-                <li><a href="#"><img src="${pageContext.request.contextPath}/images/socials/twitter.png" alt="" /></a></li>
-                <li><a href="#"><img src="${pageContext.request.contextPath}/images/socials/facebook.png" alt="" /></a></li>
-                <li><a href="#"><img src="${pageContext.request.contextPath}/images/socials/dribbble.png" alt="" /></a></li>
-                <li><a href="#"><img src="${pageContext.request.contextPath}/images/socials/google+.png" alt="" /></a></li>
-                <li><a href="#"><img src="${pageContext.request.contextPath}/images/socials/linkedin.png" alt="" /></a></li>
-                <li><a href="#"><img src="${pageContext.request.contextPath}/images/socials/youtube.png" alt="" /></a></li>
-            </ul>
-        </section>
-    </div>
-    <!-- container ends here -->
-</div>
+<%--<hr class="separator2">--%>
+<%--<div class="socialsblock">--%>
+    <%--<div class="container socialize">--%>
+        <%--<h3>Socialize with us!</h3>--%>
+        <%--<section class="socials">--%>
+            <%--<ul class="socials">--%>
+                <%--<li><a href="#"><img src="${pageContext.request.contextPath}/images/socials/twitter.png" alt="" /></a></li>--%>
+                <%--<li><a href="#"><img src="${pageContext.request.contextPath}/images/socials/facebook.png" alt="" /></a></li>--%>
+                <%--<li><a href="#"><img src="${pageContext.request.contextPath}/images/socials/dribbble.png" alt="" /></a></li>--%>
+                <%--<li><a href="#"><img src="${pageContext.request.contextPath}/images/socials/google+.png" alt="" /></a></li>--%>
+                <%--<li><a href="#"><img src="${pageContext.request.contextPath}/images/socials/linkedin.png" alt="" /></a></li>--%>
+                <%--<li><a href="#"><img src="${pageContext.request.contextPath}/images/socials/youtube.png" alt="" /></a></li>--%>
+            <%--</ul>--%>
+        <%--</section>--%>
+    <%--</div>--%>
+    <%--<!-- container ends here -->--%>
+<%--</div>--%>
 
-<!-- socialsblock ends here -->
-<!-- Footer ==================================================
-================================================== -->
-<div class="footer">
-    <div class="container">
-        <div class="one_fourth">
-            <h3>Contact Informations</h3>
-            <p><span class="orange"><strong>Address:</strong></span> <br>
-                Kharkiv, Ukraine</p>
-            <p><span class="orange"><strong>Phone:</strong></span> <br>
-                + 38 (093) 867 6925<br>
-            </p>
-            <p><span class="orange"><strong>Email:</strong></span> <br>
-                safronov.maksim.v@gmail.com<br>
-            </p>
-        </div>
-        <!-- four columns ends here -->
-        <div class="one_fourth lastcolumn">
-            <h3>About</h3>
-            <p>There is a service, which help You to be aware of Dog Shows.</p>
-        </div>
-        <!-- four columns ends here -->
-    </div>
-    <!-- container ends here -->
-</div>
-<!-- footer ends here -->
-<!-- Copyright ==================================================
-================================================== -->
-<div id="copyright">
-    <div class="container">
-        <p class="copyright">&copy; Copyright 2017. &quot;SERVICE NAME&quot; by Max Design. All rights reserved.</p>
-    </div>
-    <!-- container ends here -->
-</div>
+<%--<!-- socialsblock ends here -->--%>
+<%--<!-- Footer ==================================================--%>
+<%--================================================== -->--%>
+<%--<div class="footer">--%>
+    <%--<div class="container">--%>
+        <%--<div class="one_fourth">--%>
+            <%--<h3>Contact Informations</h3>--%>
+            <%--<p><span class="orange"><strong>Address:</strong></span> <br>--%>
+                <%--Kharkiv, Ukraine</p>--%>
+            <%--<p><span class="orange"><strong>Phone:</strong></span> <br>--%>
+                <%--+ 38 (093) 867 6925<br>--%>
+            <%--</p>--%>
+            <%--<p><span class="orange"><strong>Email:</strong></span> <br>--%>
+                <%--safronov.maksim.v@gmail.com<br>--%>
+            <%--</p>--%>
+        <%--</div>--%>
+        <%--<!-- four columns ends here -->--%>
+        <%--<div class="one_fourth lastcolumn">--%>
+            <%--<h3>About</h3>--%>
+            <%--<p>There is a service, which help You to be aware of Dog Shows.</p>--%>
+        <%--</div>--%>
+        <%--<!-- four columns ends here -->--%>
+    <%--</div>--%>
+    <%--<!-- container ends here -->--%>
+<%--</div>--%>
+<%--<!-- footer ends here -->--%>
+<%--<!-- Copyright ==================================================--%>
+<%--================================================== -->--%>
+<%--<div id="copyright">--%>
+    <%--<div class="container">--%>
+        <%--<p class="copyright">&copy; Copyright 2017. &quot;SERVICE NAME&quot; by Max Design. All rights reserved.</p>--%>
+    <%--</div>--%>
+    <%--<!-- container ends here -->--%>
+<%--</div>--%>
 <!-- copyright ends here -->
 <!-- End Document
 ================================================== -->

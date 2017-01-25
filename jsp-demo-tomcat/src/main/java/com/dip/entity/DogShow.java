@@ -48,7 +48,7 @@ public class DogShow {
     @ManyToMany
     @JoinTable(name = "registered_dog",
                 joinColumns = @JoinColumn(name = "dogshow_id", referencedColumnName = "dogshow_id"),
-                inverseJoinColumns = @JoinColumn(name = "dog_id", referencedColumnName = "dog_id"))
+                inverseJoinColumns = @JoinColumn(name = "pedigree", referencedColumnName = "pedigree"))
     private Set<Dog> dogs;
 
     @ManyToMany

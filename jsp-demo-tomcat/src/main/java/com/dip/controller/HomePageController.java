@@ -19,6 +19,11 @@ package com.dip.controller;
 ////import com.dip.entity.UserValidator;
 //import com.dip.service.SecurityService;
 //import com.dip.service.UserService;
+import com.dip.entity.Human;
+import com.dip.entity.User;
+import com.dip.service.HumanService;
+import com.dip.service.UserService;
+import org.hibernate.sql.Select;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,6 +31,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class HomePageController {
@@ -39,7 +46,12 @@ public class HomePageController {
 //	@Autowired
 //	private UserValidator userValidator;
 
-	@RequestMapping(value = {"/","home_page"}, method = {RequestMethod.GET})
+	@Autowired
+	UserService userService;
+	@Autowired
+	HumanService humanService;
+
+	@RequestMapping(value = {"/","/home_page"}, method = {RequestMethod.GET})
 	public String HomePage() {
 		return "home_page";
 	}
@@ -50,9 +62,32 @@ public class HomePageController {
 	}
 
 
-	@RequestMapping(value = "/registration", method = RequestMethod.GET)
-	public String registration(Model model) {
-		return "registration";
+	@RequestMapping(value = "/registration", method = RequestMethod.POST)
+	public ModelAndView registration(@RequestParam("signup-username") String signup_username,@RequestParam("signup-password") String signup_password,
+									 @RequestParam("signup-email") String signup_email) {
+		ModelAndView modelAndView = new ModelAndView("dogs/finished");
+		User user = new User();
+		user.setEmail(signup_email);
+		user.setPassword(signup_password);
+		user.setUsername(signup_username);
+		Human human = humanService.getById(2);
+		user.setHuman(human);
+		if(userService.findByEmail(signup_email) == null){
+			userService.save(user);
+		}
+		else{
+			System.out.println("USER EXISTT");
+			modelAndView.setViewName("home_page");
+		}
+
+		return modelAndView;
+	}
+
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public ModelAndView login(Model model) {
+		ModelAndView modelAndView = new ModelAndView("login");
+		System.out.println("LOGIN");
+		return modelAndView;
 	}
 //
 //	@RequestMapping(value = "/registration", method = RequestMethod.POST)

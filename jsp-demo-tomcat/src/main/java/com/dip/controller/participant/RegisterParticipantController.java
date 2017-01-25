@@ -12,8 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by moneg on 28.12.2016.
@@ -39,11 +38,13 @@ public class RegisterParticipantController {
     @Autowired
     BreederService breederService;
     @Autowired
-    ColorService colorService;
+    ColourService colourService;
     @Autowired
     FciGroupService fciGroupService;
     @Autowired
     BreedService breedService;
+    @Autowired
+    HumanService humanService;
 
 
     @ModelAttribute("dogshow_list_for_dog")
@@ -78,9 +79,11 @@ public class RegisterParticipantController {
     public RedirectView AddParticipant(@RequestParam("Fname") String fname, @RequestParam("Sname") String sname,
                                        @RequestParam("Lname") String lname, @RequestParam("Age") int age, @RequestParam("dogshow_id") int dogshow_id){
         Participant participant = new Participant();
-        participant.setFname(fname.trim());
-        participant.setSname(sname.trim());
-        participant.setLname(lname.trim());
+        Human human = new Human();
+        human.setFname(fname);
+        human.setSname(sname);
+        human.setLname(lname);
+        participant.setHuman(human);
         participant.setAge(age);
         participantService.addParticipant(participant);
         Registered_Contest_Participant registered_contestParticipant = new Registered_Contest_Participant();
@@ -96,7 +99,7 @@ public class RegisterParticipantController {
 
     @RequestMapping(value = {"/add_dog_contest"}, method = {RequestMethod.POST})
     public RedirectView AddDogContest(@RequestParam("breed") String breed, @RequestParam("gender") String gender, @RequestParam("name") String name,
-                                      @RequestParam("dob") @DateTimeFormat(pattern="yyyy-MM-dd") Date dob, @RequestParam("color") String color,
+                                      @RequestParam("dob") @DateTimeFormat(pattern="yyyy-MM-dd") Date dob, @RequestParam("colour") String color,
                                       @RequestParam("chip") String chip, @RequestParam("brand") String brand, @RequestParam("pedigree") String pedigree,
                                       @RequestParam("sire") String sire, @RequestParam("dam") String dam, @RequestParam("fcigroup") int fcigroup,
                                       @RequestParam("breeder_fname") String breeder_fname, @RequestParam("breeder_sname") String breeder_sname,
@@ -105,33 +108,33 @@ public class RegisterParticipantController {
                                       @RequestParam("owner_location") String owner_location, @RequestParam("dogshow_id") int dogshow_id){
 
         ModelAndView mv = new ModelAndView("dogs/register_dog");
+        Human human_owner = new Human();
+        human_owner.setSname(owner_sname.trim());
+        human_owner.setFname(owner_fname.trim());
+        human_owner.setLname(owner_lname.trim());
+        humanService.addHuman(human_owner);
         Owner owner = new Owner();
-        owner.setFname(owner_fname.trim());
-        owner.setSname(owner_sname.trim());
-        owner.setLname(owner_lname.trim());
+        owner.setHuman(human_owner);
         owner.setLocation(owner_location.trim());
         ownerService.addOwner(owner);
         Breeder breeder = new Breeder();
-        breeder.setFname(breeder_fname.trim());
-        breeder.setSname(breeder_sname.trim());
-        breeder.setLname(breeder_lname.trim());
+        Human human_breeder = new Human();
+        human_breeder.setFname(breeder_fname.trim());
+        human_breeder.setSname(breeder_sname.trim());
+        human_breeder.setLname(breeder_lname.trim());
+        humanService.addHuman(human_breeder);
+        breeder.setHuman(human_breeder);
         breederService.addBreeder(breeder);
-        Color color1 = new Color();
-        color1.setTitle(color.trim());
-        colorService.addColor(color1);
-        FciGroup fciGroup = new FciGroup();
-        fciGroup.setNumber(fcigroup);
+        FciGroup fciGroup = fciGroupService.findById(fcigroup);
         fciGroupService.addFciGroup(fciGroup);
         Breed breed1 = new Breed();
-        breed1.setTitle(breed.trim());
-        breed1.setFcigroup_id(fciGroup.getFcigroup_id());
-        breedService.addBreed(breed1);
+        breed1 = breedService.findByTitle(breed);
+        Colour colour = colourService.findByTitle(color);
         Dog dog = new Dog();
         dog.setOwner(owner);
         dog.setOwner_id(owner.getOwner_id());
         dog.setBreeder(breeder);
         dog.setBreeder_id(breeder.getBreeder_id());
-        dog.setColor_id(color1.getColor_id());
         dog.setBreed_id(breed1.getBreed_id());
         dog.setDam(dam.trim());
         dog.setSire(sire.trim());
@@ -141,14 +144,23 @@ public class RegisterParticipantController {
         dog.setDob(dob);
         dog.setName(name.trim());
         dog.setGender(gender.trim());
-        dogService.addDog(dog);
+        dog.setColour_id(colour.getColour_id());
+        dog.setBreed_id(breed1.getBreed_id());
+        List<Dog> dogs1 = new ArrayList<Dog>();
+        dogs1.add(dogService.findByPedigree(dog.getPedigree()));
+        if(dogs1.isEmpty()){
+            dogService.addDog(dog);
+            System.out.println("PEDIGREEE" + pedigree);
+        }
+        else{
+            dog = dogService.findByPedigree(dog.getPedigree());
+        }
         DogShow dogShow = dogShowService.getById(dogshow_id);
         Registered_Contest_Dog registered_contest_dog = new Registered_Contest_Dog();
         registered_contest_dog.setDog(dog);
         registered_contest_dog.setNumber(registeredContestDogService.RandomNumber());
         registered_contest_dog.setContest(dogShow.getContest());
         registeredContestDogService.addRegisteredContestDog(registered_contest_dog);
-
 
         RedirectView redirectView = new RedirectView();
         redirectView.setContextRelative(true);

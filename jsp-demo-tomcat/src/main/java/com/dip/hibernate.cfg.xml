@@ -15,17 +15,19 @@
         <mapping class="com.dip.entity.FciGroup"/>
         <mapping class="com.dip.entity.Owner"/>
         <mapping class="com.dip.entity.Breeder"/>
-        <mapping class="com.dip.entity.Color"/>
+        <mapping class="com.dip.entity.Colour"/>
         <mapping class="com.dip.entity.User"/>
         <mapping class="com.dip.entity.Expert"/>
         <mapping class="com.dip.entity.FileUpload"/>
         <mapping class="com.dip.entity.FileUploadValidator"/>
         <mapping class="com.dip.entity.Judging"/>
         <mapping class="com.dip.entity.Participant"/>
-        <mapping class="com.dip.entity.UserValidator"/>
-        <mapping class="com.dip.entity.Role"/>
+        <mapping class="com.dip.entity.Human"/>
+        <mapping class="com.dip.entity.Colour"/>
+        <mapping class="com.dip.entity.Colouring"/>
         <mapping class="com.dip.entity.Registered_dog"/>
         <mapping class="com.dip.entity.Registered_Contest_Participant"/>
+        <mapping class="com.dip.entity.Registered_Contest_Dog"/>
 
 
 

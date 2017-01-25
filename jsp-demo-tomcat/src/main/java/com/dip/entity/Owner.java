@@ -13,14 +13,9 @@ public class Owner {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private int owner_id;
 
-    @Column(name = "Fname")
-    private String fname;
-
-    @Column(name = "Sname")
-    private String sname;
-
-    @Column(name = "Lname")
-    private String Lname;
+    @OneToOne(optional = false)
+    @JoinColumn(name="human_id", unique = true, nullable = false)
+    private Human human;
 
     @Column(name = "Location")
     private String location;
@@ -29,33 +24,16 @@ public class Owner {
         return owner_id;
     }
 
+    public Human getHuman() {
+        return human;
+    }
+
+    public void setHuman(Human human) {
+        this.human = human;
+    }
 
     public void setOwner_id(int owner_id) {
         this.owner_id = owner_id;
-    }
-
-    public String getFname() {
-        return fname;
-    }
-
-    public void setFname(String fname) {
-        this.fname = fname;
-    }
-
-    public String getSname() {
-        return sname;
-    }
-
-    public void setSname(String sname) {
-        this.sname = sname;
-    }
-
-    public String getLname() {
-        return Lname;
-    }
-
-    public void setLname(String lname) {
-        Lname = lname;
     }
 
     public String getLocation() {
