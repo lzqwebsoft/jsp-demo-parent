@@ -28,14 +28,17 @@ public class Breed {
             joinColumns = @JoinColumn(name="breed_id", referencedColumnName="breed_id"),
             inverseJoinColumns = @JoinColumn(name="colour_id", referencedColumnName="colour_id")
     )
-    private Set<Colour> colourSet;
+    private Set<Colour> colour;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "breed")
+    private Set<Dog> dogs;
 
     public Set<Colour> getColourSet() {
-        return colourSet;
+        return colour;
     }
 
     public void setColourSet(Set<Colour> colourSet) {
-        this.colourSet = colourSet;
+        this.colour = colour;
     }
 
     public int getBreed_id() {

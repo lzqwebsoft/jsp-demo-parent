@@ -19,7 +19,7 @@ public class Colour {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "colour")
     private Set<Dog> dogs;
 
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "colourSet")
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "colour")
     private Set<Breed> breeds;
 
     public Set<Breed> getBreeds() {

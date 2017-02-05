@@ -1,6 +1,7 @@
 package com.dip.entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Created by moneg on 29.12.2016.
@@ -12,13 +13,15 @@ public class Breeder {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private int breeder_id;
 
+    @Column(name = "Location")
+    private String location;
+
     public int getBreeder_id() {
         return breeder_id;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinColumn(name = "breeder_id", nullable = false, insertable = false, updatable = false)
-    private Dog dog;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "breeder")
+    private Set<Dog> dogs;
 
     @OneToOne(optional = false)
     @JoinColumn(name="human_id", unique = true, nullable = false)
@@ -28,13 +31,20 @@ public class Breeder {
         this.breeder_id = breeder_id;
     }
 
-
-    public Dog getDog() {
-        return dog;
+    public Set<Dog> getDogs() {
+        return dogs;
     }
 
-    public void setDog(Dog dog) {
-        this.dog = dog;
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public void setDogs(Set<Dog> dogs) {
+        this.dogs = dogs;
     }
 
     public Human getHuman() {

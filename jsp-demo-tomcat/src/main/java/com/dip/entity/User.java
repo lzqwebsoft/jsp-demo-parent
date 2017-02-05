@@ -25,9 +25,6 @@ public class User implements Serializable, UserDetails, GrantedAuthority {
     private String password;
     @Column(name = "email")
     private String email;
-//    @Column
-//    private String passwordConfirm;
-
 
     public int getId() {
         return id;
@@ -64,16 +61,6 @@ public class User implements Serializable, UserDetails, GrantedAuthority {
     public void setPassword(String password) {
         this.password = password;
     }
-
-//    @Transient
-//    public String getPasswordConfirm() {
-//        return passwordConfirm;
-//    }
-//
-//    public void setPasswordConfirm(String passwordConfirm) {
-//        this.passwordConfirm = passwordConfirm;
-//    }
-
 
     public String getEmail() {
         return email;

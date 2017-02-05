@@ -20,12 +20,12 @@
         <mapping class="com.dip.entity.Expert"/>
         <mapping class="com.dip.entity.FileUpload"/>
         <mapping class="com.dip.entity.FileUploadValidator"/>
-        <mapping class="com.dip.entity.Judging"/>
         <mapping class="com.dip.entity.Participant"/>
         <mapping class="com.dip.entity.Human"/>
         <mapping class="com.dip.entity.Colour"/>
-        <mapping class="com.dip.entity.Colouring"/>
-        <mapping class="com.dip.entity.Registered_dog"/>
+        <mapping class="com.dip.entity.Ancestry"/>
+        <mapping class="com.dip.entity.CoOwner1"/>
+        <mapping class="com.dip.entity.CoOwner2"/>
         <mapping class="com.dip.entity.Registered_Contest_Participant"/>
         <mapping class="com.dip.entity.Registered_Contest_Dog"/>
 

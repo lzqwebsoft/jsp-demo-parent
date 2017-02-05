@@ -24,30 +24,8 @@ public class Dog {
     @Column(name = "Dob")
     private Date dob;
 
-    @Column(name = "Chip")
-    private String chip;
-
-    @Column(name = "Brand")
-    private String brand;
-
-
-    @Column(name = "Sire")
-    private String sire;
-
-    @Column(name = "Dam")
-    private String dam;
-
-    @Column(name = "breed_id")
-    private int breed_id;
-
-    @Column(name = "breeder_id")
-    private int breeder_id;
-
-    @Column(name = "owner_id")
-    private int owner_id;
-
-    @Column(name = "colour_id")
-    private int colour_id;
+    @Column(name = "ChipMark")
+    private String chipMark;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "owner_id", nullable = false, insertable = false, updatable = false)
@@ -58,16 +36,27 @@ public class Dog {
     private Breed breed;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn(name = "breeder_id", unique = true, nullable = false, insertable = false,updatable = false)
+    private Breeder breeder;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name="colour_id", unique = true, nullable = false,insertable = false,updatable = false)
     private Colour colour;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "dog")
-    private Set<Breeder> breeders;
+    @ManyToMany
+    @JoinTable(name="parents",
+            joinColumns = @JoinColumn(name="pedigree", referencedColumnName="pedigree"),
+            inverseJoinColumns = @JoinColumn(name="ancestry_id", referencedColumnName="ancestry_id")
+    )
+    private Set<Ancestry> ancestries;
 
-    @OneToOne(optional = false)
-    @JoinColumn(name="breeder_id", unique = true, nullable = false,insertable = false,updatable = false)
-    private Breeder breeder;
+    public Set<Ancestry> getAncestries() {
+        return ancestries;
+    }
 
+    public void setAncestries(Set<Ancestry> ancestries) {
+        this.ancestries = ancestries;
+    }
 
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "dogs")
     private Set<DogShow> dogShows;
@@ -77,6 +66,14 @@ public class Dog {
 
     public Colour getColour() {
         return colour;
+    }
+
+    public String getChipMark() {
+        return chipMark;
+    }
+
+    public void setChipMark(String chipMark) {
+        this.chipMark = chipMark;
     }
 
     public void setColour(Colour colour) {
@@ -107,22 +104,6 @@ public class Dog {
         this.dob = dob;
     }
 
-    public String getChip() {
-        return chip;
-    }
-
-    public void setChip(String chip) {
-        this.chip = chip;
-    }
-
-    public String getBrand() {
-        return brand;
-    }
-
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
-
     public String getPedigree() {
         return pedigree;
     }
@@ -131,53 +112,12 @@ public class Dog {
         this.pedigree = pedigree;
     }
 
-    public String getSire() {
-        return sire;
-    }
-
-    public void setSire(String sire) {
-        this.sire = sire;
-    }
-
-    public String getDam() {
-        return dam;
-    }
-
-    public void setDam(String dam) {
-        this.dam = dam;
-    }
-
-
-    public int getBreed_id() {
-        return breed_id;
-    }
-
-    public void setBreed_id(int breed_id) {
-        this.breed_id = breed_id;
-    }
-
     public Owner getOwner() {
         return owner;
     }
 
     public void setOwner(Owner owner) {
         this.owner = owner;
-    }
-
-    public Set<Breeder> getBreeders() {
-        return breeders;
-    }
-
-    public void setBreeders(Set<Breeder> breeders) {
-        this.breeders = breeders;
-    }
-
-    public Breeder getBreeder() {
-        return breeder;
-    }
-
-    public void setBreeder(Breeder breeder) {
-        this.breeder = breeder;
     }
 
     public Set<DogShow> getDogShows() {
@@ -196,35 +136,11 @@ public class Dog {
         this.breed = breed;
     }
 
-    public int getBreeder_id() {
-        return breeder_id;
-    }
-
-    public void setBreeder_id(int breeder_id) {
-        this.breeder_id = breeder_id;
-    }
-
-    public int getOwner_id() {
-        return owner_id;
-    }
-
-    public void setOwner_id(int owner_id) {
-        this.owner_id = owner_id;
-    }
-
     public Set<Contest> getContests() {
         return contests;
     }
 
     public void setContests(Set<Contest> contests) {
         this.contests = contests;
-    }
-
-    public int getColour_id() {
-        return colour_id;
-    }
-
-    public void setColour_id(int colour_id) {
-        this.colour_id = colour_id;
     }
 }
