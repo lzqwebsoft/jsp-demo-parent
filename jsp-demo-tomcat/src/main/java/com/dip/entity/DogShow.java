@@ -57,6 +57,9 @@ public class DogShow {
                 inverseJoinColumns = @JoinColumn(name = "expert_id",referencedColumnName = "expert_id"))
     private Set<Expert> experts;
 
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "dogShow")
+    private Set<User> users;
+
     public int getContest_id() {
         return contest_id;
     }
