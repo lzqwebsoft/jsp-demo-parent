@@ -157,12 +157,8 @@
                     </select>
                 </div>
                 <div class="name">
-                    <label for="chip">Dog's Chip:</label>
-                    <input type="text" id="chip" name="chip" value="<c:out value="${dog.chip}"/>" required/>
-                </div>
-                <div class="name">
-                    <label for="brand">Dog's Brand:</label>
-                    <input type="text" id="brand" name="brand" value="<c:out value="${dog.brand}"/>" required/>
+                    <label for="chipMark">Dog's Chip / Mark:</label>
+                    <input type="text" id="chipMark" name="chipMark" value="<c:out value="${dog.chipMark}"/>" required/>
                 </div>
                 <div class="name">
                     <label for="pedigree">Dog's Pedigree:</label>
@@ -170,11 +166,19 @@
                 </div>
                 <div class="name">
                     <label for="sire">Dog's Sire:</label>
-                    <input type="text" id="sire" name="sire" value="<c:out value="${dog.sire}"/>" required/>
+                    <input type="text" id="sire" name="sire" value="<c:out value="${dog.ancestry.sireName}"/>" required/>
+                </div>
+                <div class="name">
+                    <label for="sire">Dog's Sire's Pedigree:</label>
+                    <input type="text" id="sirePedigree" name="sirePedigree" value="<c:out value="${dog.ancestry.sirePedigree}"/>" required/>
                 </div>
                 <div class="name">
                     <label for="dam">Dog's Dam:</label>
-                    <input type="text" id="dam" name="dam" value="<c:out value="${dog.dam}"/>" required/>
+                    <input type="text" id="dam" name="dam" value="<c:out value="${dog.ancestry.damName}"/>" required/>
+                </div>
+                <div class="name">
+                    <label for="sire">Dog's Dam's Pedigree:</label>
+                    <input type="text" id="damPedigree" name="damPedigree" value="<c:out value="${dog.ancestry.damPedigree}"/>" required/>
                 </div>
                 <div class="name">
                     <label for="fcigroup">Dog's Fci Group:</label>
