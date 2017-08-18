@@ -38,6 +38,11 @@ public class HumanServiceImpl implements HumanService{
     }
 
     @Override
+    public Human findByFname(String Fname) {
+        return humanRepository.findByFname(Fname);
+    }
+
+    @Override
     public List<Human> getAll() {
         return humanRepository.findAll();
     }

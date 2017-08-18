@@ -4,10 +4,12 @@ import com.dip.entity.Ancestry;
 import com.dip.repository.AncestryRepository;
 import com.dip.service.AncestryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by Max on 05.02.2017.
  */
+@Component
 public class AncestryServiceImpl implements AncestryService{
     @Autowired
     AncestryRepository ancestryRepository;

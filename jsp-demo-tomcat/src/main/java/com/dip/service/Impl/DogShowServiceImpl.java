@@ -67,12 +67,12 @@ public class DogShowServiceImpl implements DogShowService {
 
     @Override
     public List<DogShow> findByForwhom(String forwhom) {
-        return dogShowRepository.findByForwhomLike(forwhom);
+        return null;
     }
 
     @Override
     public List<DogShow> findByContestType(ContestType contestType) {
-        return dogShowRepository.findByContestContestType(contestType);
+        return null;
     }
 
     private boolean existDogShow(DogShow dogShow){

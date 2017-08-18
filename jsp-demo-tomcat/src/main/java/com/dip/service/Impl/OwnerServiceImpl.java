@@ -1,5 +1,6 @@
 package com.dip.service.Impl;
 
+import com.dip.entity.Human;
 import com.dip.entity.Owner;
 import com.dip.repository.OwnerRepository;
 import com.dip.service.OwnerService;
@@ -30,6 +31,11 @@ public class OwnerServiceImpl implements OwnerService{
     @Override
     public Owner editOwner(Owner owner) {
         return ownerRepository.saveAndFlush(owner);
+    }
+
+    @Override
+    public Owner findByHuman(Human human) {
+        return ownerRepository.findByHuman(human);
     }
 
     @Override

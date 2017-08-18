@@ -3,6 +3,7 @@ package com.dip;
 import com.dip.entity.User;
 import com.dip.repository.UserRepository;
 
+import javax.servlet.Filter;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -23,6 +24,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.filter.CharacterEncodingFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -36,10 +38,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http.authorizeRequests()
                 // шаблоны адресов вписать свои!!!
-                .antMatchers("/admin/**").access("hasRole('ADMIN')") //шаблон пути и соответствие роли
-                .and().formLogin().loginPage("/login").permitAll()//логин разрешаешь неавторизованному, отдельная страница
-                .defaultSuccessUrl("/admin/home_page", false).and().logout().logoutUrl("/logout");//дефолтная страница после авторизации и урл на логаут
-        http.sessionManagement().maximumSessions(100).sessionRegistry(sessionRegistry());
+                .antMatchers("/user/**").access("hasRole('USER')")
+                .antMatchers("/admin/**").access("hasRole('ADMIN')")//шаблон пути и соответствие роли
+                .and().formLogin().loginPage("/login")
+                .permitAll()//логин разрешаешь неавторизованному, отдельная страница
+                .defaultSuccessUrl("/admin/home_page", false)
+                .and()
+                .logout()
+                .logoutUrl("/logout");
     }
 
     @Autowired
@@ -88,7 +94,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             public UserDetails loadUserByUsername(String string) throws UsernameNotFoundException {
                 User user = null;
                 try{
-                    user = userService.findByUsername(string);
+                    user = userService.findByEmail(string);
                 }catch(Exception ex){
                     System.out.println("user not found or error");
                     ex.printStackTrace();
@@ -112,4 +118,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         };
 
     }
+
 }

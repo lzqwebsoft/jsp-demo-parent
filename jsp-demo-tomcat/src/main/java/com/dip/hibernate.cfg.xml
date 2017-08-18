@@ -26,6 +26,7 @@
         <mapping class="com.dip.entity.Ancestry"/>
         <mapping class="com.dip.entity.CoOwner1"/>
         <mapping class="com.dip.entity.CoOwner2"/>
+        <mapping class="com.dip.entity.Role_type"/>
         <mapping class="com.dip.entity.Registered_Contest_Participant"/>
         <mapping class="com.dip.entity.Registered_Contest_Dog"/>
 

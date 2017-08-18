@@ -38,18 +38,18 @@ public class DogShow {
     @Column(name = "Organizer")
     private String organizer;
 
-    @Column(name="contest_id")
-    private int contest_id;
-
-    @OneToOne(optional = false)
-    @JoinColumn(name = "contest_id",unique = true,nullable = false,insertable = false,updatable = false)
-    private Contest contest;
 
     @ManyToMany
     @JoinTable(name = "registered_dog",
                 joinColumns = @JoinColumn(name = "dogshow_id", referencedColumnName = "dogshow_id"),
                 inverseJoinColumns = @JoinColumn(name = "pedigree", referencedColumnName = "pedigree"))
     private Set<Dog> dogs;
+
+    @ManyToMany
+    @JoinTable(name = "contestonshow",
+            joinColumns = @JoinColumn(name = "dogshow_id", referencedColumnName = "dogshow_id"),
+            inverseJoinColumns = @JoinColumn(name = "contest_id", referencedColumnName = "contest_id"))
+    private Set<Contest> contests;
 
     @ManyToMany
     @JoinTable(name = "judging",
@@ -60,20 +60,22 @@ public class DogShow {
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "dogShow")
     private Set<User> users;
 
-    public int getContest_id() {
-        return contest_id;
+    public Set<Contest> getContests() {
+        return contests;
     }
 
-    public void setContest_id(int contest_id) {
-        this.contest_id = contest_id;
+
+
+    public void setContests(Set<Contest> contests) {
+        this.contests = contests;
     }
 
-    public Contest getContest() {
-        return contest;
+    public Set<User> getUsers() {
+        return users;
     }
 
-    public void setContest(Contest contest) {
-        this.contest = contest;
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
 
     public String getTitle() {

@@ -12,5 +12,6 @@ public interface HumanService {
     Human getById(int id);
     void delete(int id);
     Human editHuman(Human human);
+    Human findByFname(String Fname);
     List<Human> getAll();
 }

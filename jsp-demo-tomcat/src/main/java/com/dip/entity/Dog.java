@@ -112,6 +112,14 @@ public class Dog {
         this.pedigree = pedigree;
     }
 
+    public Breeder getBreeder() {
+        return breeder;
+    }
+
+    public void setBreeder(Breeder breeder) {
+        this.breeder = breeder;
+    }
+
     public Owner getOwner() {
         return owner;
     }

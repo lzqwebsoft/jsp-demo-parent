@@ -45,7 +45,9 @@ public class ContestServiceImpl implements ContestService {
     }
 
     @Override
-    public Contest findByDogShow(DogShow dogShow) {
-        return contestRepository.findByDogShow(dogShow);
+    public List<Contest> findByDogShow(DogShow dogShow) {
+        return contestRepository.findByDogShows(dogShow);
     }
+
+
 }

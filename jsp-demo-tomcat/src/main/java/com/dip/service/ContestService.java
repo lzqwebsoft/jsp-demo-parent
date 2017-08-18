@@ -14,5 +14,5 @@ public interface ContestService {
     void delete(int id);
     Contest editContest(Contest contest);
     List<Contest> getAll();
-    Contest findByDogShow(DogShow dogShow);
+    List<Contest> findByDogShow(DogShow dogShow);
 }

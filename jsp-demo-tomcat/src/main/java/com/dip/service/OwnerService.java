@@ -1,5 +1,6 @@
 package com.dip.service;
 
+import com.dip.entity.Human;
 import com.dip.entity.Owner;
 
 import java.util.List;
@@ -11,5 +12,6 @@ public interface OwnerService {
     Owner addOwner(Owner owner);
     void delete(int id);
     Owner editOwner(Owner owner);
+    Owner findByHuman(Human human);
     List<Owner> getAll();
 }

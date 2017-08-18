@@ -77,7 +77,7 @@ public class AddDogShowController {
         contest.setDescription(contest_description.trim());
         contestService.addContest(contest);
         DogShow dogshow = new DogShow();
-        dogshow.setContest_id((int) contest.getContest_id());
+//        dogshow.setContest_id((int) contest.getContest_id());
         dogshow.setTitle(title.trim());
         dogshow.setDate(date);
         dogshow.setSponsor(sponsor.trim());

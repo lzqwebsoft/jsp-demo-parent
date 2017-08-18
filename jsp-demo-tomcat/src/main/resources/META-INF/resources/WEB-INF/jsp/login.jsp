@@ -12,207 +12,142 @@
 
 <c:set var="ctx" value="${pageContext['request'].contextPath}"/>
 <!DOCTYPE html>
-<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
-<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!-->
-<html lang="en">
-<!--<![endif]-->
+<html>
+
+<!-- Head -->
 <head>
 
-    <!-- Basic Page Needs ==================================================
-    ================================================== -->
+    <!-- Meta-Tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="keywords" content="Travel Agency Sign In Form Widget Responsive, Login Form Web Template, Flat Pricing Tables, Flat Drop-Downs, Sign-Up Web Templates, Flat Web Templates, Login Sign-up Responsive Web Template, Smartphone Compatible Web Template, Free Web Designs for Nokia, Samsung, LG, Sony Ericsson, Motorola Web Design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- //Meta-Tags -->
 
-    <meta charset="utf-8">
-    <title>Home Page</title>
-    <meta name="description" content="Place to put your description text">
-    <meta name="author" content="">
-    <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <!-- Custom-Styleheet-Links -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/for_registration/style.css" 		 type="text/css" media="all">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/for_registration/animate-custom.css" type="text/css" media="all">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css" type="text/css" media="all">
+    <!-- //Custom-Styleheet-Links -->
 
-    <!-- Mobile Specific Metas ==================================================
-    ================================================== -->
+    <!-- Fonts -->
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" type="text/css" media="all">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Montserrat:400,700" 		  type="text/css" media="all">
+    <!-- //Fonts -->
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-
-    <!-- CSS ==================================================
-    ================================================== -->
-
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/skeleton.css">
-    <link rel="stylesheet" href="css/screen.css">
-    <link rel="stylesheet" href="css/for_registration/reset.css">
-    <link rel="stylesheet" href="css/for_registration/style.css">
-    <link rel="stylesheet" href="css/prettyPhoto.css" type="text/css" media="screen" />
-
-    <!-- Favicons ==================================================
-    ================================================== -->
-
-    <link rel="shortcut icon" href="images/favicon.ico">
-    <link rel="shortcut icon" type="image/png" href="images/favicon.ico"/>
-    <link rel="apple-touch-icon" href="images/favicon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="images/favicon.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="images/favicon.png">
-
-    <!-- Google Fonts ==================================================
-    ================================================== -->
-    <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
 </head>
+<!-- //Head -->
+
+
+
+<!-- Body -->
 <body>
-<div id="header">
-    <div class="container">
-        <!-- Header | Logo, Menu
-            ================================================== -->
-        <div class="logo"><a href="${pageContext.request.contextPath}/home_page" al><img src="images/logo.png" alt="" style="height: 120px; margin-bottom: 10px"/></a></div>
-        <div class="mainmenu">
-            <div id="mainmenu">
-                <ul class="sf-menu">
-                    <li><a href="${pageContext.request.contextPath}/home_page" id="visited">Home</a></li>
-                    <li><a href="${pageContext.request.contextPath}/about">About</a></li>
-                    <li><a href="${pageContext.request.contextPath}/contact">Contact</a></li>
-                    <li><a>Register</a>
-                        <ul>
-                            <li><a href="${pageContext.request.contextPath}/register_dog">Register Dog</a></li>
-                            <li><a>Register to Contest</a>
-                                <ul>
-                                    <li><a href="${pageContext.request.contextPath}/reg_participant">Register as Participant</a></li>
-                                    <li><a href="${pageContext.request.contextPath}/reg_dog_contest">Register dog to contest</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><a href="${pageContext.request.contextPath}/dogshows">Dog Shows</a></li>
-                    <li><a href="${pageContext.request.contextPath}/add_dog_show">Add dog show</a></li>
-                    <li><a href="${pageContext.request.contextPath}/register_expert">Add Expert</a></li>
-                    <li>
-                        <nav class="main-nav ">
-                            <!-- ссылки на вызов форм -->
-                    <li><a  href="#0">Sign up / Sign in</a></li>
-                    <%--<li><a class="cd-signup" href="#0">Регистрация</a></li>--%>
-                    </nav>
-                    </li>
-                </ul>
-            </div>
-            <!-- mainmenu ends here -->
 
-            <!-- Responsive Menu -->
-            <form id="responsive-menu" action="#" method="post">
-                <select>
-                    <option value="">Navigation</option>
-                    <option value="${pageContext.request.contextPath}/home_page">Home</option>
-                    <option value="${pageContext.request.contextPath}/about">About</option>
-                    <option value="${pageContext.request.contextPath}/contact">Contact</option>
-                    <option value="${pageContext.request.contextPath}/register_dog">Register Dog</option>
-                    <option value="${pageContext.request.contextPath}/register_participant">Register as Participant</option>
-                    <option value="${pageContext.request.contextPath}/dogshows">Dog Shows</option>
-                    <option value="${pageContext.request.contextPath}/reg">Registration test</option>
-                    <option value="${pageContext.request.contextPath}/register_dog">Add Dog test</option>
-                    <option value="${pageContext.request.contextPath}/add_dog_show">Add dog show test</option>
-                    <option value="${pageContext.request.contextPath}/register_expert">Add Expert test</option>
-                </select>
-            </form>
-        </div>
-        <!-- mainmenu ends here -->
+<h1 class="w3layouts agileits">Dog Show Live</h1>
+<br>
+<br>
+<br>
+<br>
+
+<div class="container w3layouts agileits">
+
+    <div class="content-left w3layouts agileits">
+        <img src="${pageContext.request.contextPath}/css/for_registration/images/background.jpg" alt="W3layouts Agileits" height="auto">
+
     </div>
-    <!-- container ends here -->
-</div>
-<!--Content Part ==================================================
-================================================== -->
-<!-- header ends here -->
-<div class="container" style="width: 300px;">
 
-    <form class="form-signin" action="login" method="POST">
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input name="username" type="text" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-        <div class="checkbox">
-            <label>
-                <input type="checkbox" value="remember-me"> Remember me
-            </label>
-        </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-    </form>
+    <div class="content-right w3layouts agileits row">
+        <section>
+            <div id="container_demo">
+                <a class="hiddenanchor w3layouts agileits" id="tologin"></a>
+                <a class="hiddenanchor w3layouts agileits" id="toregister"></a>
+                <div id="wrapper">
+                    <div id="login" class="animate w3layouts agileits form row">
+                        <h2 class="w3layouts agileits">Войти</h2>
+                        <form class="form-signin" action="login" method="POST">
+                            <div class="row">
+                                <div class="col-md-auto">
+                            <label for="inputEmail" class="sr-only">Email адресс</label>
+                            <input name="username" type="text" id="inputEmail" class="form-control" placeholder="Email адресс" required autofocus>
+                                </div>
+                                <div class="col-md-auto">
+                            <label for="inputPassword" class="sr-only">Пароль</label>
+                            <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Пароль" required>
+                                </div>
+                            <div class="send-button w3layouts agileits">
+                                <form>
+                                    <input type="submit" value="Войти">
+                                </form>
+                                <div class="clear"></div>
+                            </div>
+                            <p class="change_link w3layouts agileits">
+                                Нет аккаунта? <a href="#toregister" class="to_register">Зарегистрируйтесь!</a>
+                            </p>
+                            <div class="clear"></div>
+                            </div>
+                        </form>
+                    </div>
+                    <div id="register" class="animate w3layouts agileits form">
+                        <h2>Зарегистрироваться</h2>
+                        <form  action="#"  method="post">
+                            <div class="row">
+                                    <div class="col-md-12">
+                                        <label class="control-label">Имя пользователя</label>
+                                        <input type="text" class="form-control" name="username" id="username">
+                                    </div>
+                                    <div class="col-md-auto">
+                                        <label class="control-label">Пароль</label>
+                                        <input type="password" class="form-control" name="password" id="password" >
+                                    </div>
+                                    <div class="col-md-auto">
+                                        <label class="control-label">Подтвердите пароль</label>
+                                        <input type="password" class="form-control" name="password2" id="password2">
+                                    </div>
+                                    <div class="col-md-auto">
+                                        <label class="control-label">Фамилия</label>
+                                        <input type="text" class="form-control" name="fname" id="fname">
+                                    </div>
+                                    <div class="col-auto">
+                                        <label class="control-label">Имя</label>
+                                        <input type="text" class="form-control" name="sname" id="sname">
+                                    </div>
+                                    <div class="col-auto">
+                                        <label class="control-label">Отчество</label>
+                                        <input type="text" class="form-control" name="lname" id="lname">
+                                    </div>
+                                <%--<label>Name</label>--%>
+                                <%--<input type="text" class="name w3layouts agileits" name="Name" required="">--%>
+                                <%--<label>E-mail</label>--%>
+                                <%--<input type="text" Name="Email" required="">--%>
+                                <%--<label>Password</label>--%>
+                                <%--<input type="password" Name="Password" required="">--%>
+                                <%--<div class="send-button w3layouts agileits">--%>
+                                    <%--<form action="#" method="post">--%>
+                                        <%--<input type="submit" value="Зарегистрироваться">--%>
+                                    <%--</form>--%>
+                                <%--</div>--%>
+                            </div>
+                            </form>
 
-</div>
-<!-- end container -->
-<!-- Socialize ==================================================
-================================================== -->
-
-<hr class="separator2">
-<div class="socialsblock">
-    <div class="container socialize">
-        <h3>Socialize with us!</h3>
-        <section class="socials">
-            <ul class="socials">
-                <li><a href="#"><img src="images/socials/twitter.png" alt="" /></a></li>
-                <li><a href="#"><img src="images/socials/facebook.png" alt="" /></a></li>
-                <li><a href="#"><img src="images/socials/dribbble.png" alt="" /></a></li>
-                <li><a href="#"><img src="images/socials/google+.png" alt="" /></a></li>
-                <li><a href="#"><img src="images/socials/linkedin.png" alt="" /></a></li>
-                <li><a href="#"><img src="images/socials/youtube.png" alt="" /></a></li>
-            </ul>
+                            <p class="change_link w3layouts agileits">
+                                Уже зарегистрированы? <a href="#tologin" class="to_register">Войти</a>
+                            </p>
+                            <div class="clear"></div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
         </section>
     </div>
-    <!-- container ends here -->
-</div>
-<!-- socialsblock ends here -->
-<!-- Footer ==================================================
-================================================== -->
-<div class="footer">
-    <div class="container">
-        <div class="one_fourth">
-            <h3>Contact Informations</h3>
-            <p><span class="orange"><strong>Address:</strong></span> <br>
-                Kharkiv, Ukraine</p>
-            <p><span class="orange"><strong>Phone:</strong></span> <br>
-                + 38 (093) 867 6925<br>
-            </p>
-            <p><span class="orange"><strong>Email:</strong></span> <br>
-                safronov.maksim.v@gmail.com<br>
-            </p>
-        </div>
-        <!-- four columns ends here -->
-        <div class="one_fourth lastcolumn">
-            <h3>About</h3>
-            <p>There is a service, which help You to be aware of Dog Shows.</p>
-        </div>
-        <!-- four columns ends here -->
-    </div>
-    <!-- container ends here -->
-</div>
-<!-- footer ends here -->
-<!-- Copyright ==================================================
-================================================== -->
-<div id="copyright">
-    <div class="container">
-        <p class="copyright">&copy; Copyright 2017. &quot;Dog Show Live&quot; by Max Design. All rights reserved.</p>
-    </div>
-    <!-- container ends here -->
-</div>
-<!-- copyright ends here -->
-<!-- End Document
-================================================== -->
-<!-- Scripts ==================================================
-================================================== -->
-<%--<script src="js/jquery-1.8.0.min.js" type="text/javascript"></script>--%>
-<!-- Main js files -->
-<script src="js/screen.js" type="text/javascript"></script>
-<!-- Tabs -->
-<script src="js/tabs.js" type="text/javascript"></script>
-<!-- Include prettyPhoto -->
-<script src="js/jquery.prettyPhoto.js" type="text/javascript"></script>
-<!-- Include Superfish -->
-<script src="js/superfish.js" type="text/javascript"></script>
-<script src="js/hoverIntent.js" type="text/javascript"></script>
-<!-- Flexslider -->
-<script src="js/jquery.flexslider-min.js" type="text/javascript"></script>
-<!-- Modernizr -->
-<script type="text/javascript" src="js/modernizr.custom.29473.js"></script>
+    <div class="clear"></div>
 
-<script type="text/javascript" src="js/for_registration/main.js"></script>
-<script type="text/javascript" src="js/for_registration/modernizr.js"></script>
+</div>
+
+<div class="footer w3layouts agileits">
+    <p> &copy; 2016 Travel Agency Sign In Form. All Rights Reserved | Template by <a href="http://w3layouts.com" target="_blank">W3layouts</a></p>
+</div>
+
 </body>
+<!-- //Body -->
+
 </html>

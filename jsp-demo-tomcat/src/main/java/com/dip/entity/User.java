@@ -3,6 +3,7 @@ package com.dip.entity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import javax.management.relation.Role;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Arrays;
@@ -17,7 +18,6 @@ import java.util.Set;
 public class User implements Serializable, UserDetails, GrantedAuthority {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "email")
     private String email;
     @Column(name="username")
@@ -32,6 +32,16 @@ public class User implements Serializable, UserDetails, GrantedAuthority {
     )
     private Set<DogShow> dogShow;
 
+
+    public Set<DogShow> getDogShow() {
+        return dogShow;
+    }
+
+    public void setDogShow(Set<DogShow> dogShow) {
+        this.dogShow = dogShow;
+    }
+
+
     public String getUsername() {
         return username;
     }
@@ -43,6 +53,10 @@ public class User implements Serializable, UserDetails, GrantedAuthority {
     @OneToOne(optional = false)
     @JoinColumn(name="human_id", unique = true, nullable = false)
     private Human human;
+
+    @OneToOne(optional = false)
+    @JoinColumn(name="type_id", unique = true, nullable = false)
+    private Role_type role_type;
 
     public Human getHuman() {
         return human;
@@ -73,6 +87,14 @@ public class User implements Serializable, UserDetails, GrantedAuthority {
         return Arrays.asList(new GrantedAuthority[]{this});
     }
 
+    public Role_type getRole_type() {
+        return role_type;
+    }
+
+    public void setRole_type(Role_type role_type) {
+        this.role_type = role_type;
+    }
+
     @Override
     public boolean isAccountNonExpired() {
         return true;
@@ -95,6 +117,7 @@ public class User implements Serializable, UserDetails, GrantedAuthority {
 
     @Override
     public String getAuthority() {
-        return "ROLE_ADMIN";
+        System.out.println(getRole_type().getTitle());
+        return getRole_type().getTitle();
     }
 }

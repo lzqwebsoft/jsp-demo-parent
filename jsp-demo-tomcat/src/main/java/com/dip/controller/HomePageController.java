@@ -60,11 +60,6 @@ public class HomePageController {
 		return "home_page";
 	}
 
-	@RequestMapping(value = {"/admin/home_page"}, method = {RequestMethod.GET})
-	public String adminHome() {
-		return "admin_home";
-	}
-
 	@RequestMapping(value = {"/terms"}, method = {RequestMethod.GET})
 	public String TermsPage() {
 		return "terms";
@@ -73,13 +68,18 @@ public class HomePageController {
 
 	@RequestMapping(value = "/registration", method = RequestMethod.POST)
 	public ModelAndView registration(@RequestParam("signup-username") String signup_username,@RequestParam("signup-password") String signup_password,
-									 @RequestParam("signup-email") String signup_email) {
+									 @RequestParam("signup-email") String signup_email, @RequestParam("fname") String fname, @RequestParam("sname") String  sname,
+									@RequestParam("lname") String lname){
 		ModelAndView modelAndView = new ModelAndView("dogs/finished");
 		User user = new User();
 		user.setEmail(signup_email);
-		user.setPassword(encoder.encode(signup_password));
+		user.setPassword(encoder.encode(signup_password.trim()));
 		user.setUsername(signup_username);
-		Human human = humanService.getById(2);
+		Human human = new Human();
+		human.setFname(fname);
+		human.setSname(sname);
+		human.setLname(lname);
+		humanService.addHuman(human);
 		user.setHuman(human);
 		if(userService.findByEmail(signup_email) == null){
 			userService.save(user);

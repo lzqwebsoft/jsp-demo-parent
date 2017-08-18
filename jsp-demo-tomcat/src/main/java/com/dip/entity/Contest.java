@@ -13,6 +13,8 @@ public class Contest {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private int contest_id;
 
+    private boolean checked;
+
     @Column(name = "contest_type_id")
     private int contest_type_id;
 
@@ -46,8 +48,8 @@ public class Contest {
         this.dogs = dogs;
     }
 
-    @OneToOne(optional = false,mappedBy = "contest")
-    private DogShow dogShow;
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "contests")
+    private Set<DogShow> dogShows;
 
     public int getContest_id() {
         return contest_id;
@@ -90,12 +92,12 @@ public class Contest {
         this.contestType = contestType;
     }
 
-    public DogShow getDogShow() {
-        return dogShow;
+    public Set<DogShow> getDogShows() {
+        return dogShows;
     }
 
-    public void setDogShow(DogShow dogShow) {
-        this.dogShow = dogShow;
+    public void setDogShows(Set<DogShow> dogShows) {
+        this.dogShows = dogShows;
     }
 
     public Set<Participant> getParticipants() {
@@ -104,5 +106,13 @@ public class Contest {
 
     public void setParticipants(Set<Participant> participants) {
         this.participants = participants;
+    }
+
+    public boolean isChecked() {
+        return checked;
+    }
+
+    public void setChecked(boolean checked) {
+        this.checked = checked;
     }
 }

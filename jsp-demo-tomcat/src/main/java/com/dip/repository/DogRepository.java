@@ -30,7 +30,7 @@ public interface DogRepository extends JpaRepository<Dog, Integer> {
     @Query("Select d from Dog d where d.breeder.human.Lname like %:lname%")
     List<Dog> findByBreederLnameLike(@Param("lname") String lname);
 
-    @Query("Select d from Dog d where d.dam like %:dam%")
+    @Query("Select a from Ancestry a where a.damName like %:dam%")
     List<Dog> findByDamLike(@Param("dam") String dam);
 
     @Query("Select d from Dog d where d.gender like %:gender%")
@@ -48,7 +48,7 @@ public interface DogRepository extends JpaRepository<Dog, Integer> {
     @Query("Select d from Dog d where d.owner.human.Lname like %:lname%")
     List<Dog> findByOwnerLnameLike(@Param("lname") String lname);
 
-    @Query("Select d from Dog d where d.sire like %:sire%")
+    @Query("Select a from Ancestry a where a.sireName like %:sire%")
     List<Dog> findBySireLike(@Param("sire") String sire);
 
 

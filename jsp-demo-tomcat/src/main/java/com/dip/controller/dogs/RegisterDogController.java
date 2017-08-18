@@ -32,6 +32,8 @@ public class RegisterDogController {
     FciGroupService fciGroupService;
     @Autowired
     HumanService humanService;
+    @Autowired
+    AncestryService ancestryService;
 
 
     @ModelAttribute("dogshow_list")
@@ -83,7 +85,7 @@ public class RegisterDogController {
         modelAndView.addObject("breed_10",breeds10);
         List<Breed> breeds11 = breedService.findByFciGroup(fciGroupService.findById(11));
         modelAndView.addObject("breed_11",breeds11);
-        List<Colour> colours = colourService.findByBreed(breedService.findOne(1));
+        List<Colour> colours = colourService.getAll();
         modelAndView.addObject("colour", colours);
         return modelAndView;
     }
@@ -91,8 +93,9 @@ public class RegisterDogController {
     @RequestMapping(value = {"/add_dog","/reg_dog_separate/add_dog"}, method = {RequestMethod.POST})
     public RedirectView registerDog(@RequestParam("breed") String breed, @RequestParam("gender") String gender, @RequestParam("name") String name,
                                 @RequestParam("dob") @DateTimeFormat(pattern="yyyy-MM-dd") Date dob, @RequestParam("colour") String color,
-                                @RequestParam("chip") String chip, @RequestParam("brand") String brand, @RequestParam("pedigree") String pedigree,
-                                @RequestParam("sire") String sire, @RequestParam("dam") String dam, @RequestParam("fcigroup") int fcigroup,
+                                @RequestParam("chipMark") String chipMark, @RequestParam("pedigree") String pedigree,
+                                @RequestParam("sire") String sire, @RequestParam("sirePedigree") String sirePedigree, @RequestParam("dam") String dam,
+                                    @RequestParam("damPedigree") String damPedigree, @RequestParam("fcigroup") int fcigroup,
                                 @RequestParam("breeder_fname") String breeder_fname, @RequestParam("breeder_sname") String breeder_sname,
                                 @RequestParam("breeder_lname") String breeder_lname, @RequestParam("owner_fname") String owner_fname,
                                 @RequestParam("owner_sname") String owner_sname, @RequestParam("owner_lname") String owner_lname,
@@ -123,20 +126,23 @@ public class RegisterDogController {
         Colour colour = colourService.findByTitle(color);
         Dog dog = new Dog();
         dog.setOwner(owner);
-        dog.setOwner_id(owner.getOwner_id());
         dog.setBreeder(breeder);
-        dog.setBreeder_id(breeder.getBreeder_id());
-        dog.setBreed_id(breed1.getBreed_id());
-        dog.setDam(dam.trim());
-        dog.setSire(sire.trim());
+        Ancestry ancestry = new Ancestry();
+        ancestry.setDamName(dam.trim());
+        ancestry.setDamPedigree(damPedigree.trim());
+        ancestry.setSireName(sire.trim());
+        ancestry.setSirePedigree(sirePedigree.trim());
+        ancestryService.addAncestry(ancestry);
+        Set<Ancestry> ancestries = new HashSet<Ancestry>();
+        ancestries.add(ancestry);
+        dog.setAncestries(ancestries);
         dog.setPedigree(pedigree.trim());
-        dog.setBrand(brand.trim());
-        dog.setChip(chip.trim());
+        dog.setChipMark(chipMark.trim());
         dog.setDob(dob);
         dog.setName(name.trim());
         dog.setGender(gender.trim());
-        dog.setColour_id(colour.getColour_id());
-        dog.setBreed_id(breed1.getBreed_id());
+        dog.setColour(colour);
+        dog.setBreed(breed1);
         DogShow dogShow = dogShowService.getById(dogshow_id);
         Set<Dog> dogs = new HashSet<Dog>();
         dogs.add(dog);

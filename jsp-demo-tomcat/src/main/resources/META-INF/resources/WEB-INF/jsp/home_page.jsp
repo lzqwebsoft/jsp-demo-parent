@@ -88,6 +88,7 @@
                     <li><a href="${pageContext.request.contextPath}/dogshows">Dog Shows</a></li>
                     <li><a href="${pageContext.request.contextPath}/add_dog_show">Add dog show</a></li>
                     <li><a href="${pageContext.request.contextPath}/register_expert">Add Expert</a></li>
+                    <li><a href="${pageContext.request.contextPath}/user/home_page">User Home Page</a></li>
                     <li>
                         <nav class="main-nav ">
                             <!-- ссылки на вызов форм -->
@@ -109,10 +110,9 @@
                     <option value="${pageContext.request.contextPath}/register_dog">Register Dog</option>
                     <option value="${pageContext.request.contextPath}/register_participant">Register as Participant</option>
                     <option value="${pageContext.request.contextPath}/dogshows">Dog Shows</option>
-                    <option value="${pageContext.request.contextPath}/reg">Registration test</option>
-                    <option value="${pageContext.request.contextPath}/register_dog">Add Dog test</option>
                     <option value="${pageContext.request.contextPath}/add_dog_show">Add dog show test</option>
                     <option value="${pageContext.request.contextPath}/register_expert">Add Expert test</option>
+                    <option value="${pageContext.request.contextPath}/user/home_page">User Home Page</option>
                 </select>
             </form>
         </div>
@@ -121,80 +121,6 @@
     <!-- container ends here -->
 </div>
 <!-- header ends here -->
-<div class="cd-user-modal"> <!-- все формы на фоне затемнения-->
-    <div class="cd-user-modal-container"> <!-- основной контейнер -->
-        <ul class="cd-switcher">
-            <li><a href="#0">Sign in</a></li>
-            <li><a href="#0">Sign up</a></li>
-        </ul>
-
-        <div> <!-- форма входа -->
-            <form class="cd-form" method="POST">
-                <p class="fieldset">
-                    <label class="image-replace cd-username" for="username">Username</label>
-                    <span class="cd-error-message">Error!</span>
-                    <input class="full-width has-padding has-border" name="username" id="username" type="username" placeholder="username">
-                </p>
-
-                <p class="fieldset">
-                    <label class="image-replace cd-password" for="password">Password</label>
-                    <input class="full-width has-padding has-border" id="password" name="password" type="text"  placeholder="Password">
-                    <span class="cd-error-message">Error!</span>
-                </p>
-
-                <p class="fieldset">
-                    <input type="checkbox" id="remember-me" checked>
-                    <label for="remember-me">Remember me</label>
-                </p>
-
-                <p class="fieldset">
-                    <input class="full-width" type="submit" value="Enter">
-                </p>
-                <%--<p class="fieldset">--%>
-                    <%--<input class="full-width has-padding" href="${pageContext.request.contextPath}/logout" type="SUBMIT" value="Log out">--%>
-                <%--</p>--%>
-            </form>
-
-            <p class="cd-form-bottom-message"><a href="#0">Forget Your password?</a></p>
-            <!-- <a href="#0" class="cd-close-form">Close</a> -->
-        </div> <!-- cd-login -->
-
-        <div > <!-- форма регистрации -->
-            <form class="cd-form" method="POST" action="/registration">
-                <p class="fieldset">
-                    <label class="image-replace cd-username" for="signup-username">Username</label>
-                    <input class="full-width has-padding has-border" id="signup-username" name="signup-username" type="text" placeholder="Username">
-                    <span class="cd-error-message">Error here!</span>
-                </p>
-
-                <p class="fieldset">
-                    <label class="image-replace cd-email" for="signup-email">E-mail</label>
-                    <input class="full-width has-padding has-border" id="signup-email" name="signup-email" type="email" placeholder="E-mail">
-                    <span class="cd-error-message">There is an error!</span>
-                </p>
-
-                <p class="fieldset">
-                    <label class="image-replace cd-password" for="signup-password">Password</label>
-                    <input class="full-width has-padding has-border" id="signup-password" name="signup-password" type="text"  placeholder="Password">
-                    <span class="cd-error-message">There is an error here!</span>
-                </p>
-
-                <p class="fieldset">
-                    <input type="checkbox" id="accept-terms">
-                    <label for="accept-terms">I accept the <a href="${pageContext.request.contextPath}/terms">Terms of the license agreement</a></label>
-                </p>
-
-                <p class="fieldset">
-                    <input class="full-width has-padding" type="submit" value="Create account">
-                </p>
-            </form>
-
-            <!-- <a href="#0" class="cd-close-form">Close</a> -->
-        </div> <!-- cd-signup -->
-
-        <a href="#0" class="cd-close-form">Close</a>
-    </div>
-</div>
 <!-- Slider ==================================================
 ================================================== -->
 <section class="slider">

@@ -30,23 +30,11 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
-
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-web</artifactId>
-			<version>4.1.3.RELEASE</version>
-		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
-			<version>1.4.0.RELEASE</version>
+			<!--<version>1.4.0.RELEASE</version>-->
 		</dependency>
-
-
-
-
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
@@ -67,7 +55,7 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.6</version>
+			<!--<version>5.1.6</version>-->
 		</dependency>
 
 
@@ -95,12 +83,12 @@
 		<dependency>
 			<groupId>commons-fileupload</groupId>
 			<artifactId>commons-fileupload</artifactId>
-			<version>1.3.1</version>
+			<!--<version>1.3.1</version>-->
 		</dependency>
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
-			<version>1.4</version>
+			<!--<version>1.4</version>-->
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -109,12 +97,18 @@
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-core</artifactId>
-			<version>4.1.4.RELEASE</version>
+			<!--<version>4.2.0.RELEASE</version>-->
 		</dependency>
-        <dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<!--<version>4.2.0.RELEASE</version>-->
+		</dependency>
+
+		<dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-web</artifactId>
-            <version>4.1.4.RELEASE</version>
+            <!--<version>4.2.0.RELEASE</version>-->
         </dependency>
     </dependencies>
 

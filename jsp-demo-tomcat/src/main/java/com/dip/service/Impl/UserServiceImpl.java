@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.List;
 
 /**
  * Created by moneg on 08.01.2017.
@@ -21,8 +22,9 @@ public class UserServiceImpl implements UserService {
     UserRepository userRepository;
 
     @Override
-    public void save(User user) {
-        userRepository.saveAndFlush(user);
+    public User save(User user) {
+        User saveUser = userRepository.saveAndFlush(user);
+        return saveUser;
     }
 
     @Override
@@ -31,7 +33,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<User> findAll() {
+        return userRepository.findAll();
+    }
+
+    @Override
+    public void delete(int id) {
+        userRepository.delete(id);
+    }
+
+    @Override
     public User findByUsername(String username) {
-        return null;
+        return userRepository.findByUsername(username);
     }
 }

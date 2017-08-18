@@ -45,6 +45,8 @@ public class RegisterParticipantController {
     BreedService breedService;
     @Autowired
     HumanService humanService;
+    @Autowired
+    AncestryService ancestryService;
 
 
     @ModelAttribute("dogshow_list_for_dog")
@@ -87,7 +89,6 @@ public class RegisterParticipantController {
         participant.setAge(age);
         participantService.addParticipant(participant);
         Registered_Contest_Participant registered_contestParticipant = new Registered_Contest_Participant();
-        registered_contestParticipant.setContest(dogShowService.getById(dogshow_id).getContest());
         registered_contestParticipant.setParticipant(participant);
         registered_contestParticipant.setNumber(registered_contestParticipantService.RandomNumber());
         registered_contestParticipantService.addRegistered_Contest(registered_contestParticipant);
@@ -100,8 +101,9 @@ public class RegisterParticipantController {
     @RequestMapping(value = {"/add_dog_contest"}, method = {RequestMethod.POST})
     public RedirectView AddDogContest(@RequestParam("breed") String breed, @RequestParam("gender") String gender, @RequestParam("name") String name,
                                       @RequestParam("dob") @DateTimeFormat(pattern="yyyy-MM-dd") Date dob, @RequestParam("colour") String color,
-                                      @RequestParam("chip") String chip, @RequestParam("brand") String brand, @RequestParam("pedigree") String pedigree,
-                                      @RequestParam("sire") String sire, @RequestParam("dam") String dam, @RequestParam("fcigroup") int fcigroup,
+                                      @RequestParam("chipMark") String chipMark, @RequestParam("pedigree") String pedigree,
+                                      @RequestParam("sire") String sire, @RequestParam("sirePedigree") String sirePedigree, @RequestParam("dam") String dam,
+                                      @RequestParam("damPedigree") String damPedigree,@RequestParam("fcigroup") int fcigroup,
                                       @RequestParam("breeder_fname") String breeder_fname, @RequestParam("breeder_sname") String breeder_sname,
                                       @RequestParam("breeder_lname") String breeder_lname, @RequestParam("owner_fname") String owner_fname,
                                       @RequestParam("owner_sname") String owner_sname, @RequestParam("owner_lname") String owner_lname,
@@ -132,20 +134,30 @@ public class RegisterParticipantController {
         Colour colour = colourService.findByTitle(color);
         Dog dog = new Dog();
         dog.setOwner(owner);
-        dog.setOwner_id(owner.getOwner_id());
         dog.setBreeder(breeder);
-        dog.setBreeder_id(breeder.getBreeder_id());
-        dog.setBreed_id(breed1.getBreed_id());
-        dog.setDam(dam.trim());
-        dog.setSire(sire.trim());
+        Ancestry ancestry = new Ancestry();
+        ancestry.setDamName(dam.trim());
+        ancestry.setDamPedigree(damPedigree.trim());
+        ancestry.setSireName(sire.trim());
+        ancestry.setSirePedigree(sirePedigree.trim());
+        ancestryService.addAncestry(ancestry);
+        Set<Ancestry> ancestries = new HashSet<Ancestry>();
+        ancestries.add(ancestry);
+        dog.setAncestries(ancestries);
         dog.setPedigree(pedigree.trim());
-        dog.setBrand(brand.trim());
-        dog.setChip(chip.trim());
+        dog.setChipMark(chipMark.trim());
         dog.setDob(dob);
         dog.setName(name.trim());
         dog.setGender(gender.trim());
-        dog.setColour_id(colour.getColour_id());
-        dog.setBreed_id(breed1.getBreed_id());
+        dog.setColour(colour);
+        dog.setBreed(breed1);
+        DogShow dogShow = dogShowService.getById(dogshow_id);
+        Set<Dog> dogs = new HashSet<Dog>();
+        dogs.add(dog);
+        dogShow.setDogs(dogs);
+        Set<DogShow> dogShows = new HashSet<DogShow>();
+        dogShows.add(dogShow);
+        dog.setDogShows(dogShows);
         List<Dog> dogs1 = new ArrayList<Dog>();
         dogs1.add(dogService.findByPedigree(dog.getPedigree()));
         if(dogs1.isEmpty()){
@@ -155,11 +167,9 @@ public class RegisterParticipantController {
         else{
             dog = dogService.findByPedigree(dog.getPedigree());
         }
-        DogShow dogShow = dogShowService.getById(dogshow_id);
         Registered_Contest_Dog registered_contest_dog = new Registered_Contest_Dog();
         registered_contest_dog.setDog(dog);
         registered_contest_dog.setNumber(registeredContestDogService.RandomNumber());
-        registered_contest_dog.setContest(dogShow.getContest());
         registeredContestDogService.addRegisteredContestDog(registered_contest_dog);
 
         RedirectView redirectView = new RedirectView();

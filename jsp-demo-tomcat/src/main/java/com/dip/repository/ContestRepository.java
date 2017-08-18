@@ -15,5 +15,6 @@ public interface ContestRepository extends JpaRepository<Contest, Integer> {
     List<Contest> findByContestType(ContestType contestType);
 
 
-    Contest findByDogShow(DogShow dogShow);
+    List<Contest> findByDogShows(DogShow dogShow);
+//    Contest findByDogShow(DogShow dogShow);
 }

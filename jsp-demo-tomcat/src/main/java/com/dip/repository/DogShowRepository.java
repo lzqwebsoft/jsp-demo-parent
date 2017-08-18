@@ -25,9 +25,6 @@ public interface DogShowRepository extends JpaRepository<DogShow, Integer> {
     @Query("Select d from DogShow d where d.sponsor like %:sponsor%")
     List<DogShow> findBySponsorLike(@Param("sponsor") String sponsor);
 
-    @Query("Select d from DogShow d where d.contest.contestType.forwhom like %:forwhom%")
-    List<DogShow> findByForwhomLike(@Param("forwhom") String forwhom);
 
-    List<DogShow> findByContestContestType(ContestType contestType);
 }
 

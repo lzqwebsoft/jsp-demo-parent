@@ -20,32 +20,32 @@ public class Owner {
     @Column(name = "Location")
     private String location;
 
-    @OneToOne(optional = false)
-    @JoinColumn(name = "coOwner1_id", unique = true, nullable = false)
-    private CoOwner1 coOwner1;
-
-    @OneToOne(optional = false)
-    @JoinColumn(name = "coOwner2_id", unique = true, nullable = false)
-    private CoOwner2 coOwner2;
+//    @OneToOne(optional = false)
+//    @JoinColumn(name = "coOwner1_id", unique = true, nullable = false)
+//    private CoOwner1 coOwner1;
+//
+//    @OneToOne(optional = false)
+//    @JoinColumn(name = "coOwner2_id", unique = true, nullable = false)
+//    private CoOwner2 coOwner2;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "owner")
     private Set<Dog> dogs;
 
-    public CoOwner1 getCoOwner1() {
-        return coOwner1;
-    }
-
-    public void setCoOwner1(CoOwner1 coOwner1) {
-        this.coOwner1 = coOwner1;
-    }
-
-    public CoOwner2 getCoOwner2() {
-        return coOwner2;
-    }
-
-    public void setCoOwner2(CoOwner2 coOwner2) {
-        this.coOwner2 = coOwner2;
-    }
+//    public CoOwner1 getCoOwner1() {
+//        return coOwner1;
+//    }
+//
+//    public void setCoOwner1(CoOwner1 coOwner1) {
+//        this.coOwner1 = coOwner1;
+//    }
+//
+//    public CoOwner2 getCoOwner2() {
+//        return coOwner2;
+//    }
+//
+//    public void setCoOwner2(CoOwner2 coOwner2) {
+//        this.coOwner2 = coOwner2;
+//    }
 
     public Set<Dog> getDogs() {
         return dogs;
